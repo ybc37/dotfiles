@@ -1,0 +1,33 @@
+[core]
+	editor = nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[user]
+	name = Daniel Schmid
+	email = d.anielschmid@gmx.de
+[color]
+	ui = true
+[color "diff"]
+	meta = yellow
+	commit = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[push]
+	default = simple
+[merge]
+	tool = meld
+[diff]
+	tool = meld
+
+[gui]
+	fontui = -family \"Noto Sans\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Noto Sans Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	mergelogmsg = "!f() { var=$(git symbolic-ref --short HEAD) && printf 'Merge branch %s into %s\n\nCommits:\n' $1 $var >| temp_merge_msg && git log dev --format=format:'* %s' $var..$1 >> temp_merge_msg && printf '\n\nFixes:\n' >> temp_merge_msg && git log dev --format=format:'%s, %b' $var..$1|egrep -o '#[0-9]{15}'|sort -u|sed 's;^;* fix ;' >> temp_merge_msg && git merge --no-ff --no-commit $1 && git commit -eF temp_merge_msg; rm -f temp_merge_msg;}; f"
