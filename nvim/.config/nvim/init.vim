@@ -86,8 +86,6 @@ nnoremap <silent> <Leader>w :w<CR>
 nnoremap <silent> <Leader>x :bd<CR>
 nnoremap <silent> <Leader>q :q<CR>
 nnoremap <silent> <Tab> :b#<CR>
-" nnoremap <silent> <Leader>h :bp<CR> -> ]b of vim-unimpaired
-" nnoremap <silent> <Leader>l :bn<CR> -> [b of vim-unimpaired
 
 " splits
 nnoremap <silent> <Leader>v :vs<CR>

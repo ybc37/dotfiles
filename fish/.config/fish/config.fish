@@ -38,9 +38,7 @@ alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
-    # set -g fish_key_bindings fish_hybrid_key_bindings
     fish_hybrid_key_bindings
-    # fish_vi_key_bindings
     bind -M insert \cl accept-autosuggestion execute
     bind -M insert \cc kill-whole-line force-repaint
     bind -M default -m insert \cc kill-whole-line force-repaint
@@ -48,10 +46,7 @@ end
 set -g fish_key_bindings hybrid_bindings
 
 function fish_greeting
-    #fortune
-    echo '...z. z! Z!!!'
-    echo 'f8 + f9/f10'
-    echo 'unimpaired [space, [b, [e'
+    echo 'f8 + f9/f10 + z + unimpaired [space, [b, [e' \n
 end
 
 function ls
@@ -106,7 +101,6 @@ function fish_default_mode_prompt --description 'Displays the current mode'
     end
   echo ' …'
   set_color normal
-  # echo -n ' '
   end
 end
 
