@@ -36,6 +36,7 @@ alias n=nvim
 alias c='xsel -b'
 alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
+alias time='time -p'
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
     fish_hybrid_key_bindings
