@@ -130,7 +130,6 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 
 " Plugins
 call plug#begin("~/.local/share/nvim/plugged")
-" Plug 'jeetsukumaran/vim-buffergator'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
