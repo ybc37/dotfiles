@@ -72,6 +72,9 @@ set updatetime=250
 " split  : Also shows partial off-screen results in a preview window.
 set inccommand=split
 
+" Enables mouse support.
+set mouse=a
+
 
 
 let mapleader="\<Space>"
