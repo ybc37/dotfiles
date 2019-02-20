@@ -52,7 +52,7 @@ end
 
 function ls
     #command ls -hF --color=auto --group-directories-first $argv
-    exa --group-directories-first $argv
+    exa --group-directories-first --time-style=long-iso $argv
 end
 
 function ll
