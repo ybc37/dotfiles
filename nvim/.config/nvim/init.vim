@@ -75,6 +75,9 @@ set inccommand=split
 " Enables mouse support.
 set mouse=a
 
+" Whether or not to draw the signcolumn.
+" (default: auto, no, yes)
+set signcolumn=yes
 
 
 let mapleader="\<Space>"
