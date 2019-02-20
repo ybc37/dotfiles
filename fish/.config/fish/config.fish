@@ -1,6 +1,6 @@
 # first setting env vars
 set -x GOPATH $HOME/go
-set -x PATH $PATH $GOPATH $GOPATH/bin $HOME/bin (yarn global bin)
+set -x PATH $PATH $GOPATH $GOPATH/bin $HOME/bin $HOME/.yarn/bin
 set -x EDITOR nvim
 set -x VISUAL nvim
 
