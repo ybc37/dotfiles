@@ -24,10 +24,10 @@ set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --exclude .git/'
 
 # https://github.com/jethrokuan/fzf
 set -x FZF_LEGACY_KEYBINDINGS 0
-set -x FZF_FIND_FILE_COMMAND 'fd --hidden --exclude .git/'
-set -x FZF_CD_COMMAND 'fd --type d --exclude .git/'
-set -x FZF_CD_WITH_HIDDEN_COMMAND 'fd --type d --hidden --exclude .git/'
-set -x FZF_OPEN_COMMAND 'fd --hidden --exclude .git/'
+set -x FZF_FIND_FILE_COMMAND 'fd --type f --hidden --exclude .git/ . $dir'
+set -x FZF_CD_COMMAND 'fd --type d --exclude .git/ . $dir'
+set -x FZF_CD_WITH_HIDDEN_COMMAND 'fd --type d --hidden --exclude .git/ . $dir'
+set -x FZF_OPEN_COMMAND 'fd --hidden --exclude .git/ . $dir'
 
 alias ag='ag -S --pager="less -XFR"'
 alias a=atom
