@@ -174,8 +174,9 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " Shougo/deoplete.nvim
 let g:deoplete#enable_at_startup = 1
 
-" onedark.vim override: Don't set a background color when running in a terminal;
-" just use the terminal's background color
+" joshdick/onedark.vim
+" override: Don't set a background color when running in a terminal; just use
+" the terminal's background color
 " `gui` is the hex color code used in GUI mode/nvim true-color mode
 " `cterm` is the color code used in 256-color mode
 " `cterm16` is the color code used in 16-color mode
@@ -198,6 +199,7 @@ colorscheme onedark
 hi Error ctermbg=238
 hi Todo ctermbg=238
 
+" itchyny/lightline.vim
 let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ }
