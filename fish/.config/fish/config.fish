@@ -40,7 +40,7 @@ alias time='time -p'
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
     fish_hybrid_key_bindings
-    bind -M insert \cl accept-autosuggestion execute
+    bind -M insert \cn accept-autosuggestion execute
     bind -M insert \cc kill-whole-line force-repaint
     bind -M default -m insert \cc kill-whole-line force-repaint
 end
