@@ -10,8 +10,8 @@ if status is-interactive
         exec tmux
     end
 
-    # when this is reached, tmux is started -> rename first window
-    if test (tmux display-message -p '#I') = '0'
+    # when this is reached, tmux is started -> rename first window of first session
+    if test (tmux display-message -p '#S') = '0' -a (tmux display-message -p '#I') = '0'
         tmux rename-window chaos
     end
 end
