@@ -47,7 +47,10 @@ end
 set -g fish_key_bindings hybrid_bindings
 
 function fish_greeting
-    echo 'f8 + f9/f10 + z + unimpaired [space, [b, [e' \n
+    set -l FILE (dirname (status --current-filename))/greeting.md
+    if test -e $FILE
+      bat -p $FILE
+    end
 end
 
 function ls
