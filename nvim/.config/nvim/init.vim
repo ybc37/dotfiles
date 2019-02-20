@@ -95,10 +95,6 @@ nnoremap <silent> <Tab> :b#<CR>
 
 " splits
 nnoremap <silent> <Leader>v :vs<CR>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 " copy & paste to system clipboard
 vnoremap <Leader>y "+y
@@ -137,6 +133,7 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 " Plugins
 call plug#begin("~/.local/share/nvim/plugged")
 Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
