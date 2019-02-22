@@ -108,4 +108,4 @@ function fish_default_mode_prompt --description 'Displays the current mode'
   end
 end
 
-set pure_command_max_exec_time 3
+set pure_threshold_command_duration 3
