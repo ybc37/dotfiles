@@ -159,11 +159,11 @@ call plug#end()
 
 " autozimu/LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['~/dev/language-server/js/node_modules/.bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['~/dev/language-server/js/node_modules/.bin/javascript-typescript-stdio'],
-    \ 'php': ['php', '~/dev/language-server/php/vendor/bin/php-language-server.php'],
-    \ 'css': ['~/dev/language-server/css/node_modules/.bin/css-languageserver', '--stdio'],
-    \ 'scss': ['~/dev/language-server/css/node_modules/.bin/css-languageserver', '--stdio'],
+    \ 'javascript': ['~/dev/language-servers/js/node_modules/.bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['~/dev/language-servers/js/node_modules/.bin/javascript-typescript-stdio'],
+    \ 'php': ['php', '~/dev/language-servers/php/vendor/bin/php-language-server.php'],
+    \ 'css': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
+    \ 'scss': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
