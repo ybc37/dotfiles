@@ -79,6 +79,8 @@ set mouse=a
 " (default: auto, no, yes)
 set signcolumn=yes
 
+" use true color (24-bit) in the terminal
+set termguicolors
 
 let mapleader="\<Space>"
 
