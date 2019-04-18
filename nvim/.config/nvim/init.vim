@@ -30,7 +30,7 @@ set smartcase
 set scrolloff=3
 
 " Syntax highlighting items specify folds.
-set foldmethod=indent
+set foldmethod=syntax
 
 " Sets 'foldlevel' when starting to edit another buffer in a window.
 set foldlevelstart=99
