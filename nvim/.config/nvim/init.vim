@@ -122,12 +122,11 @@ noremap k gk
 tnoremap <Leader><Esc> <C-\><C-n>
 
 " fzf.vim
-nnoremap <C-p> :Files<Cr>
-nnoremap <Leader>f :Files<Cr>
-" nnoremap <C-g> :Rg<Cr>
+nnoremap <C-p> :Files<CR>
+nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg 
-nnoremap <Leader>s :GitFiles?<Cr>
-nnoremap <Leader><Tab> :Buffers<Cr>
+nnoremap <Leader>s :GitFiles?<CR>
+nnoremap <Leader><Tab> :Buffers<CR>
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
 
