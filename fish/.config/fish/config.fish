@@ -33,6 +33,7 @@ alias ag='ag -S --pager="less -XFR"'
 alias a=atom
 alias o=open
 alias n=nvim
+alias nup='nvim +PlugUpgrade +PlugUpdate'
 alias c='xsel -b'
 alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
