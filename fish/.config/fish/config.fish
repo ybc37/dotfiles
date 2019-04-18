@@ -90,24 +90,4 @@ function weather
   curl "wttr.in/$argv"
 end
 
-# 2018-12-11: overwrite fish_DEFAULT_mode_prompt, because it's used by pure prompt
-# function fish_mode_prompt --description 'Displays the current mode'
-function fish_default_mode_prompt --description 'Displays the current mode'
-  # Do nothing if not in vi mode
-  if test "$fish_key_bindings" = "fish_hybrid_key_bindings"
-    switch $fish_bind_mode
-      case default
-        set_color --bold red
-      case insert
-        set_color --bold green
-      case replace-one
-        set_color --bold yellow
-      case visual
-        set_color --bold magenta
-    end
-  echo ' …'
-  set_color normal
-  end
-end
-
 set pure_threshold_command_duration 3
