@@ -29,6 +29,9 @@ set -x FZF_CD_COMMAND 'fd --type d --exclude .git/ . $dir'
 set -x FZF_CD_WITH_HIDDEN_COMMAND 'fd --type d --hidden --exclude .git/ . $dir'
 set -x FZF_OPEN_COMMAND 'fd --hidden --exclude .git/ . $dir'
 
+# https://github.com/rafaelrinaldi/pure
+set -g pure_threshold_command_duration 3
+
 alias ag='ag -S --pager="less -XFR"'
 alias a=atom
 alias o=open
@@ -89,5 +92,3 @@ end
 function weather
   curl "wttr.in/$argv"
 end
-
-set pure_threshold_command_duration 3
