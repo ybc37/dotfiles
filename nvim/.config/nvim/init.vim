@@ -133,6 +133,7 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 
 " Plugins
 call plug#begin("~/.local/share/nvim/plugged")
+Plug 'RRethy/vim-illuminate'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
