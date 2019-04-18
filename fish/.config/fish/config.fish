@@ -41,7 +41,8 @@ alias time='time -p'
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
     fish_hybrid_key_bindings
-    bind -M insert \cn accept-autosuggestion execute
+    # use `fish_key_reader -c` or `showkey -a` to get keys
+    bind -M insert \e\r accept-autosuggestion execute # \e\r = alt+enter; ctrl+enter is mapped to \e\r in alacritty.yml
     bind -M insert \cc kill-whole-line force-repaint
     bind -M default -m insert \cc kill-whole-line force-repaint
 end
