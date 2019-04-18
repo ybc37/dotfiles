@@ -217,6 +217,10 @@ colorscheme onedark
 " itchyny/lightline.vim
 let g:lightline = { 'colorscheme': 'onedark' }
 
+" RRethy/vim-illuminate
+hi link illuminatedWord Visual " use highlight group `Visual` for highlighting words
+let g:Illuminate_highlightUnderCursor = 0 " Don't highlight word under cursor (default: 1)
+
 " oni specific config
 if exists("g:gui_oni")
     set noswapfile
