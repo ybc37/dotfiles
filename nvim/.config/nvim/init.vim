@@ -204,15 +204,11 @@ endif
 if (has("autocmd"))
   augroup colorextend
     autocmd!
-    if (!has("gui_running"))
-      autocmd ColorScheme * call onedark#extend_highlight("Visual", { "bg": { "cterm": "238" } })
-    endif
-
     autocmd ColorScheme * call onedark#extend_highlight("CursorLine", { "bg": { "gui": "#2f2f2f" } })
 
     " set background for highlight groups used by LanguageClient-neovim in virtual texts (showing errors/warnings)
-    autocmd ColorScheme * call onedark#extend_highlight("Error", { "bg": { "gui": "#3E4452", "cterm": "238" } })
-    autocmd ColorScheme * call onedark#extend_highlight("Todo", { "bg": { "gui": "#3E4452", "cterm": "238" } })
+    autocmd ColorScheme * call onedark#extend_highlight("Error", { "bg": { "gui": "#3E4452" } })
+    autocmd ColorScheme * call onedark#extend_highlight("Todo", { "bg": { "gui": "#3E4452" } })
   augroup END
 endif
 
