@@ -215,9 +215,7 @@ endif
 colorscheme onedark
 
 " itchyny/lightline.vim
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ }
+let g:lightline = { 'colorscheme': 'onedark' }
 
 " oni specific config
 if exists("g:gui_oni")
