@@ -196,21 +196,27 @@ let g:deoplete#enable_at_startup = 1
 if (has("autocmd") && !has("gui_running"))
   augroup colorset
     autocmd!
-    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16": "7" }
     autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+  augroup END
+endif
 
-    " optimize visual color -> maybe use g:onedark_color_overrides (https://github.com/joshdick/onedark.vim/#global-color-overrides)?
-    let s:visual_grey = { "gui": "#3E4452", "cterm": "238", "cterm16": "15" } " cterm: 237 -> 238
-    autocmd ColorScheme * call onedark#set_highlight("Visual", { "bg": s:visual_grey })
+if (has("autocmd"))
+  augroup colorextend
+    autocmd!
+    if (!has("gui_running"))
+      autocmd ColorScheme * call onedark#extend_highlight("Visual", { "bg": { "cterm": "238" } })
+    endif
+
+    autocmd ColorScheme * call onedark#extend_highlight("CursorLine", { "bg": { "gui": "#2f2f2f" } })
+
+    " set background for highlight groups used by LanguageClient-neovim in virtual texts (showing errors/warnings)
+    autocmd ColorScheme * call onedark#extend_highlight("Error", { "bg": { "gui": "#3E4452", "cterm": "238" } })
+    autocmd ColorScheme * call onedark#extend_highlight("Todo", { "bg": { "gui": "#3E4452", "cterm": "238" } })
   augroup END
 endif
 
 colorscheme onedark
-
-" set background for highlight groups used by LanguageClient-neovim in virtual
-" texts (showing errors/warnings)
-hi Error ctermbg=238
-hi Todo ctermbg=238
 
 " itchyny/lightline.vim
 let g:lightline = {
