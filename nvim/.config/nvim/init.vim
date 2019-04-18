@@ -142,6 +142,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth' " disabled for md, see ~/.config/nvim/after/ftplugin/markdown.vim
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
