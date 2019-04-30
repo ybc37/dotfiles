@@ -179,7 +179,7 @@ function! LC_maps()
   endif
 endfunction
 
-augroup languageClient
+augroup langClient
   autocmd!
   autocmd FileType * call LC_maps()
 augroup END
