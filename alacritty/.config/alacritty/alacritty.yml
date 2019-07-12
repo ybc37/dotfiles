@@ -371,7 +371,7 @@ shell:
 #  program: /bin/bash
 #  args:
 #    - --login
-  program: /usr/bin/fish
+  program: /usr/bin/tmux
 
 # Startup directory
 #

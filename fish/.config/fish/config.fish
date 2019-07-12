@@ -4,13 +4,8 @@ set -x PATH $PATH $GOPATH $GOPATH/bin $HOME/bin $HOME/.yarn/bin
 set -x EDITOR nvim
 set -x VISUAL nvim
 
-# automatically start tmux, if shell is interactive and tmux is not started yet
-if status is-interactive
-    if not set -q TMUX
-        exec tmux
-    end
-
-    # when this is reached, tmux is started -> rename first window of first session
+if set -q TMUX
+    # rename first window of first session
     if test (tmux display-message -p '#S') = '0' -a (tmux display-message -p '#I') = '0'
         tmux rename-window chaos
     end
