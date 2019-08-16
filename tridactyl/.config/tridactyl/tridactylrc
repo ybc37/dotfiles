@@ -1,0 +1,23 @@
+" see `:help source` (in tridactyl)
+
+" If you want "vim-like" behaviour where removing a line from 
+" here makes the setting disappear, uncomment the line below.
+sanitise tridactyllocal tridactylsync
+
+" binds
+bind j scrollline 5
+bind k scrollline -5
+bind gs viewsource
+
+" find mode
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+bind <Space>/ nohlsearch
+set findcase smart
+
+
+set theme dark
+" set editorcmd nvim-qt --nofork --maximized 
+set editorcmd nvim-qt --nofork --geometry 1000x600+300+100
