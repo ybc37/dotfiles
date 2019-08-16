@@ -30,7 +30,6 @@ set -x BAT_THEME 'OneHalfDark'
 # https://github.com/rafaelrinaldi/pure
 set -g pure_threshold_command_duration 3
 
-alias ag='ag -S --pager="less -XFR"'
 alias a=atom
 alias o=open
 alias n=nvim
