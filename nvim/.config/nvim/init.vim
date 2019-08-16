@@ -112,6 +112,15 @@ nnoremap <Leader>P "+P
 vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
 
+" copy relative path (src/foo.txt):
+nnoremap <Leader>cr :let @+=expand("%")<CR>
+" copy absolute path (/something/src/foo.txt):
+nnoremap <Leader>ca :let @+=expand("%:p")<CR>
+" copy filename (foo.txt):
+nnoremap <Leader>cf :let @+=expand("%:t")<CR>
+" copy directory name (/something/src):
+nnoremap <Leader>cd :let @+=expand("%:p:h")<CR>
+
 nnoremap <silent> <leader>/ :noh<CR>
 
 " toggle line wrapping
