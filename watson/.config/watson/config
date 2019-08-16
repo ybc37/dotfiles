@@ -1,0 +1,5 @@
+[options]
+log_current = true
+pager = false
+report_current = true
+
