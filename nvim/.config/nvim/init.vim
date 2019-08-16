@@ -82,6 +82,9 @@ set signcolumn=yes
 " use true color (24-bit) in the terminal
 set termguicolors
 
+" disable modeline
+set nomodeline
+
 let mapleader="\<Space>"
 
 inoremap jk <Esc>
