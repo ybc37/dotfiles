@@ -85,6 +85,18 @@ set termguicolors
 " disable modeline
 set nomodeline
 
+" the following settings are used when `wrap` is on (e.g. by using
+" vim-unimpaired `yow`)
+"
+" If on, Vim will wrap long lines at a character in 'breakat' rather than at the
+" last character that fits on the screen.
+set linebreak
+" Every wrapped line will continue visually indented (same amount of space as
+" the beginning of that line), thus preserving horizontal blocks of text.
+set breakindent
+" String to put at the start of lines that have been wrapped.
+set showbreak=↳\ 
+
 let mapleader="\<Space>"
 
 inoremap jk <Esc>
@@ -122,9 +134,6 @@ nnoremap <Leader>cf :let @+=expand("%:t")<CR>
 nnoremap <Leader>cd :let @+=expand("%:p:h")<CR>
 
 nnoremap <silent> <leader>/ :noh<CR>
-
-" toggle line wrapping
-nmap <F10> :set wrap! linebreak!<CR>
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 noremap j gj
