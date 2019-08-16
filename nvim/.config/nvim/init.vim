@@ -148,6 +148,8 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>g :Rg 
 nnoremap <Leader>s :GitFiles?<CR>
 nnoremap <Leader><Tab> :Buffers<CR>
+nnoremap <Leader>t :Tags 
+nnoremap <Leader>T :BTags 
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
 
@@ -161,6 +163,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
@@ -243,3 +246,6 @@ let g:lightline = { 'colorscheme': 'onedark' }
 " RRethy/vim-illuminate
 hi link illuminatedWord Visual " use highlight group `Visual` for highlighting words
 let g:Illuminate_highlightUnderCursor = 0 " Don't highlight word under cursor (default: 1)
+
+" Plug 'ludovicchabant/vim-gutentags'
+let g:gutentags_file_list_command = 'rg --files'
