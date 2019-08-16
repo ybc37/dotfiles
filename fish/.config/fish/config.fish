@@ -24,6 +24,9 @@ set -x FZF_CD_COMMAND 'fd --type d --exclude .git/ . $dir'
 set -x FZF_CD_WITH_HIDDEN_COMMAND 'fd --type d --hidden --exclude .git/ . $dir'
 set -x FZF_OPEN_COMMAND 'fd --hidden --exclude .git/ . $dir'
 
+# https://github.com/sharkdp/bat
+set -x BAT_THEME 'OneHalfDark'
+
 # https://github.com/rafaelrinaldi/pure
 set -g pure_threshold_command_duration 3
 
