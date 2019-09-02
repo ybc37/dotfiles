@@ -17,6 +17,13 @@ bind N findnext -1
 bind <Space>/ nohlsearch
 set findcase smart
 
+" search engines
+set searchurls.dict https://dict.leo.org/german-english/
+set searchurls.gtde https://translate.google.com/#view=home&op=translate&sl=auto&tl=de&text=
+set searchurls.gten https://translate.google.com/#view=home&op=translate&sl=auto&tl=en&text=
+set searchurls.archp https://www.archlinux.org/packages/?q=
+set searchurls.archw https://wiki.archlinux.org/index.php?search=
+
 
 set theme dark
 " set editorcmd nvim-qt --nofork --maximized 
