@@ -133,7 +133,7 @@ nnoremap <Leader>cf :let @+=expand("%:t")<CR>
 " copy directory name (/something/src):
 nnoremap <Leader>cd :let @+=expand("%:p:h")<CR>
 
-nnoremap <silent> <leader>/ :noh<CR>
+nnoremap <silent> <Leader>/ :noh<CR>
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 noremap j gj
