@@ -263,3 +263,4 @@ let g:Illuminate_highlightUnderCursor = 0 " Don't highlight word under cursor (d
 
 " Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_file_list_command = 'rg --files'
+let g:gutentags_ctags_tagfile = '.git/tags'
