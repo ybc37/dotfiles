@@ -26,6 +26,13 @@ set ignorecase
 " Case sensitive when uc present
 set smartcase
 
+" make command line always ignore case
+augroup dynamic_smartcase
+    autocmd!
+    autocmd CmdLineEnter : set nosmartcase
+    autocmd CmdLineLeave : set smartcase
+augroup END
+
 " Minimum lines to keep above and below cursor
 set scrolloff=3
 
@@ -96,6 +103,13 @@ set linebreak
 set breakindent
 " String to put at the start of lines that have been wrapped.
 set showbreak=↳\ 
+
+" automatically save/restore undo history using an undo file
+" undodir: default `$XDG_DATA_HOME/nvim/undo`
+set undofile
+
+" don't show mode (insert, replace, visual) in last line
+set noshowmode
 
 let mapleader="\<Space>"
 
