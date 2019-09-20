@@ -3,6 +3,7 @@ set -x GOPATH $HOME/go
 set -xa PATH $GOPATH $GOPATH/bin $HOME/bin $HOME/.yarn/bin
 set -x EDITOR nvim
 set -x VISUAL nvim
+set -x MANPAGER "nvim -c 'set ft=man' -"
 
 if set -q TMUX
     # rename first window of first session
