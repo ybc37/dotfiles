@@ -7,7 +7,7 @@
 [color]
 	ui = true
 [color "diff"]
-	meta = yellow
+	meta = 11
 	commit = yellow bold
 	frag = magenta bold
 	old = red bold
