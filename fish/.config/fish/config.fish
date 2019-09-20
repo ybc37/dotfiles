@@ -1,16 +1,9 @@
-# first setting env vars
+# set env vars
 set -x GOPATH $HOME/go
 set -xa PATH $GOPATH $GOPATH/bin $HOME/bin $HOME/.yarn/bin
 set -x EDITOR nvim
 set -x VISUAL nvim
 set -x MANPAGER "nvim -c 'set ft=man' -"
-
-if set -q TMUX
-    # rename first window of first session
-    if test (tmux display-message -p '#S') = '0' -a (tmux display-message -p '#I') = '0'
-        tmux rename-window chaos
-    end
-end
 
 # https://github.com/0rax/fish-bd
 set -x BD_OPT 'insensitive'
@@ -41,6 +34,13 @@ alias c='xclip -sel clip'
 alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
 alias time='time -p'
+
+if set -q TMUX
+    # rename first window of first session
+    if test (tmux display-message -p '#S') = '0' -a (tmux display-message -p '#I') = '0'
+        tmux rename-window chaos
+    end
+end
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
     fish_hybrid_key_bindings
