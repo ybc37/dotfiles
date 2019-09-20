@@ -167,6 +167,17 @@ nnoremap <Leader>T :BTags
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
 
+" notes
+let s:note_path = "~/documents/notes/"
+command! -bang -nargs=* RgNotes call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . shellescape(<q-args>), 1, {"dir": s:note_path}, <bang>0)
+command! -bang -nargs=0 Notes call fzf#vim#files(<q-args>, {"dir": s:note_path}, <bang>0)
+nnoremap <Leader>ee :Notes<CR>
+nnoremap <Leader>eE :Notes!<CR>
+nnoremap <Leader>eg :RgNotes 
+nnoremap <Leader>eG :RgNotes! 
+execute "nnoremap <Leader>ef :e " . s:note_path
+execute "nnoremap <Leader>ed :!mkdir -p " . s:note_path
+
 
 " Plugins
 call plug#begin("~/.local/share/nvim/plugged")
