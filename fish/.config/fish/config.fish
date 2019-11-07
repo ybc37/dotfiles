@@ -48,6 +48,10 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     bind -M insert \e\r accept-autosuggestion execute # \e\r = alt+enter; ctrl+enter is mapped to \e\r in alacritty.yml
     bind -M insert \cc kill-whole-line force-repaint
     bind -M default -m insert \cc kill-whole-line force-repaint
+    bind -M default \eh fzf_copycmd
+    bind -M insert \eh fzf_copycmd
+    bind -M default \ek fzf_kill
+    bind -M insert \ek fzf_kill
 end
 set -g fish_key_bindings hybrid_bindings
 
@@ -91,4 +95,23 @@ end
 
 function weather
   curl "wttr.in/$argv"
+end
+
+function fzf_copycmd
+  set -l cmd (history | fzf --no-sort --height 40%)
+  if test -n "$cmd"
+    echo $cmd | c
+  end
+  commandline -f repaint
+end
+
+function fzf_kill
+  # args statt comm -> full command
+  set -l process (ps -eo pid,euser,%cpu,etime,comm --sort -pid --no-headers | fzf --height 40%)
+  if test -n "$process"
+    set -l pid (echo $process | awk '{print $1}')
+    set -l comm (echo $process | awk '{print $5}')
+    commandline -r "kill -9 $pid #$comm"
+  end
+  commandline -f repaint
 end
