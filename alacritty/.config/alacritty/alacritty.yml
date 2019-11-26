@@ -569,5 +569,7 @@ key_bindings:
   #- { key: Home,      mods: Shift,   action: ScrollToTop,    mode: ~Alt       }
   #- { key: End,       mods: Shift,   action: ScrollToBottom, mode: ~Alt       }
 
+  # Custom bindings
+  #
   # bind ctrl+enter to send the same chars as alt+enter
-  - { key: Return,   mods: Control, chars: "\e\r"                            }
+  - { key: Return, mods: Control, chars: "\e\r" }
