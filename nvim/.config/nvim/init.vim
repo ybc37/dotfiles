@@ -190,6 +190,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
+Plug 'psf/black'
 Plug 'sheerun/vim-polyglot'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
@@ -208,6 +209,7 @@ let g:LanguageClient_serverCommands = {
     \ 'php': ['php', '~/dev/language-servers/php/vendor/bin/php-language-server.php'],
     \ 'css': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
     \ 'scss': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
+    \ 'python': ['/usr/bin/pyls'],
     \ }
 
 " apply mappings only for buffers with supported filetypes
