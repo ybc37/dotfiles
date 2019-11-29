@@ -236,7 +236,7 @@ let g:deoplete#enable_at_startup = 1
 " `gui` is the hex color code used in GUI mode/nvim true-color mode
 " `cterm` is the color code used in 256-color mode
 " `cterm16` is the color code used in 16-color mode
-if (has("autocmd") && !has("gui_running"))
+if (has("autocmd") && !empty($TERM))
   augroup colorset
     autocmd!
     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16": "7" }
