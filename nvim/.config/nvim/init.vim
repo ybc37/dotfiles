@@ -262,6 +262,6 @@ let g:lightline = { 'colorscheme': 'onedark' }
 hi link illuminatedWord Visual " use highlight group `Visual` for highlighting words
 let g:Illuminate_highlightUnderCursor = 0 " Don't highlight word under cursor (default: 1)
 
-" Plug 'ludovicchabant/vim-gutentags'
+" ludovicchabant/vim-gutentags
 let g:gutentags_file_list_command = 'rg --files'
 let g:gutentags_ctags_tagfile = '.git/tags'
