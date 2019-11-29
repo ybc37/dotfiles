@@ -104,6 +104,10 @@ set undofile
 " don't show mode (insert, replace, visual) in last line
 set noshowmode
 
+" disabling showing extra information about currently selected completion (in
+" conjunction with ncm2/float-preview.nvim)
+set completeopt-=preview
+
 let mapleader="\<Space>"
 
 inoremap jk <Esc>
@@ -190,6 +194,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
+Plug 'ncm2/float-preview.nvim'
 Plug 'psf/black'
 Plug 'sheerun/vim-polyglot'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -267,3 +272,6 @@ let g:Illuminate_highlightUnderCursor = 0 " Don't highlight word under cursor (d
 " ludovicchabant/vim-gutentags
 let g:gutentags_file_list_command = 'rg --files'
 let g:gutentags_ctags_tagfile = '.git/tags'
+
+" ncm2/float-preview.nvim
+let g:float_preview#docked = 0
