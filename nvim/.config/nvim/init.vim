@@ -26,13 +26,6 @@ set ignorecase
 " Case sensitive when uc present
 set smartcase
 
-" make command line always ignore case
-augroup dynamic_smartcase
-    autocmd!
-    autocmd CmdLineEnter : set nosmartcase
-    autocmd CmdLineLeave : set smartcase
-augroup END
-
 " Minimum lines to keep above and below cursor
 set scrolloff=3
 
