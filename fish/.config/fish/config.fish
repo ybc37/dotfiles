@@ -21,9 +21,6 @@ set -x FZF_OPEN_COMMAND 'fd --hidden --exclude .git/ . $dir'
 # https://github.com/sharkdp/bat
 set -x BAT_THEME 'OneHalfDark'
 
-# https://github.com/rafaelrinaldi/pure
-set -g pure_threshold_command_duration 3
-
 alias a=atom
 alias o=open
 alias n=nvim
@@ -115,3 +112,5 @@ function fzf_kill
   end
   commandline -f repaint
 end
+
+starship init fish | source

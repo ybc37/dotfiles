@@ -1,0 +1,47 @@
+[cmd_duration]
+prefix = ""
+
+[directory]
+fish_style_pwd_dir_length = 1
+
+
+# disable modules:
+
+[aws]
+disabled = true
+
+[battery]
+disabled = true
+
+[conda]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[env_var]
+disabled = true
+
+[golang]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[java]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[python]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
