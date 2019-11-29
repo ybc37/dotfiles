@@ -49,6 +49,8 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     bind -M insert \eh fzf_copycmd
     bind -M default \ek fzf_kill
     bind -M insert \ek fzf_kill
+    bind -M default \eg git_log_copy
+    bind -M insert \eg git_log_copy
 end
 set -g fish_key_bindings hybrid_bindings
 
@@ -105,6 +107,18 @@ function fzf_kill
     set -l pid (echo $process | awk '{print $1}')
     set -l comm (echo $process | awk '{print $5}')
     commandline -r "kill -9 $pid #$comm"
+  end
+  commandline -f repaint
+end
+
+function git_log_copy
+  set -l git_dir (git rev-parse --is-inside-work-tree 2>/dev/null)
+  if test "$git_dir" != 'true'
+    return
+  end
+  set -l hash (git log --pretty=format:'%h - %s (%cr) <%an>' | fzf --no-sort --height 40% | awk '{print $1}')
+  if test -n "$hash"
+    echo -n $hash | c
   end
   commandline -f repaint
 end
