@@ -186,9 +186,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'itchyny/lightline.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
+Plug 'sheerun/vim-polyglot'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -197,17 +199,6 @@ Plug 'tpope/vim-sleuth' " disabled for md, see ~/.config/nvim/after/ftplugin/mar
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
-
-" languages
-Plug 'sheerun/vim-polyglot'
-Plug 'amadeus/vim-mjml'
-
-" clojure plugins for live coding with overtone
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-classpath'
-
-" colorscheme
-Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " autozimu/LanguageClient-neovim
