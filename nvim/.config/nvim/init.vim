@@ -152,11 +152,17 @@ tnoremap <Leader><Esc> <C-\><C-n>
 " fzf.vim
 nnoremap <C-p> :Files<CR>
 nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>F :Files!<CR>
 nnoremap <Leader>g :Rg 
+nnoremap <Leader>G :Rg! 
 nnoremap <Leader>s :GitFiles?<CR>
 nnoremap <Leader><Tab> :Buffers<CR>
-nnoremap <Leader>t :Tags 
-nnoremap <Leader>T :BTags 
+nnoremap <Leader>tt :Tags 
+nnoremap <Leader>tT :Tags! 
+nnoremap <Leader>tb :BTags 
+nnoremap <Leader>tB :BTags! 
+nnoremap <Leader>h: :History:<CR>
+nnoremap <Leader>h/ :History/<CR>
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
 
