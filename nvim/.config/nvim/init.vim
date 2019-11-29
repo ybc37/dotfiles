@@ -189,6 +189,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dermusikman/sonicpi.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf.vim'
@@ -276,3 +277,9 @@ let g:gutentags_ctags_tagfile = '.git/tags'
 
 " ncm2/float-preview.nvim
 let g:float_preview#docked = 0
+
+" dermusikman/sonicpi.vim
+let g:sonicpi_command = 'sonic-pi-tool'
+let g:sonicpi_send = 'eval-stdin'
+let g:sonicpi_stop = 'stop'
+let g:vim_redraw = 1
