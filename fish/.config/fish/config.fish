@@ -1,6 +1,6 @@
 # set env vars
-set -x GOPATH $HOME/go
-set -xa PATH $GOPATH $GOPATH/bin $HOME/bin $HOME/.yarn/bin
+set -x GOPATH $HOME/dev/go
+set -xa PATH $HOME/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin $HOME/.yarn/bin
 set -x EDITOR nvim
 set -x VISUAL nvim
 set -x MANPAGER "nvim -c 'set ft=man' -"
