@@ -81,10 +81,6 @@ function tldr
     command tldr --color $argv | less -XFR
 end
 
-function oni
-    command oni $argv &
-end
-
 function start_ssh_agent
     eval (ssh-agent -c)
     ssh-add -k ~/.ssh/id_rsa
