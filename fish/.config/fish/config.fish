@@ -93,7 +93,7 @@ end
 function fzf_copycmd
   set -l cmd (history | fzf --no-sort --height 40%)
   if test -n "$cmd"
-    echo $cmd | c
+    echo -n $cmd | c
   end
   commandline -f repaint
 end
