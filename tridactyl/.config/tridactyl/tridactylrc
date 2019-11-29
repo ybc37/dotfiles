@@ -25,7 +25,5 @@ set searchurls.ten https://www.deepl.com/translator#de/en/
 set searchurls.archp https://www.archlinux.org/packages/?q=
 set searchurls.archw https://wiki.archlinux.org/index.php?search=
 
-
 set theme dark
-" set editorcmd nvim-qt --nofork --maximized 
 set editorcmd nvim-qt --nofork --geometry 1000x600+300+100
