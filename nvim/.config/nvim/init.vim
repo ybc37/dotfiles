@@ -201,6 +201,7 @@ Plug 'psf/black'
 Plug 'sheerun/vim-polyglot'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sleuth' " disabled for md, see ~/.config/nvim/after/ftplugin/markdown.vim
