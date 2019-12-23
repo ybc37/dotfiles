@@ -181,6 +181,11 @@ nnoremap <Leader>eG :RgNotes!
 execute "nnoremap <Leader>ef :e " . s:note_path
 execute "nnoremap <Leader>ed :!mkdir -p " . s:note_path
 
+if executable('trash')
+  " vim-eunuch provides unix commands (`Delete`, `Move`,...) -> also add `Trash`
+  " via `trash-cli` (https://github.com/andreafrancia/trash-cli/)
+  command! -bar -bang Trash :call system('trash ' . expand('%')) | bdelete<bang>
+endif
 
 " Plugins
 call plug#begin("~/.local/share/nvim/plugged")
