@@ -217,7 +217,8 @@ let g:LanguageClient_serverCommands = {
     \ 'php': ['php', '~/dev/language-servers/php/vendor/bin/php-language-server.php'],
     \ 'css': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
     \ 'scss': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
-    \ 'python': ['/usr/bin/pyls'],
+    \ 'python': ['pyls'],
+    \ 'rust': ['rls'],
     \ }
 
 " apply mappings only for buffers with supported filetypes
