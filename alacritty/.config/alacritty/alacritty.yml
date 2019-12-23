@@ -60,6 +60,9 @@ colors: # Breeze Dark
 shell:
   program: /usr/bin/tmux
 
+mouse:
+  hide_when_typing: true
+
 key_bindings:
   # bind ctrl+enter to send the same chars as alt+enter
   - { key: Return, mods: Control, chars: "\e\r" }
