@@ -19,7 +19,7 @@ set -x FZF_CD_WITH_HIDDEN_COMMAND 'fd --type d --hidden --exclude .git/ . $dir'
 set -x FZF_OPEN_COMMAND 'fd --hidden --exclude .git/ . $dir'
 
 # https://github.com/sharkdp/bat
-set -x BAT_THEME 'OneHalfDark'
+set -x BAT_THEME 'ansi-dark'
 
 alias a=atom
 alias o=open
@@ -124,26 +124,26 @@ function git_log_copy
 end
 
 # color scheme
-set -g fish_color_autosuggestion '555'
+set -g fish_color_autosuggestion '504945'
 set -g fish_color_cancel -r
-set -g fish_color_command '008787'
-set -g fish_color_comment '990000'
+set -g fish_color_command 'blue'
+set -g fish_color_comment '928374'
 set -g fish_color_cwd '999'
 set -g fish_color_cwd_root '999'
 set -g fish_color_end '009900'
-set -g fish_color_error 'd70000'
+set -g fish_color_error 'red'
 set -g fish_color_escape '999'
 set -g fish_color_history_current '999'
 set -g fish_color_host 'normal'
 set -g fish_color_match '999'
 set -g fish_color_normal 'normal'
 set -g fish_color_operator '999'
-set -g fish_color_param '00afff'
-set -g fish_color_quote '999900'
-set -g fish_color_redirection '00afff'
-set -g fish_color_search_match '--background=999'
+set -g fish_color_param 'cyan'
+set -g fish_color_quote 'green'
+set -g fish_color_redirection 'cyan'
+set -g fish_color_search_match '--background=504945'
 # only background is used by `fish_color_selection` (https://github.com/fish-shell/fish-shell/issues/4544#issuecomment-353672037)
-set -g fish_color_selection '--background=767676'
+set -g fish_color_selection '--background=928374'
 set -g fish_color_status red
 set -g fish_color_user brgreen
 set -g fish_color_valid_path --underline

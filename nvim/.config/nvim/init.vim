@@ -214,11 +214,11 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dermusikman/sonicpi.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
+Plug 'morhetz/gruvbox'
 Plug 'ncm2/float-preview.nvim'
 Plug 'psf/black'
 Plug 'sheerun/vim-polyglot'
@@ -232,6 +232,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 call plug#end()
+
+" morhetz/gruvbox
+let g:gruvbox_invert_selection = 0
+colorscheme gruvbox
 
 " autozimu/LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
@@ -262,39 +266,8 @@ augroup END
 " Shougo/deoplete.nvim
 let g:deoplete#enable_at_startup = 1
 
-" joshdick/onedark.vim
-" override: Don't set a background color when running in a terminal; just use
-" the terminal's background color
-" `gui` is the hex color code used in GUI mode/nvim true-color mode
-" `cterm` is the color code used in 256-color mode
-" `cterm16` is the color code used in 16-color mode
-if (has("autocmd") && !empty($TERM))
-  augroup colorset
-    autocmd!
-    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16": "7" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
-  augroup END
-endif
-
-if (has("autocmd"))
-  augroup colorextend
-    autocmd!
-    autocmd ColorScheme * call onedark#extend_highlight("CursorLine", { "bg": { "gui": "#2f2f2f" } })
-
-    " set background for highlight groups used by LanguageClient-neovim in virtual texts (showing errors/warnings)
-    autocmd ColorScheme * call onedark#extend_highlight("Error", { "bg": { "gui": "#3E4452" } })
-    autocmd ColorScheme * call onedark#extend_highlight("Todo", { "bg": { "gui": "#3E4452" } })
-  augroup END
-endif
-
-colorscheme onedark
-
 " itchyny/lightline.vim
-let g:lightline = { 'colorscheme': 'onedark' }
-
-" RRethy/vim-illuminate
-hi link illuminatedWord Visual " use highlight group `Visual` for highlighting words
-let g:Illuminate_highlightUnderCursor = 0 " Don't highlight word under cursor (default: 1)
+let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " ludovicchabant/vim-gutentags
 let g:gutentags_file_list_command = 'rg --files'
