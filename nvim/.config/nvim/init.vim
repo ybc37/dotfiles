@@ -191,6 +191,20 @@ if executable('trash')
   command! -bar -bang Trash :call system('trash ' . expand('%')) | bdelete<bang>
 endif
 
+
+" markdown
+function! s:markdown_toggle_task()
+  let view = winsaveview()
+  execute 'keeppatterns s/^\s*[*-]\s*\[\zs.\ze\]/\=get({" ": "x", "x": " "}, submatch(0), " ")/e'
+  call winrestview(view)
+endfunction
+
+augroup filetype_markdown
+  autocmd!
+  autocmd FileType markdown nnoremap <buffer> <silent> <Leader>* :call <SID>markdown_toggle_task()<cr>
+augroup END
+
+
 " Plugins
 call plug#begin("~/.local/share/nvim/plugged")
 Plug 'RRethy/vim-illuminate'
