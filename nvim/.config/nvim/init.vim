@@ -110,6 +110,10 @@ set completeopt-=preview
 
 let mapleader="\<Space>"
 
+" edit/source config
+nmap <Leader>ce :e ~/.config/nvim/init.vim<CR>
+nmap <Leader>cs :so ~/.config/nvim/init.vim<CR>
+
 inoremap jk <Esc>
 inoremap kj <Esc>
 
