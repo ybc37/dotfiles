@@ -235,17 +235,17 @@ call plug#end()
 
 " autozimu/LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['~/dev/language-servers/js/node_modules/.bin/javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['~/dev/language-servers/js/node_modules/.bin/javascript-typescript-stdio'],
-    \ 'php': ['php', '~/dev/language-servers/php/vendor/bin/php-language-server.php'],
-    \ 'css': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
-    \ 'scss': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
-    \ 'python': ['pyls'],
-    \ 'rust': ['rls'],
-    \ }
+  \ 'javascript': ['~/dev/language-servers/js/node_modules/.bin/javascript-typescript-stdio'],
+  \ 'javascript.jsx': ['~/dev/language-servers/js/node_modules/.bin/javascript-typescript-stdio'],
+  \ 'php': ['php', '~/dev/language-servers/php/vendor/bin/php-language-server.php'],
+  \ 'css': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
+  \ 'scss': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
+  \ 'python': ['pyls'],
+  \ 'rust': ['rls'],
+  \ }
 
 " apply mappings only for buffers with supported filetypes
-function! LC_maps()
+function! s:lc_neovim_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nnoremap <buffer> <F5> :call LanguageClient_contextMenu()<CR>
     nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -254,9 +254,9 @@ function! LC_maps()
   endif
 endfunction
 
-augroup langClient
+augroup lc_neovim
   autocmd!
-  autocmd FileType * call LC_maps()
+  autocmd FileType * call <SID>lc_neovim_maps()
 augroup END
 
 " Shougo/deoplete.nvim
