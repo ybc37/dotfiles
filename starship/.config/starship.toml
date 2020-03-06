@@ -19,10 +19,22 @@ disabled = true
 [dotnet]
 disabled = true
 
+[elm]
+disabled = true
+
 [env_var]
 disabled = true
 
+[elixir]
+disabled = true
+
 [golang]
+disabled = true
+
+[haskell]
+disabled = true
+
+[kubernetes]
 disabled = true
 
 [nix_shell]
@@ -31,13 +43,16 @@ disabled = true
 [java]
 disabled = true
 
+[crystal]
+disabled = true
+
 [nodejs]
 disabled = true
 
-[php]
+[package]
 disabled = true
 
-[package]
+[php]
 disabled = true
 
 [python]
@@ -47,4 +62,10 @@ disabled = true
 disabled = true
 
 [rust]
+disabled = true
+
+[singularity]
+disabled = true
+
+[terraform]
 disabled = true
