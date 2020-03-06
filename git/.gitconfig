@@ -3,7 +3,7 @@
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [user]
 	name = Daniel Schmid
-	email = d.anielschmid@gmx.de
+	email = mail+git@ybc37.dev
 [color]
 	ui = true
 [color "diff"]
