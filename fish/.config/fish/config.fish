@@ -1,6 +1,13 @@
-# set env vars
+# setting fish as default shell: `chsh -s /usr/bin/fish`
+
+function append_path
+  for path in $argv
+    contains $path $PATH || set -xa PATH $path
+  end
+end
+
 set -x GOPATH $HOME/dev/go
-set -xa PATH $HOME/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin $HOME/.yarn/bin
+append_path $HOME/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin $HOME/.yarn/bin
 set -x EDITOR nvim
 set -x VISUAL nvim
 set -x MANPAGER "nvim -c 'set ft=man' -"
