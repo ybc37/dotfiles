@@ -1,5 +1,17 @@
 # setting fish as default shell: `chsh -s /usr/bin/fish`
 
+# only run tmux in alacritty and if tmux is not yet running
+if status is-interactive && test $TERM = 'alacritty' && not tmux info &> /dev/null
+    exec tmux
+end
+
+if set -q TMUX
+    # rename first window of first session
+    if test (tmux display-message -p '#S') = '0' -a (tmux display-message -p '#I') = '0'
+        tmux rename-window chaos
+    end
+end
+
 function append_path
   for path in $argv
     contains $path $PATH || set -xa PATH $path
@@ -38,13 +50,6 @@ alias c='xclip -sel clip'
 alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
 alias gnutime='command time -p'
-
-if set -q TMUX
-    # rename first window of first session
-    if test (tmux display-message -p '#S') = '0' -a (tmux display-message -p '#I') = '0'
-        tmux rename-window chaos
-    end
-end
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
     fish_hybrid_key_bindings

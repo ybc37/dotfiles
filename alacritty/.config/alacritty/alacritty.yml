@@ -91,9 +91,6 @@ colorschemes:
 
 colors: *gruvbox-dark
 
-shell:
-  program: /usr/bin/tmux
-
 mouse:
   hide_when_typing: true
 
