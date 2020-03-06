@@ -30,7 +30,7 @@ alias nng='nvim +RgNotes!'
 alias c='xclip -sel clip'
 alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
-alias time='time -p'
+alias gnutime='command time -p'
 
 if set -q TMUX
     # rename first window of first session
