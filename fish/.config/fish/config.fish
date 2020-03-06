@@ -13,9 +13,9 @@ if set -q TMUX
 end
 
 function append_path
-  for path in $argv
-    contains $path $PATH || set -xa PATH $path
-  end
+    for path in $argv
+        contains $path $PATH || set -xa PATH $path
+    end
 end
 
 set -x GOPATH $HOME/dev/go
@@ -73,7 +73,7 @@ set -g fish_key_bindings hybrid_bindings
 function fish_greeting
     set -l FILE (dirname (status --current-filename))/greeting.md
     if test -e $FILE
-      bat -p $FILE
+        bat -p $FILE
     end
 end
 
@@ -83,7 +83,7 @@ function ls
 end
 
 function ll
-  ls -l $argv
+    ls -l $argv
 end
 
 function rg
@@ -103,60 +103,61 @@ function cht
     curl "https://cht.sh/$argv" --no-progress-meter | less -XFR
 end
 
+# always start agent (one time, without running it multiple times)???
 function start_ssh_agent
     eval (ssh-agent -c)
     ssh-add -k ~/.ssh/id_rsa
 end
 
 function weather
-  curl "https://wttr.in/$argv"
+    curl "https://wttr.in/$argv"
 end
 
 function fzf_copycmd
-  set -l cmd (history | fzf --no-sort --height 40%)
-  if test -n "$cmd"
-    echo -n $cmd | c
-  end
-  commandline -f repaint
+    set -l cmd (history | fzf --no-sort --height 40%)
+    if test -n "$cmd"
+        echo -n $cmd | c
+    end
+    commandline -f repaint
 end
 
 function fzf_kill
-  # args statt comm -> full command
-  set -l process (ps -eo pid,euser,%cpu,etime,comm --sort -pid --no-headers | fzf --height 40%)
-  if test -n "$process"
-    set -l pid (echo $process | awk '{print $1}')
-    set -l comm (echo $process | awk '{print $5}')
-    commandline -r " kill -9 $pid #$comm" # space before the command -> will not be added to the history
-  end
-  commandline -f repaint
+    # args statt comm -> full command
+    set -l process (ps -eo pid,euser,%cpu,etime,comm --sort -pid --no-headers | fzf --height 40%)
+    if test -n "$process"
+        set -l pid (echo $process | awk '{print $1}')
+        set -l comm (echo $process | awk '{print $5}')
+        commandline -r " kill -9 $pid #$comm" # space before the command -> will not be added to the history
+    end
+    commandline -f repaint
 end
 
 function fzf_git_log_copy
-  set -l git_dir (git rev-parse --is-inside-work-tree 2>/dev/null)
-  if test "$git_dir" != 'true'
-    return
-  end
-  set -l hash (git log --pretty=format:'%h - %s (%cr) <%an>' | fzf --no-sort --height 40% | awk '{print $1}')
-  if test -n "$hash"
-    echo -n $hash | c
-  end
-  commandline -f repaint
+    set -l git_dir (git rev-parse --is-inside-work-tree 2>/dev/null)
+    if test "$git_dir" != 'true'
+        return
+    end
+    set -l hash (git log --pretty=format:'%h - %s (%cr) <%an>' | fzf --no-sort --height 40% | awk '{print $1}')
+    if test -n "$hash"
+        echo -n $hash | c
+    end
+    commandline -f repaint
 end
 
 function fzf_cd_history
-  set -l dir (echo $dirprev | tr ' ' '\n' | fzf --tac --no-sort --height 20%)
-  if test -n "$dir"
-    cd "$dir"
-  end
-  commandline -f repaint
+    set -l dir (echo $dirprev | tr ' ' '\n' | fzf --tac --no-sort --height 20%)
+    if test -n "$dir"
+        cd "$dir"
+    end
+    commandline -f repaint
 end
 
 function fzf_mpc_play
-  set -l song_number (mpc playlist -f '%position%\t[[%artist% - ][%album% - ]%title%|%file%]' | fzf --height 40% | awk '{print $1}')
-  if test -n "$song_number"
-    mpc play "$song_number"
-  end
-  commandline -f repaint
+    set -l song_number (mpc playlist -f '%position%\t[[%artist% - ][%album% - ]%title%|%file%]' | fzf --height 40% | awk '{print $1}')
+    if test -n "$song_number"
+        mpc play "$song_number"
+    end
+    commandline -f repaint
 end
 
 # color scheme
