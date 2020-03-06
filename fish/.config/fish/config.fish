@@ -49,8 +49,12 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     bind -M insert \eh fzf_copycmd
     bind -M default \ek fzf_kill
     bind -M insert \ek fzf_kill
-    bind -M default \eg git_log_copy
-    bind -M insert \eg git_log_copy
+    bind -M default \eg fzf_git_log_copy
+    bind -M insert \eg fzf_git_log_copy
+    bind -M default \eb fzf_cd_history
+    bind -M insert \eb fzf_cd_history
+    bind -M default \es fzf_mpc_play
+    bind -M insert \es fzf_mpc_play
 end
 set -g fish_key_bindings hybrid_bindings
 
@@ -83,13 +87,17 @@ function tldr
     command tldr --color $argv | less -XFR
 end
 
+function cht
+    curl "https://cht.sh/$argv" --no-progress-meter | less -XFR
+end
+
 function start_ssh_agent
     eval (ssh-agent -c)
     ssh-add -k ~/.ssh/id_rsa
 end
 
 function weather
-  curl "wttr.in/$argv"
+  curl "https://wttr.in/$argv"
 end
 
 function fzf_copycmd
@@ -106,12 +114,12 @@ function fzf_kill
   if test -n "$process"
     set -l pid (echo $process | awk '{print $1}')
     set -l comm (echo $process | awk '{print $5}')
-    commandline -r "kill -9 $pid #$comm"
+    commandline -r " kill -9 $pid #$comm" # space before the command -> will not be added to the history
   end
   commandline -f repaint
 end
 
-function git_log_copy
+function fzf_git_log_copy
   set -l git_dir (git rev-parse --is-inside-work-tree 2>/dev/null)
   if test "$git_dir" != 'true'
     return
@@ -119,6 +127,22 @@ function git_log_copy
   set -l hash (git log --pretty=format:'%h - %s (%cr) <%an>' | fzf --no-sort --height 40% | awk '{print $1}')
   if test -n "$hash"
     echo -n $hash | c
+  end
+  commandline -f repaint
+end
+
+function fzf_cd_history
+  set -l dir (echo $dirprev | tr ' ' '\n' | fzf --tac --no-sort --height 20%)
+  if test -n "$dir"
+    cd "$dir"
+  end
+  commandline -f repaint
+end
+
+function fzf_mpc_play
+  set -l song_number (mpc playlist -f '%position%\t[[%artist% - ][%album% - ]%title%|%file%]' | fzf --height 40% | awk '{print $1}')
+  if test -n "$song_number"
+    mpc play "$song_number"
   end
   commandline -f repaint
 end
