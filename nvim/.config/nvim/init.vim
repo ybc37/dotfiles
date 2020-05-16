@@ -220,7 +220,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'justinmk/vim-sneak'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'ncm2/float-preview.nvim'
@@ -280,10 +279,6 @@ let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " junegunn/fzf.vim
 let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
-
-" ludovicchabant/vim-gutentags
-let g:gutentags_file_list_command = 'rg --files'
-let g:gutentags_ctags_tagfile = '.git/tags'
 
 " mcchrish/nnn.vim
 let g:nnn#layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
