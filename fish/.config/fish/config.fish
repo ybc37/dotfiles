@@ -69,8 +69,8 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     bind -M insert \eg fzf_git_log_copy
     bind -M default \eb fzf_cd_history
     bind -M insert \eb fzf_cd_history
-    bind -M default \es fzf_mpc_play
-    bind -M insert \es fzf_mpc_play
+    bind -M default \em fzf_mpc_play
+    bind -M insert \em fzf_mpc_play
 end
 set -g fish_key_bindings hybrid_bindings
 
