@@ -1,3 +1,4 @@
+set ignore-case = smart-case
 set line-graphics = utf-8
 set start-on-head = true
 set tab-size = 4
