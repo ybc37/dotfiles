@@ -220,7 +220,7 @@ Plug 'junegunn/gv.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
 Plug 'ncm2/float-preview.nvim'
-Plug 'psf/black'
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'sheerun/vim-polyglot'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
