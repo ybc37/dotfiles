@@ -57,8 +57,8 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     fish_hybrid_key_bindings
     # use `fish_key_reader -c` or `showkey -a` to get keys
     bind -M insert \e\r accept-autosuggestion execute # \e\r = alt+enter; ctrl+enter is mapped to \e\r in alacritty.yml
-    bind -M insert \cc kill-whole-line force-repaint
-    bind -M default -m insert \cc kill-whole-line force-repaint
+    bind -M insert \cc "commandline -f cancel && commandline '' && commandline -f repaint"
+    bind -M default -m insert \cc "commandline -f cancel && commandline '' && commandline -f repaint"
     bind -M default \eh fzf_copycmd
     bind -M insert \eh fzf_copycmd
     bind -M default \ek fzf_kill
