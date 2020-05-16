@@ -165,10 +165,6 @@ nnoremap <Leader>g :Rg
 nnoremap <Leader>G :Rg! 
 nnoremap <silent> <Leader>s :GitFiles?<CR>
 nnoremap <silent> <Leader><Tab> :Buffers<CR>
-nnoremap <Leader>tt :Tags 
-nnoremap <Leader>tT :Tags! 
-nnoremap <Leader>tb :BTags 
-nnoremap <Leader>tB :BTags! 
 nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR>
 imap <c-x><c-f> <plug>(fzf-complete-path)
