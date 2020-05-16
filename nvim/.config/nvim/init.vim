@@ -209,6 +209,7 @@ Plug 'dermusikman/sonicpi.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'haorenW1025/completion-nvim'
+Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -220,6 +221,7 @@ Plug 'neovim/nvim-lsp'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'sheerun/vim-polyglot'
+Plug 'sirver/UltiSnips'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
@@ -243,6 +245,7 @@ autocmd BufEnter * lua require'completion'.on_attach()
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menuone,noinsert,noselect
+let g:completion_enable_snippet = 'UltiSnips'
 
 " itchyny/lightline.vim
 let g:lightline = { 'colorscheme': 'gruvbox' }
