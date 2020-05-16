@@ -56,19 +56,29 @@ alias cal='cal -mw'
 alias ncmpcpp='ncmpcpp --quiet'
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
-    fish_hybrid_key_bindings
     # use `fish_key_reader -c` or `showkey -a` to get keys
-    bind -M insert \e\r accept-autosuggestion execute # \e\r = alt+enter; ctrl+enter is mapped to \e\r in alacritty.yml
+
+    fish_hybrid_key_bindings
+
+    # \e\r = alt+enter; ctrl+enter is mapped to \e\r in alacritty.yml
+    bind -M insert \e\r accept-autosuggestion execute
+
     bind -M insert \cc "commandline -f cancel && commandline '' && commandline -f repaint"
     bind -M default -m insert \cc "commandline -f cancel && commandline '' && commandline -f repaint"
+
+    # conclicts with binding for `__fish_man_page` (open man page for word at cursor)
     bind -M default \eh fzf_copycmd
     bind -M insert \eh fzf_copycmd
+
     bind -M default \ek fzf_kill
     bind -M insert \ek fzf_kill
+
     bind -M default \eg fzf_git_log_copy
     bind -M insert \eg fzf_git_log_copy
+
     bind -M default \eb fzf_cd_history
     bind -M insert \eb fzf_cd_history
+
     bind -M default \em fzf_mpc_play
     bind -M insert \em fzf_mpc_play
 end
