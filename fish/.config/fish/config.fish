@@ -41,6 +41,8 @@ set -x FZF_OPEN_COMMAND 'fd --hidden --exclude .git/ . $dir'
 # https://github.com/sharkdp/bat
 set -x BAT_THEME 'ansi-dark'
 
+alias ll='ls -l'
+alias la='ls -la'
 alias o=open
 alias n=nvim
 alias nup='nvim +PlugUpgrade +PlugUpdate'
@@ -82,10 +84,6 @@ end
 function ls
     #command ls -hF --color=auto --group-directories-first $argv
     exa --group-directories-first --time-style=long-iso $argv
-end
-
-function ll
-    ls -l $argv
 end
 
 function rg
