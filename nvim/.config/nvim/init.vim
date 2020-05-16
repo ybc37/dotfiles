@@ -242,8 +242,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " haorenW1025/completion-nvim
 autocmd BufEnter * lua require'completion'.on_attach()
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menuone,noinsert,noselect
 let g:completion_enable_snippet = 'UltiSnips'
 
@@ -324,3 +322,7 @@ let g:sonicpi_command = 'sonic-pi-tool'
 let g:sonicpi_send = 'eval-stdin'
 let g:sonicpi_stop = 'stop'
 let g:vim_redraw = 1
+
+" sirver/UltiSnips
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>" 
