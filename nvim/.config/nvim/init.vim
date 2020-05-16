@@ -239,13 +239,14 @@ colorscheme gruvbox
 
 " autozimu/LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
-  \ 'javascript': ['~/dev/language-servers/js/node_modules/.bin/javascript-typescript-stdio'],
-  \ 'javascript.jsx': ['~/dev/language-servers/js/node_modules/.bin/javascript-typescript-stdio'],
+  \ 'javascript': ['~/dev/language-servers/js/node_modules/.bin/typescript-language-server', '--stdio'],
+  \ 'javascript.jsx': ['~/dev/language-servers/js/node_modules/.bin/typescript-language-server', '--stdio'],
   \ 'php': ['php', '~/dev/language-servers/php/vendor/bin/php-language-server.php'],
   \ 'css': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
   \ 'scss': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
   \ 'python': ['pyls'],
   \ 'rust': ['rls'],
+  \ 'yaml': ['~/dev/language-servers/yaml/node_modules/.bin/yaml-language-server', '--stdio'],
   \ }
 
 " apply mappings only for buffers with supported filetypes
