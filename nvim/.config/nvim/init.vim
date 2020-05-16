@@ -153,6 +153,9 @@ noremap k gk
 " Use Leader+ESC to exit insert mode in :term
 tnoremap <Leader><Esc> <C-\><C-n>
 
+" Close other windows
+nnoremap <Leader><Esc> <C-w><C-o>
+
 " fzf.vim
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <Leader>f :Files<CR>
