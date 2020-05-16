@@ -213,6 +213,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dermusikman/sonicpi.vim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -268,6 +269,9 @@ augroup END
 
 " Shougo/deoplete.nvim
 let g:deoplete#enable_at_startup = 1
+
+" editorconfig/editorconfig-vim
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " itchyny/lightline.vim
 let g:lightline = { 'colorscheme': 'gruvbox' }
