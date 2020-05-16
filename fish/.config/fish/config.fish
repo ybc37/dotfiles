@@ -41,7 +41,6 @@ set -x FZF_OPEN_COMMAND 'fd --hidden --exclude .git/ . $dir'
 # https://github.com/sharkdp/bat
 set -x BAT_THEME 'ansi-dark'
 
-alias a=atom
 alias o=open
 alias n=nvim
 alias nup='nvim +PlugUpgrade +PlugUpdate'
@@ -51,6 +50,8 @@ alias c='xclip -sel clip'
 alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
 alias gnutime='command time -p'
+alias cal='cal -mw'
+alias ncmpcpp='ncmpcpp --quiet'
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
     fish_hybrid_key_bindings
