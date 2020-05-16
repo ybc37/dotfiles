@@ -215,6 +215,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'dermusikman/sonicpi.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'ludovicchabant/vim-gutentags'
