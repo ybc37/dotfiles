@@ -221,6 +221,7 @@ Plug 'junegunn/gv.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
 Plug 'ncm2/float-preview.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'sheerun/vim-polyglot'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -277,6 +278,14 @@ let g:gutentags_ctags_tagfile = '.git/tags'
 
 " ncm2/float-preview.nvim
 let g:float_preview#docked = 0
+
+" norcalli/nvim-colorizer.lua
+lua << EOF
+require 'colorizer'.setup {
+  'css';
+  'scss';
+}
+EOF
 
 " dermusikman/sonicpi.vim
 let g:sonicpi_command = 'sonic-pi-tool'
