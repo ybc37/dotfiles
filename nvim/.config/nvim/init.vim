@@ -111,8 +111,8 @@ set completeopt-=preview
 let mapleader="\<Space>"
 
 " edit/source config
-nmap <Leader>ce :e ~/.config/nvim/init.vim<CR>
-nmap <Leader>cs :so ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>ce :e ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>cs :so ~/.config/nvim/init.vim<CR>
 
 inoremap jk <Esc>
 inoremap kj <Esc>
@@ -158,19 +158,19 @@ noremap k gk
 tnoremap <Leader><Esc> <C-\><C-n>
 
 " fzf.vim
-nnoremap <C-p> :Files<CR>
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>F :Files!<CR>
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>F :Files!<CR>
 nnoremap <Leader>g :Rg 
 nnoremap <Leader>G :Rg! 
-nnoremap <Leader>s :GitFiles?<CR>
-nnoremap <Leader><Tab> :Buffers<CR>
+nnoremap <silent> <Leader>s :GitFiles?<CR>
+nnoremap <silent> <Leader><Tab> :Buffers<CR>
 nnoremap <Leader>tt :Tags 
 nnoremap <Leader>tT :Tags! 
 nnoremap <Leader>tb :BTags 
 nnoremap <Leader>tB :BTags! 
-nnoremap <Leader>h: :History:<CR>
-nnoremap <Leader>h/ :History/<CR>
+nnoremap <silent> <Leader>h: :History:<CR>
+nnoremap <silent> <Leader>h/ :History/<CR>
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
 
@@ -178,8 +178,8 @@ imap <c-x><c-f> <plug>(fzf-complete-path)
 let s:note_path = "~/documents/notes/"
 command! -bang -nargs=* RgNotes call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . shellescape(<q-args>), 1, {"dir": s:note_path}, <bang>0)
 command! -bang -nargs=0 Notes call fzf#vim#files(<q-args>, {"dir": s:note_path}, <bang>0)
-nnoremap <Leader>ee :Notes<CR>
-nnoremap <Leader>eE :Notes!<CR>
+nnoremap <silent> <Leader>ee :Notes<CR>
+nnoremap <silent> <Leader>eE :Notes!<CR>
 nnoremap <Leader>eg :RgNotes 
 nnoremap <Leader>eG :RgNotes! 
 execute "nnoremap <Leader>ef :e " . s:note_path
