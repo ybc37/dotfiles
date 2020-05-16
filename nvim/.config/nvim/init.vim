@@ -9,7 +9,7 @@ set hidden
 set cursorline
 
 " Abbrev. of messages (avoids 'hit enter')
-set shortmess+=filmnrxoOtTI
+set shortmess+=filmnrxoOtTIc
 
 " Start diff mode with vertical splits (unless explicitly specified otherwise).
 set diffopt+=vertical
@@ -103,10 +103,6 @@ set undofile
 
 " don't show mode (insert, replace, visual) in last line
 set noshowmode
-
-" disabling showing extra information about currently selected completion (in
-" conjunction with ncm2/float-preview.nvim)
-set completeopt-=preview
 
 let mapleader="\<Space>"
 
@@ -204,13 +200,12 @@ augroup END
 " Plugins
 call plug#begin("~/.local/share/nvim/plugged")
 Plug 'RRethy/vim-illuminate'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dermusikman/sonicpi.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gruvbox-community/gruvbox'
+Plug 'haorenW1025/completion-nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -218,7 +213,7 @@ Plug 'junegunn/gv.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'mattn/emmet-vim'
 Plug 'mcchrish/nnn.vim'
-Plug 'ncm2/float-preview.nvim'
+Plug 'neovim/nvim-lsp'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'sheerun/vim-polyglot'
@@ -237,38 +232,14 @@ call plug#end()
 let g:gruvbox_invert_selection = 0
 colorscheme gruvbox
 
-" autozimu/LanguageClient-neovim
-let g:LanguageClient_serverCommands = {
-  \ 'javascript': ['~/dev/language-servers/js/node_modules/.bin/typescript-language-server', '--stdio'],
-  \ 'javascript.jsx': ['~/dev/language-servers/js/node_modules/.bin/typescript-language-server', '--stdio'],
-  \ 'php': ['php', '~/dev/language-servers/php/vendor/bin/php-language-server.php'],
-  \ 'css': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
-  \ 'scss': ['~/dev/language-servers/css/node_modules/.bin/css-languageserver', '--stdio'],
-  \ 'python': ['pyls'],
-  \ 'rust': ['rls'],
-  \ 'yaml': ['~/dev/language-servers/yaml/node_modules/.bin/yaml-language-server', '--stdio'],
-  \ }
-
-" apply mappings only for buffers with supported filetypes
-function! s:lc_neovim_maps()
-  if has_key(g:LanguageClient_serverCommands, &filetype)
-    nnoremap <buffer> <F5> :call LanguageClient_contextMenu()<CR>
-    nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
-    nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-    nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-  endif
-endfunction
-
-augroup lc_neovim
-  autocmd!
-  autocmd FileType * call <SID>lc_neovim_maps()
-augroup END
-
-" Shougo/deoplete.nvim
-let g:deoplete#enable_at_startup = 1
-
 " editorconfig/editorconfig-vim
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+" haorenW1025/completion-nvim
+autocmd BufEnter * lua require'completion'.on_attach()
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+set completeopt=menuone,noinsert,noselect
 
 " itchyny/lightline.vim
 let g:lightline = { 'colorscheme': 'gruvbox' }
@@ -279,8 +250,60 @@ let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 " mcchrish/nnn.vim
 let g:nnn#layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 
-" ncm2/float-preview.nvim
-let g:float_preview#docked = 0
+" neovim/nvim-lsp
+lua << EOF
+function getLsPath(executable)
+    local path = os.getenv("HOME") .. "/dev/language-servers/node_modules/.bin/"
+    return path .. executable
+end
+
+local nvim_lsp = require'nvim_lsp'
+
+nvim_lsp.pyls.setup{}
+nvim_lsp.rls.setup{}
+nvim_lsp.cssls.setup{cmd = { getLsPath("css-languageserver"), "--stdio" }}
+nvim_lsp.html.setup{cmd = { getLsPath("html-languageserver"), "--stdio" }}
+nvim_lsp.jsonls.setup{cmd = { getLsPath("vscode-json-languageserver"), "--stdio" }}
+nvim_lsp.tsserver.setup{cmd = { getLsPath("typescript-language-server"), "--stdio" }}
+nvim_lsp.yamlls.setup{cmd = { getLsPath("yaml-language-server"), "--stdio" }}
+
+-- https://github.com/bmewburn/intelephense-docs#configuration-options
+-- https://github.com/php-stubs/wordpress-stubs
+-- https://github.com/php-stubs/wordpress-globals
+nvim_lsp.intelephense.setup{
+  cmd = { getLsPath("intelephense"), "--stdio" },
+  settings = {
+    intelephense = {
+      stubs = {
+        "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "csprng",
+        "ctype", "curl", "date", "dba", "dom", "enchant", "exif", "fileinfo",
+        "filter", "fpm", "ftp", "gd", "hash", "iconv", "imap", "interbase",
+        "intl", "json", "ldap", "libxml", "mbstring", "mcrypt", "mssql",
+        "mysql", "mysqli", "oci8", "odcb", "openssl", "password", "pcntl",
+        "pcre", "PDO", "pdo_ibm", "pdo_mysql", "pdo_pgsql", "pdo_sqlite",
+        "pgsql", "Phar", "posix", "pspell", "readline", "recode", "Reflection",
+        "regex", "session", "shmop", "SimpleXML", "snmp", "soap", "sockets",
+        "sodium", "SPL", "sqlite3", "standard", "superglobals", "sybase",
+        "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer", "wddx", "xml",
+        "xmlreader", "xmlrpc", "xmlwriter", "Zend OPcache", "zip", "zlib",
+        "wordpress"
+      }
+    }
+  }
+}
+EOF
+
+" default mappings fromfrom `:h lsp`
+" todo: evaluate/tweak
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0 <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
 " norcalli/nvim-colorizer.lua
 lua << EOF
