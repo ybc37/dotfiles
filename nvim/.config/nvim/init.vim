@@ -221,6 +221,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
+Plug 'mcchrish/nnn.vim'
 Plug 'ncm2/float-preview.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'psf/black', { 'branch': 'stable' }
@@ -282,6 +283,9 @@ let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 " ludovicchabant/vim-gutentags
 let g:gutentags_file_list_command = 'rg --files'
 let g:gutentags_ctags_tagfile = '.git/tags'
+
+" mcchrish/nnn.vim
+let g:nnn#layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 
 " ncm2/float-preview.nvim
 let g:float_preview#docked = 0
