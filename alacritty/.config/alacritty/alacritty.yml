@@ -1,8 +1,5 @@
 # documentation: https://github.com/jwilm/alacritty/blob/master/alacritty.yml
 
-env:
-  WINIT_HIDPI_FACTOR: "2.0" # not needed on wayland/sway
-
 window:
   decorations: none
   startup_mode: Maximized
