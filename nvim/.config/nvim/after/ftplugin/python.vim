@@ -1,4 +1,4 @@
 augroup python
   autocmd!
-  autocmd BufWritePre <buffer> execute ':Black'
+  autocmd BufWritePre * execute ':Black'
 augroup END
