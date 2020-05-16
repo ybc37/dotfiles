@@ -190,3 +190,12 @@ set -g fish_pager_color_prefix 'cyan'
 set -g fish_pager_color_progress 'cyan'
 
 starship init fish | source
+
+# Start graphical environment at login on vtnr 1
+if status is-login
+    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+        exec startx -- -keeptty # see .xinitrc
+        # exec startplasma-wayland
+        # exec sway
+    end
+end
