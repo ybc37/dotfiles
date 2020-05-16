@@ -19,13 +19,16 @@ disabled = true
 [dotnet]
 disabled = true
 
+[elixir]
+disabled = true
+
 [elm]
 disabled = true
 
-[env_var]
+[erlang]
 disabled = true
 
-[elixir]
+[env_var]
 disabled = true
 
 [golang]
@@ -41,6 +44,9 @@ disabled = true
 disabled = true
 
 [java]
+disabled = true
+
+[julia]
 disabled = true
 
 [crystal]
