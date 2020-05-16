@@ -241,7 +241,10 @@ colorscheme gruvbox
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " haorenW1025/completion-nvim
-autocmd BufEnter * lua require'completion'.on_attach()
+augroup complition_nvim
+  autocmd!
+  autocmd BufEnter * lua require'completion'.on_attach()
+augroup END
 set completeopt=menuone,noinsert,noselect
 let g:completion_enable_snippet = 'UltiSnips'
 
