@@ -106,7 +106,7 @@ function rg
 end
 
 function tldr
-    command tldr --color $argv | less -XFR
+    command tldr $argv | less -XFR
 end
 
 function cht
