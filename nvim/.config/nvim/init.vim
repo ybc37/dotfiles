@@ -264,7 +264,7 @@ function getLsPath(executable)
     return path .. executable
 end
 
-local nvim_lsp = require'nvim_lsp'
+local nvim_lsp = require 'nvim_lsp'
 
 nvim_lsp.pyls.setup{}
 nvim_lsp.rls.setup{}
