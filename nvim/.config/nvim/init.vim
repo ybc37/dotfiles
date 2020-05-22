@@ -266,13 +266,32 @@ end
 
 local nvim_lsp = require 'nvim_lsp'
 
-nvim_lsp.pyls.setup{}
-nvim_lsp.rls.setup{}
-nvim_lsp.cssls.setup{cmd = { getLsPath("css-languageserver"), "--stdio" }}
-nvim_lsp.html.setup{cmd = { getLsPath("html-languageserver"), "--stdio" }}
-nvim_lsp.jsonls.setup{cmd = { getLsPath("vscode-json-languageserver"), "--stdio" }}
-nvim_lsp.tsserver.setup{cmd = { getLsPath("typescript-language-server"), "--stdio" }}
-nvim_lsp.yamlls.setup{cmd = { getLsPath("yaml-language-server"), "--stdio" }}
+local custom_attach = function(...)
+  local mapper = function(mode, key, result)
+      vim.fn.nvim_buf_set_keymap(0, mode, key, result, {noremap=true, silent=true})
+  end
+
+  -- mostly default mappings fromfrom `:h lsp`
+  -- todo: evaluate/tweak
+  mapper('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  mapper('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
+  mapper('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+  mapper('n', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  mapper('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  mapper('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  mapper('n', '1gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+  mapper('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  mapper('n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+  mapper('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+end
+
+nvim_lsp.pyls.setup{ on_attach = custom_attach }
+nvim_lsp.rls.setup{ on_attach = custom_attach }
+nvim_lsp.cssls.setup{ cmd = { getLsPath("css-languageserver"), "--stdio" }, on_attach = custom_attach }
+nvim_lsp.html.setup{ cmd = { getLsPath("html-languageserver"), "--stdio" }, on_attach = custom_attach }
+nvim_lsp.jsonls.setup{ cmd = { getLsPath("vscode-json-languageserver"), "--stdio" }, on_attach = custom_attach }
+nvim_lsp.tsserver.setup{ cmd = { getLsPath("typescript-language-server"), "--stdio" }, on_attach = custom_attach }
+nvim_lsp.yamlls.setup{ cmd = { getLsPath("yaml-language-server"), "--stdio" }, on_attach = custom_attach }
 
 -- https://github.com/bmewburn/intelephense-docs#configuration-options
 -- https://github.com/php-stubs/wordpress-stubs
@@ -296,21 +315,10 @@ nvim_lsp.intelephense.setup{
         "wordpress"
       }
     }
-  }
+  },
+  on_attach = custom_attach
 }
 EOF
-
-" default mappings fromfrom `:h lsp`
-" todo: evaluate/tweak
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0 <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
 " norcalli/nvim-colorizer.lua
 lua << EOF
