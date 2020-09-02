@@ -55,6 +55,7 @@ alias gnutime='command time -p'
 alias cal='cal -mw'
 alias ncmpcpp='ncmpcpp --quiet'
 alias qr='qrencode -t ANSIUTF8 -o -'
+alias history_copy='history | fzf --no-sort --height 40% | read -l x && echo "$x" | c'
 alias history_del='history | fzf --no-sort --height 40% | read -l x && history delete --case-sensitive --exact "$x"'
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
@@ -69,8 +70,8 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     bind -M default -m insert \cc "commandline -f cancel && commandline '' && commandline -f repaint"
 
     # conclicts with binding for `__fish_man_page` (open man page for word at cursor)
-    bind -M default \eh fzf_copycmd
-    bind -M insert \eh fzf_copycmd
+    bind -M default \eh "history_copy; commandline -f repaint"
+    bind -M insert \eh "history_copy; commandline -f repaint"
 
     bind -M default \ek fzf_kill
     bind -M insert \ek fzf_kill
@@ -146,14 +147,6 @@ function unbak
             mv --interactive --verbose "$file_parts[1]"{.bak,}
         end
     end
-end
-
-function fzf_copycmd
-    set -l cmd (history | fzf --no-sort --height 40%)
-    if test -n "$cmd"
-        echo -n $cmd | c
-    end
-    commandline -f repaint
 end
 
 function fzf_kill
