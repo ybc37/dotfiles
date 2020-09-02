@@ -129,6 +129,24 @@ function weather
     curl "https://wttr.in/$argv"
 end
 
+function bak
+    for file in $argv
+        set -l f (string trim --right --chars='/' $file)
+        mv --interactive --verbose "$f"{,.bak}
+    end
+end
+
+function unbak
+    for file in $argv
+        set -l f (string trim --right --chars='/' $file)
+        set -l file_parts (string split --right --max=1 . $f)
+
+        if test "$file_parts[2]" = "bak"
+            mv --interactive --verbose "$file_parts[1]"{.bak,}
+        end
+    end
+end
+
 function fzf_copycmd
     set -l cmd (history | fzf --no-sort --height 40%)
     if test -n "$cmd"
