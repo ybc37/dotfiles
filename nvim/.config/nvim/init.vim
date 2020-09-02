@@ -200,6 +200,13 @@ augroup filetype_markdown
 augroup END
 
 
+" highlight yanked text for e.g. 250ms
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank { timeout=250 }
+augroup END
+
+
 " Plugins
 call plug#begin("~/.local/share/nvim/plugged")
 Plug 'RRethy/vim-illuminate'
