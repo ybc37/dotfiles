@@ -40,6 +40,9 @@ disabled = true
 [kubernetes]
 disabled = true
 
+[nim]
+disabled = true
+
 [nix_shell]
 disabled = true
 
@@ -55,10 +58,16 @@ disabled = true
 [nodejs]
 disabled = true
 
+[ocaml]
+disabled = true
+
 [package]
 disabled = true
 
 [php]
+disabled = true
+
+[purescript]
 disabled = true
 
 [python]
