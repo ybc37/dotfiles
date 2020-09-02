@@ -58,6 +58,7 @@ alias qr='qrencode -t ANSIUTF8 -o -'
 alias history_copy='history | fzf --no-sort --height 40% | read -l x && echo "$x" | c'
 alias history_del='history | fzf --no-sort --height 40% | read -l x && history delete --case-sensitive --exact "$x"'
 alias cd_hist='echo $dirprev | tr \' \' \'\n\' | fzf --tac --no-sort --height 20% | read -l x && cd "$x"'
+alias mpc_songs='mpc playlist -f \'%position%\t[[%artist% - ][%album% - ]%title%|%file%]\' | fzf --height 40% | awk \'{print $1}\' | read -l x && mpc play "$x"'
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
     # use `fish_key_reader -c` or `showkey -a` to get keys
@@ -83,8 +84,8 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     bind -M default \eb "cd_hist; commandline -f repaint"
     bind -M insert \eb "cd_hist; commandline -f repaint"
 
-    bind -M default \em fzf_mpc_play
-    bind -M insert \em fzf_mpc_play
+    bind -M default \em "mpc_songs; commandline -f repaint"
+    bind -M insert \em "mpc_songs; commandline -f repaint"
 end
 set -g fish_key_bindings hybrid_bindings
 
@@ -182,14 +183,6 @@ function fzf_git_log_copy
         end
 
         echo -n $res | c
-    end
-    commandline -f repaint
-end
-
-function fzf_mpc_play
-    set -l song_number (mpc playlist -f '%position%\t[[%artist% - ][%album% - ]%title%|%file%]' | fzf --height 40% | awk '{print $1}')
-    if test -n "$song_number"
-        mpc play "$song_number"
     end
     commandline -f repaint
 end
