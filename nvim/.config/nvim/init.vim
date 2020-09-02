@@ -215,7 +215,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'dermusikman/sonicpi.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gruvbox-community/gruvbox'
-Plug 'haorenW1025/completion-nvim'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -226,6 +225,7 @@ Plug 'mattn/emmet-vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'neovim/nvim-lsp'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'nvim-lua/completion-nvim'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'sheerun/vim-polyglot'
 Plug 'sirver/UltiSnips'
@@ -247,7 +247,7 @@ colorscheme gruvbox
 " editorconfig/editorconfig-vim
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-" haorenW1025/completion-nvim
+" nvim-lua/completion-nvim
 augroup complition_nvim
   autocmd!
   autocmd BufEnter * lua require'completion'.on_attach()
