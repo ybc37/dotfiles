@@ -55,6 +55,7 @@ alias gnutime='command time -p'
 alias cal='cal -mw'
 alias ncmpcpp='ncmpcpp --quiet'
 alias qr='qrencode -t ANSIUTF8 -o -'
+alias history_del='history | fzf --no-sort --height 40% | read -l x && history delete --case-sensitive --exact "$x"'
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
     # use `fish_key_reader -c` or `showkey -a` to get keys
