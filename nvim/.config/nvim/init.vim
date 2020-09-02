@@ -226,6 +226,7 @@ Plug 'mcchrish/nnn.vim'
 Plug 'neovim/nvim-lsp'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/diagnostic-nvim'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'sheerun/vim-polyglot'
 Plug 'sirver/UltiSnips'
@@ -247,10 +248,6 @@ colorscheme gruvbox
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " nvim-lua/completion-nvim
-augroup complition_nvim
-  autocmd!
-  autocmd BufEnter * lua require'completion'.on_attach()
-augroup END
 set completeopt=menuone,noinsert,noselect
 let g:completion_enable_snippet = 'UltiSnips'
 
@@ -272,10 +269,13 @@ end
 
 local nvim_lsp = require 'nvim_lsp'
 
-local custom_attach = function(...)
+local custom_attach = function(client)
   local mapper = function(mode, key, result)
       vim.fn.nvim_buf_set_keymap(0, mode, key, result, {noremap=true, silent=true})
   end
+
+  require'completion'.on_attach(client)
+  require'diagnostic'.on_attach(client)
 
   -- mostly default mappings fromfrom `:h lsp`
   -- todo: evaluate/tweak
@@ -289,6 +289,7 @@ local custom_attach = function(...)
   mapper('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
   mapper('n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
   mapper('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+  mapper('n', 'gl', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
 end
 
 nvim_lsp.pyls.setup{ on_attach = custom_attach }
