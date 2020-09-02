@@ -1,1 +1,1 @@
-Guifont! Fira Code Light:h10
+Guifont! Iosevka:h10

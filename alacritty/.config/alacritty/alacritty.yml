@@ -6,13 +6,13 @@ window:
 
 font:
   normal:
-    family: Fira Code
+    family: Iosevka
   bold:
-    family: Fira Code
+    family: Iosevka
   italic:
-    family: Fira Code
+    family: Iosevka
   bold_italic:
-    family: Fira Code
+    family: Iosevka
   size: 10.0
 
 colorschemes:

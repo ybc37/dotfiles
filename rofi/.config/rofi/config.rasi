@@ -1,8 +1,9 @@
 configuration {
  combi-modi: "window,drun,ssh";
  dpi: 192;
- font: "Fira Code 10";
+ font: "Iosevka 10";
  location: 2;
  modi: "window,drun,run,combi";
  theme: "gruvbox-dark";
+ width: 30;
 }
