@@ -57,6 +57,7 @@ alias ncmpcpp='ncmpcpp --quiet'
 alias qr='qrencode -t ANSIUTF8 -o -'
 alias history_copy='history | fzf --no-sort --height 40% | read -l x && echo "$x" | c'
 alias history_del='history | fzf --no-sort --height 40% | read -l x && history delete --case-sensitive --exact "$x"'
+alias cd_hist='echo $dirprev | tr \' \' \'\n\' | fzf --tac --no-sort --height 20% | read -l x && cd "$x"'
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
     # use `fish_key_reader -c` or `showkey -a` to get keys
@@ -79,8 +80,8 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     bind -M default \eg fzf_git_log_copy
     bind -M insert \eg fzf_git_log_copy
 
-    bind -M default \eb fzf_cd_history
-    bind -M insert \eb fzf_cd_history
+    bind -M default \eb "cd_hist; commandline -f repaint"
+    bind -M insert \eb "cd_hist; commandline -f repaint"
 
     bind -M default \em fzf_mpc_play
     bind -M insert \em fzf_mpc_play
@@ -181,14 +182,6 @@ function fzf_git_log_copy
         end
 
         echo -n $res | c
-    end
-    commandline -f repaint
-end
-
-function fzf_cd_history
-    set -l dir (echo $dirprev | tr ' ' '\n' | fzf --tac --no-sort --height 20%)
-    if test -n "$dir"
-        cd "$dir"
     end
     commandline -f repaint
 end
