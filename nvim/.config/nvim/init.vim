@@ -293,7 +293,7 @@ local custom_attach = function(client)
 end
 
 nvim_lsp.pyls.setup{ on_attach = custom_attach }
-nvim_lsp.rls.setup{ on_attach = custom_attach }
+nvim_lsp.rls.setup{ on_attach = custom_attach } -- install with rustup: `rustup component add rls rust-analysis rust-src`
 nvim_lsp.cssls.setup{ cmd = { getLsPath("css-languageserver"), "--stdio" }, on_attach = custom_attach }
 nvim_lsp.html.setup{ cmd = { getLsPath("html-languageserver"), "--stdio" }, on_attach = custom_attach }
 nvim_lsp.jsonls.setup{ cmd = { getLsPath("vscode-json-languageserver"), "--stdio" }, on_attach = custom_attach }
