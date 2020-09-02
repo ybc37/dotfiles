@@ -171,9 +171,22 @@ function fzf_git_log_copy
     if test "$git_dir" != 'true'
         return
     end
-    set -l hash (git log --pretty=format:'%h - %s (%cr) <%an>' | fzf --no-sort --height 40% | awk '{print $1}')
-    if test -n "$hash"
-        echo -n $hash | c
+
+    set -l sel (git log --pretty=format:'%h - %s (%cr) <%an>' | fzf --no-sort --height 40% --expect=alt-m,alt-a)
+    if test -n "$sel"
+        set -l hash (echo "$sel[2]" | awk '{print $1}')
+        set -l res ''
+
+        switch "$sel[1]"
+        case "alt-m"
+            set res (git show -s --format=%s "$hash")
+        case "alt-a"
+            set res "$sel[2]"
+        case '*'
+            set res "$hash"
+        end
+
+        echo -n $res | c
     end
     commandline -f repaint
 end
