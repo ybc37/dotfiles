@@ -120,6 +120,11 @@ function start_ssh_agent
     ssh-add -k ~/.ssh/id_rsa
 end
 
+function myip
+    dig myip.opendns.com @resolver1.opendns.com a +short -4
+    dig myip.opendns.com @resolver1.opendns.com aaaa +short -6
+end
+
 function weather
     curl "https://wttr.in/$argv"
 end
