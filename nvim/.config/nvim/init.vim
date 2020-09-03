@@ -229,7 +229,7 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'sheerun/vim-polyglot'
-Plug 'sirver/UltiSnips'
+Plug 'SirVer/ultisnips'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
