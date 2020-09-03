@@ -22,7 +22,7 @@ set -x GOPATH $HOME/dev/go
 append_path $HOME/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin
 set -x EDITOR nvim
 set -x VISUAL nvim
-set -x MANPAGER "nvim -c 'set ft=man' -"
+set -x MANPAGER "nvim +Man!"
 set -x DIFFPROG "nvim -d"
 
 # https://github.com/0rax/fish-bd
