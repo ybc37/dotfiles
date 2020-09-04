@@ -88,9 +88,9 @@ end
 set -g fish_key_bindings hybrid_bindings
 
 function fish_greeting
-    set -l FILE (dirname (status --current-filename))/greeting.md
-    if test -e $FILE
-        bat -p $FILE
+    if test -z "$TMUX" -o (tmux display-message -p '#{session_id}#{window_index}#{pane_index}') = '$000'
+        set -l FILE (dirname (status --current-filename))/greeting.md
+        test -e $FILE && bat -p $FILE
     end
 end
 
