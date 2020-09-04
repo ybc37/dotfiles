@@ -5,11 +5,9 @@ if status is-interactive && test $TERM = 'alacritty' && not tmux info &> /dev/nu
     exec tmux
 end
 
-if set -q TMUX
-    # rename first window of first session
-    if test (tmux display-message -p '#S') = '0' -a (tmux display-message -p '#I') = '0'
-        tmux rename-window chaos
-    end
+# rename first window of first session
+if test -n "$TMUX" -a (tmux display-message -p '#{session_id}#{window_index}#{pane_index}') = '$000'
+    tmux rename-window chaos
 end
 
 function append_path
