@@ -6,7 +6,7 @@ if status is-interactive && test $TERM = 'alacritty' && not tmux info &> /dev/nu
 end
 
 # rename first window of first session
-if test -n "$TMUX" -a (tmux display-message -p '#{session_id}#{window_index}#{pane_index}') = '$000'
+if test -n "$TMUX" && test (tmux display-message -p '#{session_id}#{window_index}#{pane_index}') = '$000'
     tmux rename-window chaos
 end
 
@@ -88,7 +88,7 @@ end
 set -g fish_key_bindings hybrid_bindings
 
 function fish_greeting
-    if test -z "$TMUX" -o (tmux display-message -p '#{session_id}#{window_index}#{pane_index}') = '$000'
+    if test -z "$TMUX" || test (tmux display-message -p '#{session_id}#{window_index}#{pane_index}') = '$000'
         set -l FILE (dirname (status --current-filename))/greeting.md
         test -e $FILE && bat -p $FILE
     end
