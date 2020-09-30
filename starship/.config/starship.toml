@@ -12,6 +12,7 @@ $status\
 $character"""
 
 [cmd_duration]
+show_milliseconds = true
 format = "[$duration]($style) "
 
 [directory]
