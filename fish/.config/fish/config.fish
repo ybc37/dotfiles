@@ -54,7 +54,7 @@ alias cal='cal -mw'
 alias ncmpcpp='ncmpcpp --quiet'
 alias qr='qrencode -t ANSIUTF8 -o -'
 alias history_copy='history | fzf --no-sort --height 40% | read -l x && echo "$x" | c'
-alias history_del='history | fzf --no-sort --height 40% | read -l x && history delete --case-sensitive --exact "$x"'
+alias history_del='history | fzf --no-sort --height 40% | read -l x && history delete --case-sensitive --prefix "$x"'
 alias cd_hist='echo $dirprev | tr \' \' \'\n\' | fzf --tac --no-sort --height 20% | read -l x && cd "$x"'
 alias mpc_songs='mpc playlist -f \'%position%\t[[%artist% - ][%album% - ]%title%|%file%]\' | fzf --height 40% | awk \'{print $1}\' | read -l x && mpc play "$x"'
 
