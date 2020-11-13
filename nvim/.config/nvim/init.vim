@@ -223,7 +223,7 @@ Plug 'junegunn/gv.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'mattn/emmet-vim'
 Plug 'mcchrish/nnn.vim'
-Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
@@ -261,7 +261,7 @@ let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 " mcchrish/nnn.vim
 let g:nnn#layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 
-" neovim/nvim-lsp
+" neovim/nvim-lspconfig
 lua << EOF
 local nvim_lsp = require 'nvim_lsp'
 
