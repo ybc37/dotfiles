@@ -29,8 +29,9 @@ set smartcase
 " Minimum lines to keep above and below cursor
 set scrolloff=3
 
-" Syntax highlighting items specify folds.
-set foldmethod=syntax
+" Folds based on tree-sitter
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 " Sets 'foldlevel' when starting to edit another buffer in a window.
 set foldlevelstart=99
@@ -231,8 +232,10 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
 Plug 'psf/black', { 'branch': 'stable' }
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot' " evaluate removal after tree-sitter adoption (+ re-add vim-sleuth?)
 Plug 'SirVer/ultisnips'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
@@ -348,6 +351,25 @@ lua << EOF
 require 'colorizer'.setup {
   'css';
   'scss';
+}
+EOF
+
+" nvim-treesitter/nvim-treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = {
+    enable = true,
+  },
+  incremental_selection = {
+    enable = true -- init: `gnn`, node_inc: `grn`, scope_inc: `grc`, node_dec: `grm`
+  },
+  indent = {
+    enable = true
+  },
+  playground = {
+    enable = true
+  }
 }
 EOF
 
