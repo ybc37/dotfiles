@@ -1,1 +1,5 @@
+# https://github.com/ncmpcpp/ncmpcpp/blob/master/doc/config
+
 user_interface = alternative
+now_playing_prefix = "$b$u"
+now_playing_suffix = "$/b$/u"
