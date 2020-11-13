@@ -200,7 +200,7 @@ endfunction
 
 augroup filetype_markdown
   autocmd!
-  autocmd FileType markdown nnoremap <buffer> <silent> <Leader>* :call <SID>markdown_toggle_task()<cr>
+  autocmd FileType markdown nnoremap <buffer> <silent> - :call <SID>markdown_toggle_task()<cr>
 augroup END
 
 
