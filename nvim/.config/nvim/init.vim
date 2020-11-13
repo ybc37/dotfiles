@@ -214,7 +214,6 @@ augroup END
 
 " Plugins
 call plug#begin("~/.local/share/nvim/plugged")
-Plug 'RRethy/vim-illuminate'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dermusikman/sonicpi.vim'
@@ -235,6 +234,7 @@ Plug 'nvim-lua/diagnostic-nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'RRethy/vim-illuminate'
 Plug 'sheerun/vim-polyglot' " evaluate removal after tree-sitter adoption (+ re-add vim-sleuth?)
 Plug 'SirVer/ultisnips'
 Plug 'tmux-plugins/vim-tmux-focus-events'
