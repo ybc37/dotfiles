@@ -168,6 +168,10 @@ nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR>
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
+" Substitute
+nnoremap <Leader>r :s/\v
+vnoremap <Leader>r :s/\v
+nnoremap <Leader>R :%s/\v
 
 " notes
 let s:note_path = "~/documents/notes/"
