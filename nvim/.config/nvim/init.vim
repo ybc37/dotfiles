@@ -266,26 +266,29 @@ lua << EOF
 local nvim_lsp = require 'nvim_lsp'
 
 local custom_attach = function(client)
-  local mapper = function(mode, key, result)
-      vim.fn.nvim_buf_set_keymap(0, mode, key, result, {noremap=true, silent=true})
+  local map = function(mode, key, result)
+      vim.fn.nvim_buf_set_keymap(0, mode, key, result, { noremap = true, silent = true })
   end
 
   require'completion'.on_attach(client)
   require'diagnostic'.on_attach(client)
 
-  -- mostly default mappings fromfrom `:h lsp`
-  -- todo: evaluate/tweak
-  mapper('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-  mapper('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>')
-  mapper('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-  mapper('n', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  mapper('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  mapper('n', 'gD', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-  mapper('n', '1gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-  mapper('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-  mapper('n', 'g0', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-  mapper('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
-  mapper('n', 'gl', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
+  map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
+  map('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
+  map('n','K','<cmd>lua vim.lsp.buf.hover()<CR>')
+  map('n','gr','<cmd>lua vim.lsp.buf.references()<CR>')
+  map('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  map('i', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
+  map('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
+  map('n','<leader>ls','<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+  map('n','<leader>lS','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+  map('n','<leader>la','<cmd>lua vim.lsp.buf.code_action()<CR>')
+  map('n','<leader>ld','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
+  map('n','<leader>lr','<cmd>lua vim.lsp.buf.rename()<CR>')
+  map('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+  map('n','<leader>li','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
+  map('n','<leader>lo','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
 end
 
 -- `sudo pacman -S python-language-server`
