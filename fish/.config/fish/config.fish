@@ -109,7 +109,8 @@ function rg
 end
 
 function tldr
-    command tldr $argv | less -XFR
+    # tealdeer needs `--color`
+    command tldr $argv --color always | less -XFR
 end
 
 function cht
