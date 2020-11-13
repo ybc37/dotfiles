@@ -230,7 +230,6 @@ Plug 'mcchrish/nnn.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-lua/diagnostic-nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
 Plug 'psf/black', { 'branch': 'stable' }
@@ -268,7 +267,7 @@ let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 " mcchrish/nnn.vim
 let g:nnn#layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 
-" neovim/nvim-lspconfig
+" neovim/nvim-lspconfig, misc. lsp config
 lua << EOF
 local nvim_lsp = require 'nvim_lsp'
 
@@ -278,7 +277,6 @@ local custom_attach = function(client)
   end
 
   require'completion'.on_attach(client)
-  require'diagnostic'.on_attach(client)
 
   map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
   map('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
@@ -291,11 +289,14 @@ local custom_attach = function(client)
   map('n','<leader>ls','<cmd>lua vim.lsp.buf.document_symbol()<CR>')
   map('n','<leader>lS','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
   map('n','<leader>la','<cmd>lua vim.lsp.buf.code_action()<CR>')
-  map('n','<leader>ld','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
   map('n','<leader>lr','<cmd>lua vim.lsp.buf.rename()<CR>')
   map('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
   map('n','<leader>li','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
   map('n','<leader>lo','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
+  map('n',']d','<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+  map('n','[d','<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+  map('n','<leader>ee','<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+  map('n','<leader>eo','<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
 end
 
 -- `sudo pacman -S python-language-server`
@@ -344,6 +345,12 @@ nvim_lsp.intelephense.setup{
   },
   on_attach = custom_attach
 }
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+  }
+)
 EOF
 
 " norcalli/nvim-colorizer.lua
