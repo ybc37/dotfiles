@@ -17,7 +17,7 @@ function append_path
 end
 
 set -x GOPATH $HOME/dev/go
-append_path $HOME/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin
+append_path $HOME/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin $HOME/.node_modules/bin
 set -x EDITOR nvim
 set -x VISUAL nvim
 set -x MANPAGER "nvim +Man!"
