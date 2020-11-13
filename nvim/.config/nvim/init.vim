@@ -263,11 +263,6 @@ let g:nnn#layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 
 " neovim/nvim-lsp
 lua << EOF
-function getLsPath(executable)
-    local path = os.getenv("HOME") .. "/dev/language-servers/node_modules/.bin/"
-    return path .. executable
-end
-
 local nvim_lsp = require 'nvim_lsp'
 
 local custom_attach = function(client)
@@ -293,19 +288,32 @@ local custom_attach = function(client)
   mapper('n', 'gl', '<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
 end
 
+-- `sudo pacman -S python-language-server`
 nvim_lsp.pyls.setup{ on_attach = custom_attach }
-nvim_lsp.rls.setup{ on_attach = custom_attach } -- install with rustup: `rustup component add rls rust-analysis rust-src`
-nvim_lsp.cssls.setup{ cmd = { getLsPath("css-languageserver"), "--stdio" }, on_attach = custom_attach }
-nvim_lsp.html.setup{ cmd = { getLsPath("html-languageserver"), "--stdio" }, on_attach = custom_attach }
-nvim_lsp.jsonls.setup{ cmd = { getLsPath("vscode-json-languageserver"), "--stdio" }, on_attach = custom_attach }
-nvim_lsp.tsserver.setup{ cmd = { getLsPath("typescript-language-server"), "--stdio" }, on_attach = custom_attach }
-nvim_lsp.yamlls.setup{ cmd = { getLsPath("yaml-language-server"), "--stdio" }, on_attach = custom_attach }
 
+-- `sudo pacman -S rust-analyzer` + `rustup component add rust-src`
+nvim_lsp.rust_analyzer.setup{ on_attach = custom_attach }
+
+-- `npm install -g vscode-css-languageserver-bin`
+nvim_lsp.cssls.setup{ on_attach = custom_attach }
+
+-- `npm install -g vscode-html-languageserver-bin`
+nvim_lsp.html.setup{ on_attach = custom_attach }
+
+-- `npm install -g vscode-json-languageserver`
+nvim_lsp.jsonls.setup{ on_attach = custom_attach }
+
+-- `npm install -g typescript-language-server`
+nvim_lsp.tsserver.setup{ on_attach = custom_attach }
+
+-- `npm install -g yaml-language-server`
+nvim_lsp.yamlls.setup{ on_attach = custom_attach }
+
+-- `npm install -g intelephense`
 -- https://github.com/bmewburn/intelephense-docs#configuration-options
 -- https://github.com/php-stubs/wordpress-stubs
 -- https://github.com/php-stubs/wordpress-globals
 nvim_lsp.intelephense.setup{
-  cmd = { getLsPath("intelephense"), "--stdio" },
   settings = {
     intelephense = {
       stubs = {
