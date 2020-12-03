@@ -269,7 +269,7 @@ let g:nnn#layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 
 " neovim/nvim-lspconfig, misc. lsp config
 lua << EOF
-local nvim_lsp = require 'nvim_lsp'
+local lspconfig = require 'lspconfig'
 
 local custom_attach = function(client)
   local map = function(mode, key, result)
@@ -300,31 +300,31 @@ local custom_attach = function(client)
 end
 
 -- `sudo pacman -S python-language-server`
-nvim_lsp.pyls.setup{ on_attach = custom_attach }
+lspconfig.pyls.setup{ on_attach = custom_attach }
 
 -- `sudo pacman -S rust-analyzer` + `rustup component add rust-src`
-nvim_lsp.rust_analyzer.setup{ on_attach = custom_attach }
+lspconfig.rust_analyzer.setup{ on_attach = custom_attach }
 
 -- `npm install -g vscode-css-languageserver-bin`
-nvim_lsp.cssls.setup{ on_attach = custom_attach }
+lspconfig.cssls.setup{ on_attach = custom_attach }
 
 -- `npm install -g vscode-html-languageserver-bin`
-nvim_lsp.html.setup{ on_attach = custom_attach }
+lspconfig.html.setup{ on_attach = custom_attach }
 
 -- `npm install -g vscode-json-languageserver`
-nvim_lsp.jsonls.setup{ on_attach = custom_attach }
+lspconfig.jsonls.setup{ on_attach = custom_attach }
 
 -- `npm install -g typescript-language-server`
-nvim_lsp.tsserver.setup{ on_attach = custom_attach }
+lspconfig.tsserver.setup{ on_attach = custom_attach }
 
 -- `npm install -g yaml-language-server`
-nvim_lsp.yamlls.setup{ on_attach = custom_attach }
+lspconfig.yamlls.setup{ on_attach = custom_attach }
 
 -- `npm install -g intelephense`
 -- https://github.com/bmewburn/intelephense-docs#configuration-options
 -- https://github.com/php-stubs/wordpress-stubs
 -- https://github.com/php-stubs/wordpress-globals
-nvim_lsp.intelephense.setup{
+lspconfig.intelephense.setup{
   settings = {
     intelephense = {
       stubs = {
