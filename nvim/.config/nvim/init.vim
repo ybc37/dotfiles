@@ -230,7 +230,7 @@ Plug 'mcchrish/nnn.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'RRethy/vim-illuminate'
