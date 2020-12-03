@@ -49,6 +49,7 @@ alias nng='nvim +RgNotes!'
 alias c='xclip -sel clip'
 alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
+alias ip='ip --color=auto'
 alias gnutime='command time -p'
 alias cal='cal -mw'
 alias ncmpcpp='ncmpcpp --quiet'
