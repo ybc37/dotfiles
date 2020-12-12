@@ -37,7 +37,7 @@ set -x FZF_CD_WITH_HIDDEN_COMMAND 'fd --type d --hidden --exclude .git/ . $dir'
 set -x FZF_OPEN_COMMAND 'fd --hidden --exclude .git/ . $dir'
 
 # https://github.com/sharkdp/bat
-set -x BAT_THEME 'ansi-dark'
+set -x BAT_THEME 'gruvbox'
 
 alias ll='ls -l'
 alias la='ls -la'
