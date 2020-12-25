@@ -39,6 +39,7 @@ set -x FZF_OPEN_COMMAND 'fd --hidden --exclude .git/ . $dir'
 # https://github.com/sharkdp/bat
 set -x BAT_THEME 'gruvbox'
 
+alias ls='exa --group-directories-first --time-style=long-iso'
 alias ll='ls -l'
 alias la='ls -la'
 alias o=open
@@ -93,11 +94,6 @@ function fish_greeting
         set -l FILE (dirname (status --current-filename))/greeting.md
         test -e $FILE && bat -p $FILE
     end
-end
-
-function ls
-    #command ls -hF --color=auto --group-directories-first $argv
-    exa --group-directories-first --time-style=long-iso $argv
 end
 
 function rg
