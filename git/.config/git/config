@@ -1,6 +1,8 @@
 [core]
 	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
+[init]
+	defaultBranch = main # remove once git defaults to `main`
 [user]
 	name = Daniel Schmid
 	email = mail+git@ybc37.dev
