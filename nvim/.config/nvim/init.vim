@@ -295,8 +295,8 @@ local custom_attach = function(client)
   map('n','<leader>lo','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
   map('n',']d','<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
   map('n','[d','<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-  map('n','<leader>ee','<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-  map('n','<leader>eo','<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+  map('n','gS','<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+  map('n','<leader>lL','<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
 end
 
 -- `sudo pacman -S python-language-server`
