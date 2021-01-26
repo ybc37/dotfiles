@@ -63,7 +63,7 @@ set formatoptions-=t
 
 " If this many milliseconds nothing is typed the swap file will be written to disk
 " (default 4000 -> decreased for vim-gitgutter, so it updates faster)
-set updatetime=250
+set updatetime=100
 
 " nosplit: Shows the effects of a command incrementally, as you type.
 " split  : Also shows partial off-screen results in a preview window.
