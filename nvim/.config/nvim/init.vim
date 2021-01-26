@@ -5,7 +5,7 @@ set hidden
 set cursorline
 
 " Abbrev. of messages (avoids 'hit enter')
-set shortmess+=filmnrxoOtTIc
+set shortmess=filmnrxoOtTIcF
 
 " Start diff mode with vertical splits (unless explicitly specified otherwise).
 set diffopt+=vertical
