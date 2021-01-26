@@ -1,7 +1,3 @@
-" When set to "dark", Vim will try to use colors that look good on a dark background.
-" -> might become default in neovim: https://github.com/neovim/neovim/issues/2676
-set background=dark
-
 " Allow buffer switching without saving
 set hidden
 
