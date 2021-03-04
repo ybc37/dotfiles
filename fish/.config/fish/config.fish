@@ -216,9 +216,9 @@ if status is-interactive
     set -g fish_pager_color_description yellow --dim
     set -g fish_pager_color_prefix white --bold #--underline
     set -g fish_pager_color_progress brwhite --background=cyan
-end
 
-starship init fish | source
+    starship init fish | source
+end
 
 # Start graphical environment at login on vtnr 1
 if status is-login
