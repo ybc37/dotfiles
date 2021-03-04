@@ -101,6 +101,9 @@ set undofile
 " don't show mode (insert, replace, visual) in last line
 set noshowmode
 
+" options for insert mode completion (needed for hrsh7th/nvim-compe)
+set completeopt=menuone,noselect
+
 let mapleader="\<Space>"
 
 " edit/source config
@@ -218,6 +221,7 @@ Plug 'dermusikman/sonicpi.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'honza/vim-snippets'
+Plug 'hrsh7th/nvim-compe'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -227,7 +231,6 @@ Plug 'mattn/emmet-vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'psf/black', { 'branch': 'stable' }
@@ -252,9 +255,27 @@ colorscheme gruvbox
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 
-" nvim-lua/completion-nvim
-set completeopt=menuone,noinsert,noselect
-let g:completion_enable_snippet = 'UltiSnips'
+" hrsh7th/nvim-compe
+inoremap <silent><expr> <C-l> compe#complete()
+inoremap <silent><expr> <CR> compe#confirm('<CR>')
+inoremap <silent><expr> <C-e> compe#close('<C-e>')
+inoremap <silent><expr> <C-d> compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-u> compe#scroll({ 'delta': -4 })
+
+lua << EOF
+require'compe'.setup {
+  source = {
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    path = true;
+    spell = true;
+    treesitter = true;
+    ultisnips = true;
+  };
+}
+EOF
 
 " itchyny/lightline.vim
 let g:lightline = { 'colorscheme': 'gruvbox' }
@@ -273,8 +294,6 @@ local custom_attach = function(client)
   local map = function(mode, key, result)
       vim.fn.nvim_buf_set_keymap(0, mode, key, result, { noremap = true, silent = true })
   end
-
-  require'completion'.on_attach(client)
 
   map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
   map('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
