@@ -217,7 +217,6 @@ augroup END
 call plug#begin("~/.local/share/nvim/plugged")
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'dermusikman/sonicpi.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'honza/vim-snippets'
@@ -227,6 +226,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'lilyinstarlight/vim-sonic-pi'
 Plug 'mattn/emmet-vim'
 Plug 'mcchrish/nnn.vim'
 Plug 'neovim/nvim-lspconfig'
