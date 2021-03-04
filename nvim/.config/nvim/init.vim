@@ -233,6 +233,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+Plug 'ojroques/nvim-lspfuzzy'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'RRethy/vim-illuminate'
 Plug 'sheerun/vim-polyglot' " evaluate removal after tree-sitter adoption (+ re-add vim-sleuth?)
@@ -406,6 +407,11 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   }
 }
+EOF
+
+" ojroques/nvim-lspfuzzy
+lua << EOF
+require('lspfuzzy').setup {}
 EOF
 
 " dermusikman/sonicpi.vim
