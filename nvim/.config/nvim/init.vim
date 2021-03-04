@@ -318,6 +318,9 @@ lspconfig.tsserver.setup{ on_attach = custom_attach }
 -- `npm install -g yaml-language-server`
 lspconfig.yamlls.setup{ on_attach = custom_attach }
 
+-- `sudo pacman -S clang`
+lspconfig.clangd.setup{ on_attach = custom_attach }
+
 -- `npm install -g intelephense`
 -- https://github.com/bmewburn/intelephense-docs#configuration-options
 -- https://github.com/php-stubs/wordpress-stubs
