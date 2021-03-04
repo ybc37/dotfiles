@@ -236,7 +236,6 @@ Plug 'nvim-treesitter/playground'
 Plug 'ojroques/nvim-lspfuzzy'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'RRethy/vim-illuminate'
-Plug 'sheerun/vim-polyglot' " evaluate removal after tree-sitter adoption (+ re-add vim-sleuth?)
 Plug 'SirVer/ultisnips'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
