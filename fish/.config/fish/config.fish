@@ -184,34 +184,39 @@ function fzf_git_log_copy
     commandline -f repaint
 end
 
-# color scheme
-set -g fish_color_autosuggestion '504945'
-set -g fish_color_cancel -r
-set -g fish_color_command 'blue'
-set -g fish_color_comment '928374'
-set -g fish_color_cwd '999'
-set -g fish_color_cwd_root '999'
-set -g fish_color_end '009900'
-set -g fish_color_error 'red'
-set -g fish_color_escape '999'
-set -g fish_color_history_current '999'
-set -g fish_color_host 'normal'
-set -g fish_color_match '999'
-set -g fish_color_normal 'normal'
-set -g fish_color_operator '999'
-set -g fish_color_param 'cyan'
-set -g fish_color_quote 'green'
-set -g fish_color_redirection 'cyan'
-set -g fish_color_search_match '--background=504945'
-# only background is used by `fish_color_selection` (https://github.com/fish-shell/fish-shell/issues/4544#issuecomment-353672037)
-set -g fish_color_selection '--background=928374'
-set -g fish_color_status red
-set -g fish_color_user brgreen
-set -g fish_color_valid_path --underline
-set -g fish_pager_color_completion 'white'
-set -g fish_pager_color_description 'cyan'
-set -g fish_pager_color_prefix 'cyan'
-set -g fish_pager_color_progress 'cyan'
+if status is-interactive
+    # https://github.com/Jomik/fish-gruvbox
+    # issue with fzf.vim: https://github.com/Jomik/fish-gruvbox/issues/2
+    theme_gruvbox dark medium
+
+    # see https://github.com/tomyun/base16-fish/blob/master/functions/base16-gruvbox-dark-medium.fish#L99
+    set -g fish_color_autosuggestion 504945
+    set -g fish_color_cancel -r
+    set -g fish_color_command green #white
+    set -g fish_color_comment 504945
+    set -g fish_color_cwd green
+    set -g fish_color_cwd_root red
+    set -g fish_color_end brblack #blue
+    set -g fish_color_error red
+    set -g fish_color_escape yellow #green
+    set -g fish_color_history_current --bold
+    set -g fish_color_host normal
+    set -g fish_color_match --background=brblue
+    set -g fish_color_normal normal
+    set -g fish_color_operator blue #green
+    set -g fish_color_param bdae93
+    set -g fish_color_quote yellow #brblack
+    set -g fish_color_redirection cyan
+    set -g fish_color_search_match bryellow --background=504945
+    set -g fish_color_selection white --bold --background=504945
+    set -g fish_color_status red
+    set -g fish_color_user brgreen
+    set -g fish_color_valid_path --underline
+    set -g fish_pager_color_completion normal
+    set -g fish_pager_color_description yellow --dim
+    set -g fish_pager_color_prefix white --bold #--underline
+    set -g fish_pager_color_progress brwhite --background=cyan
+end
 
 starship init fish | source
 
