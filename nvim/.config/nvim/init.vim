@@ -163,6 +163,8 @@ nnoremap <silent> <Leader>s :GitFiles?<CR>
 nnoremap <silent> <Leader><Tab> :Buffers<CR>
 nnoremap <silent> <Leader>h: :History:<CR>
 nnoremap <silent> <Leader>h/ :History/<CR>
+nnoremap <silent> <Leader>?? :Helptags<CR>
+nnoremap <silent> <Leader>?M :Maps<CR>
 imap <c-x><c-f> <plug>(fzf-complete-path)
 
 " Substitute
