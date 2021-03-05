@@ -43,6 +43,7 @@ alias ls='exa --group-directories-first --time-style=long-iso'
 alias ll='ls -l'
 alias la='ls -la'
 alias lt='ls -lT'
+alias wtf='wtf -o'
 alias o=open
 alias n=nvim
 alias nup='nvim +PlugUpgrade +PlugUpdate'
