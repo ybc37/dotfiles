@@ -92,5 +92,5 @@ mouse:
   hide_when_typing: true
 
 key_bindings:
-  # bind ctrl+enter to send the same chars as alt+enter
+  # bind ctrl+enter to send the same escape sequence as alt+enter
   - { key: Return, mods: Control, chars: "\e\r" }
