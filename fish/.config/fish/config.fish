@@ -218,7 +218,9 @@ if status is-interactive
     set -g fish_pager_color_prefix white --bold #--underline
     set -g fish_pager_color_progress brwhite --background=cyan
 
-    starship init fish | source
+    if command -s starship > /dev/null
+        starship init fish | source
+    end
 end
 
 # Start graphical environment at login on vtnr 1
