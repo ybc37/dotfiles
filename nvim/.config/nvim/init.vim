@@ -259,8 +259,8 @@ let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
 inoremap <silent><expr> <C-l> compe#complete()
 inoremap <silent><expr> <CR> compe#confirm('<CR>')
 inoremap <silent><expr> <C-e> compe#close('<C-e>')
-inoremap <silent><expr> <C-d> compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-u> compe#scroll({ 'delta': -4 })
+inoremap <silent><expr> <C-A-d> compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-A-u> compe#scroll({ 'delta': -4 })
 
 lua << EOF
 require'compe'.setup {
