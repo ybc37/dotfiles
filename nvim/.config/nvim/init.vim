@@ -237,7 +237,6 @@ Plug 'ojroques/nvim-lspfuzzy'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'RRethy/vim-illuminate'
 Plug 'SirVer/ultisnips'
-Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
