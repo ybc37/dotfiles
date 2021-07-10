@@ -28,13 +28,8 @@ set -x BD_OPT 'insensitive'
 
 # https://github.com/junegunn/fzf
 set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --exclude .git/'
-
-# https://github.com/jethrokuan/fzf
-set -x FZF_LEGACY_KEYBINDINGS 0
-set -x FZF_FIND_FILE_COMMAND 'fd --type f --hidden --exclude .git/ . $dir'
-set -x FZF_CD_COMMAND 'fd --type d --exclude .git/ . $dir'
-set -x FZF_CD_WITH_HIDDEN_COMMAND 'fd --type d --hidden --exclude .git/ . $dir'
-set -x FZF_OPEN_COMMAND 'fd --hidden --exclude .git/ . $dir'
+set -x FZF_CTRL_T_COMMAND 'fd --type f --type d --hidden --exclude .git/ . $dir'
+set -x FZF_ALT_C_COMMAND 'fd --type d --hidden --exclude .git/ . $dir'
 
 # https://github.com/sharkdp/bat
 set -x BAT_THEME 'gruvbox-dark'
@@ -66,6 +61,7 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     # use `fish_key_reader -c` or `showkey -a` to get keys
 
     fish_hybrid_key_bindings
+    fzf_key_bindings
 
     # \e\r = alt+enter; ctrl+enter is mapped to \e\r in alacritty.yml
     bind -M insert \e\r accept-autosuggestion execute
