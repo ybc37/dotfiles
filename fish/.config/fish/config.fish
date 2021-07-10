@@ -145,6 +145,14 @@ function unbak
     end
 end
 
+function diff
+    if isatty 1
+        command diff -us --color=always $argv | diff-so-fancy | less --tabs=4 -XFR
+    else
+        command diff
+    end
+end
+
 function fzf_kill
     # args statt comm -> full command
     set -l process (ps -eo pid,euser,%cpu,etime,comm --sort -pid --no-headers | fzf --height 40%)
