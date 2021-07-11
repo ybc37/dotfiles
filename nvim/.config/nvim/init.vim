@@ -256,29 +256,41 @@ endif
 call plug#end()
 
 " morhetz/gruvbox
-let g:gruvbox_invert_selection = 0
-colorscheme gruvbox
+if has_key(g:plugs, "gruvbox")
+    let g:gruvbox_invert_selection = 0
+    colorscheme gruvbox
+endif
 
 " editorconfig/editorconfig-vim
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
+if has_key(g:plugs, "editorconfig-vim")
+    let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+    let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
+endif
 
 " hrsh7th/nvim-compe
-inoremap <silent><expr> <C-l> compe#complete()
-inoremap <silent><expr> <CR> compe#confirm('<CR>')
-inoremap <silent><expr> <C-e> compe#close('<C-e>')
-inoremap <silent><expr> <C-A-d> compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-A-u> compe#scroll({ 'delta': -4 })
+if has_key(g:plugs, "nvim-compe")
+    inoremap <silent><expr> <C-l> compe#complete()
+    inoremap <silent><expr> <CR> compe#confirm('<CR>')
+    inoremap <silent><expr> <C-e> compe#close('<C-e>')
+    inoremap <silent><expr> <C-A-d> compe#scroll({ 'delta': +4 })
+    inoremap <silent><expr> <C-A-u> compe#scroll({ 'delta': -4 })
+endif
 
 " itchyny/lightline.vim
-let g:lightline = { 'colorscheme': 'gruvbox' }
+if has_key(g:plugs, "lightline.vim")
+    let g:lightline = { 'colorscheme': 'gruvbox' }
+endif
 
 " junegunn/fzf.vim
-let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
+if has_key(g:plugs, "fzf.vim")
+    let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
+endif
 
 " sirver/UltiSnips
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>" 
+if has_key(g:plugs, "ultisnips")
+    let g:UltiSnipsJumpForwardTrigger = "<tab>"
+    let g:UltiSnipsJumpBackwardTrigger = "<s-tab>" 
+endif
 
 if has("nvim-0.5")
     lua require 'plugins'
