@@ -221,12 +221,12 @@ endif
 
 " Plugins
 call plug#begin("~/.local/share/nvim/plugged")
+
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'honza/vim-snippets'
-Plug 'hrsh7th/nvim-compe'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -234,10 +234,6 @@ Plug 'junegunn/gv.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'lilyinstarlight/vim-sonic-pi'
 Plug 'mattn/emmet-vim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'ojroques/nvim-lspfuzzy'
 Plug 'psf/black', { 'branch': 'stable' } " if broken, remove `~/.local/share/nvim/black` + re-install
 Plug 'RRethy/vim-illuminate'
 Plug 'SirVer/ultisnips'
@@ -248,6 +244,15 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
+
+if has("nvim-0.5")
+    Plug 'hrsh7th/nvim-compe'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'norcalli/nvim-colorizer.lua'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'ojroques/nvim-lspfuzzy'
+endif
+
 call plug#end()
 
 " morhetz/gruvbox
@@ -265,150 +270,11 @@ inoremap <silent><expr> <C-e> compe#close('<C-e>')
 inoremap <silent><expr> <C-A-d> compe#scroll({ 'delta': +4 })
 inoremap <silent><expr> <C-A-u> compe#scroll({ 'delta': -4 })
 
-lua << EOF
-require'compe'.setup {
-  source = {
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    path = true;
-    spell = true;
-    treesitter = true;
-    ultisnips = true;
-  };
-}
-EOF
-
 " itchyny/lightline.vim
 let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " junegunn/fzf.vim
 let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
-
-" neovim/nvim-lspconfig, misc. lsp config
-lua << EOF
-local lspconfig = require 'lspconfig'
-
-local custom_attach = function(client)
-  local map = function(mode, key, result)
-      vim.api.nvim_buf_set_keymap(0, mode, key, result, { noremap = true, silent = true })
-  end
-
-  map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
-  map('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
-  map('n','K','<cmd>lua vim.lsp.buf.hover()<CR>')
-  map('n','gr','<cmd>lua vim.lsp.buf.references()<CR>')
-  map('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  map('i', '<C-s>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
-  map('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
-  map('n','<leader>ls','<cmd>lua vim.lsp.buf.document_symbol()<CR>')
-  map('n','<leader>lS','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
-  map('n','<leader>la','<cmd>lua vim.lsp.buf.code_action()<CR>')
-  map('n','<leader>lr','<cmd>lua vim.lsp.buf.rename()<CR>')
-  map('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-  map('n','<leader>li','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
-  map('n','<leader>lo','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
-  map('n',']d','<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-  map('n','[d','<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-  map('n','gS','<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-  map('n','<leader>lL','<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-
-  illuminate = require'illuminate'
-  illuminate.on_attach(client)
-  vim.api.nvim_command [[ hi def link LspReferenceText CursorLine ]]
-  vim.api.nvim_command [[ hi def link LspReferenceWrite CursorLine ]]
-  vim.api.nvim_command [[ hi def link LspReferenceRead CursorLine ]]
-  map('n', '<a-n>', '<cmd>lua illuminate.next_reference{ wrap=true }<CR>')
-  map('n', '<a-p>', '<cmd>lua illuminate.next_reference{ reverse=true, wrap=true }<CR>')
-end
-
--- `sudo pacman -S pyright`
-lspconfig.pyright.setup{ on_attach = custom_attach }
-
--- `sudo pacman -S rust-analyzer` + `rustup component add rust-src`
-lspconfig.rust_analyzer.setup{ on_attach = custom_attach }
-
--- `npm install -g vscode-css-languageserver-bin`
-lspconfig.cssls.setup{ on_attach = custom_attach }
-
--- `npm install -g vscode-html-languageserver-bin`
-lspconfig.html.setup{ on_attach = custom_attach }
-
--- `npm install -g vscode-json-languageserver`
-lspconfig.jsonls.setup{ on_attach = custom_attach }
-
--- `npm install -g typescript-language-server`
-lspconfig.tsserver.setup{ on_attach = custom_attach }
-
--- `npm install -g yaml-language-server`
-lspconfig.yamlls.setup{ on_attach = custom_attach }
-
--- `sudo pacman -S clang`
-lspconfig.clangd.setup{ on_attach = custom_attach }
-
--- `npm install -g intelephense`
--- https://github.com/bmewburn/intelephense-docs#configuration-options
--- https://github.com/php-stubs/wordpress-stubs
--- https://github.com/php-stubs/wordpress-globals
-lspconfig.intelephense.setup{
-  settings = {
-    intelephense = {
-      stubs = {
-        "apache", "bcmath", "bz2", "calendar", "com_dotnet", "Core", "csprng",
-        "ctype", "curl", "date", "dba", "dom", "enchant", "exif", "fileinfo",
-        "filter", "fpm", "ftp", "gd", "hash", "iconv", "imap", "interbase",
-        "intl", "json", "ldap", "libxml", "mbstring", "mcrypt", "mssql",
-        "mysql", "mysqli", "oci8", "odcb", "openssl", "password", "pcntl",
-        "pcre", "PDO", "pdo_ibm", "pdo_mysql", "pdo_pgsql", "pdo_sqlite",
-        "pgsql", "Phar", "posix", "pspell", "readline", "recode", "Reflection",
-        "regex", "session", "shmop", "SimpleXML", "snmp", "soap", "sockets",
-        "sodium", "SPL", "sqlite3", "standard", "superglobals", "sybase",
-        "sysvmsg", "sysvsem", "sysvshm", "tidy", "tokenizer", "wddx", "xml",
-        "xmlreader", "xmlrpc", "xmlwriter", "Zend OPcache", "zip", "zlib",
-        "wordpress"
-      }
-    }
-  },
-  on_attach = custom_attach
-}
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = false,
-  }
-)
-EOF
-
-" norcalli/nvim-colorizer.lua
-lua << EOF
-require 'colorizer'.setup {
-  'css';
-  'scss';
-}
-EOF
-
-" nvim-treesitter/nvim-treesitter
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
-  highlight = {
-    enable = true,
-  },
-  incremental_selection = {
-    enable = true -- init: `gnn`, node_inc: `grn`, scope_inc: `grc`, node_dec: `grm`
-  },
-  indent = {
-    enable = true
-  }
-}
-EOF
-
-" ojroques/nvim-lspfuzzy
-lua << EOF
-require('lspfuzzy').setup {}
-EOF
 
 " dermusikman/sonicpi.vim
 let g:sonicpi_command = 'sonic-pi-tool'
@@ -419,3 +285,7 @@ let g:vim_redraw = 1
 " sirver/UltiSnips
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>" 
+
+if has("nvim-0.5")
+    lua require 'plugins'
+endif
