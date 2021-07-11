@@ -8,6 +8,6 @@ Prerequisites
 
 ```sh
 cd ~/.dotfiles
-stow alacritty
-stow alacritty fish git
+stow --verbose --no-folding alacritty
+stow --verbose --no-folding alacritty fish git
 ```
