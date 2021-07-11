@@ -318,8 +318,8 @@ local custom_attach = function(client)
   map('n', '<a-p>', '<cmd>lua illuminate.next_reference{ reverse=true, wrap=true }<CR>')
 end
 
--- `sudo pacman -S python-language-server`
-lspconfig.pyls.setup{ on_attach = custom_attach }
+-- `sudo pacman -S pyright`
+lspconfig.pyright.setup{ on_attach = custom_attach }
 
 -- `sudo pacman -S rust-analyzer` + `rustup component add rust-src`
 lspconfig.rust_analyzer.setup{ on_attach = custom_attach }
