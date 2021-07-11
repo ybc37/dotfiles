@@ -25,9 +25,13 @@ set smartcase
 " Minimum lines to keep above and below cursor
 set scrolloff=3
 
-" Folds based on tree-sitter
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+if has("nvim-0.5") " TODO: check for treesitter or overwrite when treesitter config is executed?
+    " Folds based on tree-sitter
+    set foldmethod=expr
+    set foldexpr=nvim_treesitter#foldexpr()
+else
+    set foldmethod=syntax
+endif
 
 " Sets 'foldlevel' when starting to edit another buffer in a window.
 set foldlevelstart=99
@@ -207,10 +211,12 @@ augroup END
 
 
 " highlight yanked text for e.g. 250ms
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank { timeout=250 }
-augroup END
+if has("nvim-0.5")
+    augroup highlight_yank
+        autocmd!
+        autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank { timeout=250 }
+    augroup END
+endif
 
 
 " Plugins
