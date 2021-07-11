@@ -234,7 +234,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'ojroques/nvim-lspfuzzy'
-Plug 'psf/black', { 'branch': 'stable' }
+Plug 'psf/black', { 'branch': 'stable' } " if broken, remove `~/.local/share/nvim/black` + re-install
 Plug 'RRethy/vim-illuminate'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
