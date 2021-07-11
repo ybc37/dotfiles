@@ -228,11 +228,9 @@ Plug 'junegunn/gv.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'lilyinstarlight/vim-sonic-pi'
 Plug 'mattn/emmet-vim'
-Plug 'mcchrish/nnn.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
 Plug 'ojroques/nvim-lspfuzzy'
 Plug 'psf/black', { 'branch': 'stable' } " if broken, remove `~/.local/share/nvim/black` + re-install
 Plug 'RRethy/vim-illuminate'
@@ -281,9 +279,6 @@ let g:lightline = { 'colorscheme': 'gruvbox' }
 
 " junegunn/fzf.vim
 let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
-
-" mcchrish/nnn.vim
-let g:nnn#layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 
 " neovim/nvim-lspconfig, misc. lsp config
 lua << EOF
@@ -399,9 +394,6 @@ require'nvim-treesitter.configs'.setup {
     enable = true -- init: `gnn`, node_inc: `grn`, scope_inc: `grc`, node_dec: `grm`
   },
   indent = {
-    enable = true
-  },
-  playground = {
     enable = true
   }
 }
