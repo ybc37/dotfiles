@@ -276,12 +276,6 @@ let g:lightline = { 'colorscheme': 'gruvbox' }
 " junegunn/fzf.vim
 let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 
-" dermusikman/sonicpi.vim
-let g:sonicpi_command = 'sonic-pi-tool'
-let g:sonicpi_send = 'eval-stdin'
-let g:sonicpi_stop = 'stop'
-let g:vim_redraw = 1
-
 " sirver/UltiSnips
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>" 
