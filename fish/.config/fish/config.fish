@@ -154,7 +154,7 @@ end
 
 function diff
     if isatty 1
-        command diff -us --color=always $argv | diff-so-fancy | less --tabs=4 -XFR
+        command diff -u --color=always $argv | diff-so-fancy | less --tabs=4 -XFR
     else
         command diff
     end
