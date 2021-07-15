@@ -2,7 +2,7 @@
 
 # only run tmux in alacritty and if tmux is not yet running
 if status is-interactive && test $TERM = 'alacritty' -o $TERM = 'xterm-kitty' && not tmux info &> /dev/null
-    exec tmux
+    exec tmux new -As0
 end
 
 # rename first window of first session
