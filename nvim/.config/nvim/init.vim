@@ -252,7 +252,7 @@ if has("nvim-0.5")
 
     Plug 'neovim/nvim-lspconfig'
     Plug 'norcalli/nvim-colorizer.lua'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': '0.5-compat'}
     Plug 'ojroques/nvim-lspfuzzy'
 endif
 
