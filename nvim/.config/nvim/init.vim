@@ -226,7 +226,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gruvbox-community/gruvbox'
-Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -236,7 +235,6 @@ Plug 'lilyinstarlight/vim-sonic-pi'
 Plug 'mattn/emmet-vim'
 Plug 'psf/black', { 'branch': 'stable' } " if broken, remove `~/.local/share/nvim/black` + re-install
 Plug 'RRethy/vim-illuminate'
-Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -284,12 +282,6 @@ endif
 " junegunn/fzf.vim
 if has_key(g:plugs, "fzf.vim")
     let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
-endif
-
-" sirver/UltiSnips
-if has_key(g:plugs, "ultisnips")
-    let g:UltiSnipsJumpForwardTrigger = "<tab>"
-    let g:UltiSnipsJumpBackwardTrigger = "<s-tab>" 
 endif
 
 if has("nvim-0.5")

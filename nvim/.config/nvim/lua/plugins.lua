@@ -106,7 +106,6 @@ if vim.g.plugs['nvim-compe'] ~= nil then
       path = true;
       spell = true;
       treesitter = true;
-      ultisnips = true;
     };
   }
 end
