@@ -38,29 +38,35 @@ if vim.g.plugs['nvim-lspconfig'] ~= nil then
     end
   end
 
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+  if vim.g.plugs['nvim-cmp'] ~= nil then
+    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+  end
+
   -- `sudo pacman -S pyright`
-  lspconfig.pyright.setup{ on_attach = custom_attach }
+  lspconfig.pyright.setup{ on_attach = custom_attach, capabilities = capabilities }
 
   -- `sudo pacman -S rust-analyzer` + `rustup component add rust-src`
-  lspconfig.rust_analyzer.setup{ on_attach = custom_attach }
+  lspconfig.rust_analyzer.setup{ on_attach = custom_attach, capabilities = capabilities }
 
   -- `npm install -g vscode-css-languageserver-bin`
-  lspconfig.cssls.setup{ on_attach = custom_attach }
+  lspconfig.cssls.setup{ on_attach = custom_attach, capabilities = capabilities }
 
   -- `npm install -g vscode-html-languageserver-bin`
-  lspconfig.html.setup{ on_attach = custom_attach }
+  lspconfig.html.setup{ on_attach = custom_attach, capabilities = capabilities }
 
   -- `npm install -g vscode-json-languageserver`
-  lspconfig.jsonls.setup{ on_attach = custom_attach }
+  lspconfig.jsonls.setup{ on_attach = custom_attach, capabilities = capabilities }
 
   -- `npm install -g typescript-language-server`
-  lspconfig.tsserver.setup{ on_attach = custom_attach }
+  lspconfig.tsserver.setup{ on_attach = custom_attach, capabilities = capabilities }
 
   -- `npm install -g yaml-language-server`
-  lspconfig.yamlls.setup{ on_attach = custom_attach }
+  lspconfig.yamlls.setup{ on_attach = custom_attach, capabilities = capabilities }
 
   -- `sudo pacman -S clang`
-  lspconfig.clangd.setup{ on_attach = custom_attach }
+  lspconfig.clangd.setup{ on_attach = custom_attach, capabilities = capabilities }
 
   -- `npm install -g intelephense`
   -- https://github.com/bmewburn/intelephense-docs#configuration-options
@@ -85,7 +91,8 @@ if vim.g.plugs['nvim-lspconfig'] ~= nil then
         }
       }
     },
-    on_attach = custom_attach
+    on_attach = custom_attach,
+    capabilities = capabilities
   }
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -95,19 +102,25 @@ if vim.g.plugs['nvim-lspconfig'] ~= nil then
   )
 end
 
--- hrsh7th/nvim-compe
-if vim.g.plugs['nvim-compe'] ~= nil then
-  require'compe'.setup {
-    source = {
-      buffer = true;
-      calc = true;
-      nvim_lsp = true;
-      nvim_lua = true;
-      path = true;
-      spell = true;
-      treesitter = true;
-    };
-  }
+-- hrsh7th/nvim-cmp
+if vim.g.plugs['nvim-cmp'] ~= nil then
+  local cmp = require'cmp'
+
+  cmp.setup({
+    mapping = {
+      ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-d>'] = cmp.mapping.scroll_docs(4),
+      ['<C-l>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.close(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = {
+      { name = 'buffer' },
+      { name = 'calc' },
+      { name = 'nvim_lsp' },
+      { name = 'path' },
+    }
+  })
 end
 
 -- norcalli/nvim-colorizer.lua

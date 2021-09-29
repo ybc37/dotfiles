@@ -105,8 +105,8 @@ set undofile
 " don't show mode (insert, replace, visual) in last line
 set noshowmode
 
-" options for insert mode completion (needed for hrsh7th/nvim-compe)
-set completeopt=menuone,noselect
+" options for insert mode completion (needed for hrsh7th/nvim-comp)
+set completeopt=menu,menuone,noselect
 
 let mapleader="\<Space>"
 
@@ -244,7 +244,12 @@ Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 
 if has("nvim-0.5")
-    Plug 'hrsh7th/nvim-compe'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-calc'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/nvim-cmp'
+
     Plug 'neovim/nvim-lspconfig'
     Plug 'norcalli/nvim-colorizer.lua'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -263,15 +268,6 @@ endif
 if has_key(g:plugs, "editorconfig-vim")
     let g:EditorConfig_exclude_patterns = ['fugitive://.*']
     let g:EditorConfig_disable_rules = ['trim_trailing_whitespace']
-endif
-
-" hrsh7th/nvim-compe
-if has_key(g:plugs, "nvim-compe")
-    inoremap <silent><expr> <C-l> compe#complete()
-    inoremap <silent><expr> <CR> compe#confirm('<CR>')
-    inoremap <silent><expr> <C-e> compe#close('<C-e>')
-    inoremap <silent><expr> <C-A-d> compe#scroll({ 'delta': +4 })
-    inoremap <silent><expr> <C-A-u> compe#scroll({ 'delta': -4 })
 endif
 
 " itchyny/lightline.vim
