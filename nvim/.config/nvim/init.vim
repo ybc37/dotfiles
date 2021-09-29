@@ -258,7 +258,7 @@ endif
 
 call plug#end()
 
-" morhetz/gruvbox
+" gruvbox-community/gruvbox
 if has_key(g:plugs, "gruvbox")
     let g:gruvbox_invert_selection = 0
     colorscheme gruvbox
