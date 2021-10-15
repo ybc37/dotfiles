@@ -50,13 +50,9 @@ if vim.g.plugs['nvim-lspconfig'] ~= nil then
   -- `sudo pacman -S rust-analyzer` + `rustup component add rust-src`
   lspconfig.rust_analyzer.setup{ on_attach = custom_attach, capabilities = capabilities }
 
-  -- `npm install -g vscode-css-languageserver-bin`
+  -- npm install -g vscode-langservers-extracted
   lspconfig.cssls.setup{ on_attach = custom_attach, capabilities = capabilities }
-
-  -- `npm install -g vscode-html-languageserver-bin`
   lspconfig.html.setup{ on_attach = custom_attach, capabilities = capabilities }
-
-  -- `npm install -g vscode-json-languageserver`
   lspconfig.jsonls.setup{ on_attach = custom_attach, capabilities = capabilities }
 
   -- `npm install -g typescript-language-server`
