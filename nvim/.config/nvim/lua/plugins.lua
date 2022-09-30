@@ -22,9 +22,9 @@ if vim.g.plugs['nvim-lspconfig'] ~= nil then
     map('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
     map('n','<leader>li','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
     map('n','<leader>lo','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
-    map('n',']d','<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-    map('n','[d','<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-    map('n','gS','<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+    map('n',']d','<cmd>lua vim.diagnostic.goto_next()<CR>')
+    map('n','[d','<cmd>lua vim.diagnostic.goto_prev()<CR>')
+    map('n','gS','<cmd>lua vim.diagnostic.open_float()<CR>')
     map('n','<leader>lL','<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
 
     if vim.g.plugs['vim-illuminate'] ~= nil then
