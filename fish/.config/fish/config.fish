@@ -56,6 +56,7 @@ alias nup='nvim +PackerSync'
 alias nn='nvim +Notes'
 alias nng='nvim +NotesGrep'
 alias c='wl-copy --trim-newline'
+alias c='clip.exe'
 alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
 alias ip='ip --color=auto'
