@@ -1,9 +1,9 @@
+# workaround: don't print `$git_state` and `$git_status` because of bad fs
+# performance in wsl (on ntfs)
 format = """
 $directory\
 $git_branch\
 $git_commit\
-$git_state\
-$git_status\
 $hg_branch\
 $cmd_duration\
 $line_break\
