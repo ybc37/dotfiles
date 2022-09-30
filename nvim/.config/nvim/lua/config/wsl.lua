@@ -12,3 +12,9 @@ vim.g.clipboard = {
   },
   cache_enabled = true,
 }
+
+-- workaround: on windows nvim doesn't show spelling errors with underline when
+-- `TERM=alacritty`.
+-- Needs to be set after `vim.cmd.colorscheme('gruvbox')` (or in an autocmd:
+-- `vim.api.nvim_create_autocmd('ColorScheme', { [...]`).
+vim.api.nvim_set_hl(0, 'SpellBad', { underline = true })
