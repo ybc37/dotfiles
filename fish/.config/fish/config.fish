@@ -66,6 +66,8 @@ alias history_copy='history | fzf --no-sort --height 40% | read -l x && echo "$x
 alias history_del='history | fzf --no-sort --height 40% | read -l x && history delete --case-sensitive --prefix "$x"'
 alias cd_hist='echo $dirprev | tr \' \' \'\n\' | fzf --tac --no-sort --height 20% | read -l x && cd "$x"'
 alias mpc_songs='mpc playlist -f \'%position%\t[[%artist% - ][%album% - ]%title%|%file%]\' | fzf --height 40% | awk \'{print $1}\' | read -l x && mpc play "$x"'
+#alias stopwatch='command time --format="%E" fish -c \'function fish_mode_prompt ; end ; read --prompt-str="..."\''
+alias stopwatch='command time --format="%E" bash -c \'read -p "..."\'' # faster than fish (see above)
 
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
     # use `fish_key_reader -c` or `showkey -a` to get keys
