@@ -131,11 +131,41 @@ function cht
     curl "https://cht.sh/$argv" --no-progress-meter | less -XFR
 end
 
+function erase_ssh_agent_vars
+    # workaround, see:
+    # * https://github.com/fish-shell/fish-shell/issues/5258
+    # * https://github.com/fish-shell/fish-shell/issues/5258#issuecomment-439568175
+    #
+    # because this happens in tmux if ssh var is Ux
+    # ~> set -Ux foo foo
+    # ~> exec fish
+    # ~> set -Ux foo bar
+    # ~> echo $foo
+    # foo
+    #
+    # another workaround:
+    # https://github.com/fish-shell/fish-shell/issues/5258#issuecomment-433160282
+
+    if test -z (pgrep ssh-agent | string collect)
+        set --erase --global SSH_AUTH_SOCK
+        set --erase --universal SSH_AUTH_SOCK
+        set --erase --global SSH_AGENT_PID
+        set --erase --universal SSH_AGENT_PID
+    end
+end
+erase_ssh_agent_vars
+
 # always start agent (one time, without running it multiple times)???
 function start_ssh_agent
-    eval (ssh-agent -c)
-    ssh-add -k ~/.ssh/id_rsa
-end
+    if test -z (pgrep ssh-agent | string collect)
+        eval (ssh-agent -c)
+
+        set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+        set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+
+        grep -slR "PRIVATE" ~/.ssh/ | xargs ssh-add
+    end
+ end
 
 function ip-public
     dig myip.opendns.com @resolver1.opendns.com a +short -4
