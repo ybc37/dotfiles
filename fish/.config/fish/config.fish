@@ -69,6 +69,10 @@ alias mpc_songs='mpc playlist -f \'%position%\t[[%artist% - ][%album% - ]%title%
 #alias stopwatch='command time --format="%E" fish -c \'function fish_mode_prompt ; end ; read --prompt-str="..."\''
 alias stopwatch='command time --format="%E" bash -c \'read -p "..."\'' # faster than fish (see above)
 
+# aliases to review git commits
+alias rvw-log='FZF_DEFAULT_COMMAND="git lg" fzf --ansi --no-sort --select-1 --exit-0 --height 40% | awk \'{print $1}\' | read -l x && git show --patch-with-stat "$x"'
+alias rvw-branch='fzf_git_review'
+
 function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
     # use `fish_key_reader -c` or `showkey -a` to get keys
 
@@ -210,6 +214,12 @@ function fzf_git_branches
         commandline -i $branch
     end
     commandline -f repaint
+end
+
+function fzf_git_review
+    set -l branch $argv
+    test -z "$argv" && set -l branch 'develop'
+    git lg "$branch".. | rvw-log
 end
 
 if status is-interactive
