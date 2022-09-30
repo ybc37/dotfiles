@@ -99,6 +99,8 @@ set noshowmode
 " options for insert mode completion (needed for hrsh7th/nvim-comp)
 set completeopt=menu,menuone,noselect
 
+set spelllang=en_us,de_de
+
 let mapleader="\<Space>"
 
 " edit/source config
