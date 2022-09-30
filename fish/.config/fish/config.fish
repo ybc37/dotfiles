@@ -30,6 +30,8 @@ set -x VISUAL nvim
 set -x MANPAGER "nvim +Man!"
 set -x DIFFPROG "nvim -d"
 
+set -x MOZ_ENABLE_WAYLAND 1
+
 # https://github.com/0rax/fish-bd
 set -x BD_OPT 'insensitive'
 
@@ -51,7 +53,7 @@ alias n=nvim
 alias nup='nvim +PlugUpgrade +PlugUpdate'
 alias nn='nvim +Notes!'
 alias nng='nvim +RgNotes!'
-alias c='xclip -sel clip'
+alias c='wl-copy --trim-newline'
 alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
 alias ip='ip --color=auto'
@@ -207,8 +209,7 @@ end
 # Start graphical environment at login on vtnr 1
 if status is-login
     if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec startx -- -keeptty # see .xinitrc
-        # exec startplasma-wayland
+        exec startplasma-wayland
         # exec sway
     end
 end
