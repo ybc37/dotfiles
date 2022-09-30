@@ -104,8 +104,8 @@ set spelllang=en_us,de_de
 let mapleader="\<Space>"
 
 " edit/source config
-nnoremap <Leader>ce :e ~/.config/nvim/init.vim<CR>
-nnoremap <Leader>cs :so ~/.config/nvim/init.vim<CR>
+nnoremap <Leader>ce :e $MYVIMRC<CR>
+nnoremap <Leader>cs :so $MYVIMRC<CR>
 
 inoremap jk <Esc>
 inoremap kj <Esc>
