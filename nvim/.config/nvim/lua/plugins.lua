@@ -55,10 +55,10 @@ if vim.g.plugs['nvim-lspconfig'] ~= nil then
   lspconfig.html.setup{ on_attach = custom_attach, capabilities = capabilities }
   lspconfig.jsonls.setup{ on_attach = custom_attach, capabilities = capabilities }
 
-  -- `npm install -g typescript-language-server`
+  -- `sudo pacman -S typescript-language-server`
   lspconfig.tsserver.setup{ on_attach = custom_attach, capabilities = capabilities }
 
-  -- `npm install -g yaml-language-server`
+  -- `sudo pacman -S yaml-language-server`
   lspconfig.yamlls.setup{ on_attach = custom_attach, capabilities = capabilities }
 
   -- `sudo pacman -S clang`
