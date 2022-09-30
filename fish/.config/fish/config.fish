@@ -91,8 +91,11 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     bind -M default \eg fzf_git_log_copy
     bind -M insert \eg fzf_git_log_copy
 
-    bind -M default \eb "cd_hist; commandline -f repaint"
-    bind -M insert \eb "cd_hist; commandline -f repaint"
+    bind -M default \eb fzf_git_branches
+    bind -M insert \eb fzf_git_branches
+
+    bind -M default \ez "cd_hist; commandline -f repaint"
+    bind -M insert \ez "cd_hist; commandline -f repaint"
 
     bind -M default \em "mpc_songs; commandline -f repaint"
     bind -M insert \em "mpc_songs; commandline -f repaint"
@@ -197,6 +200,14 @@ function fzf_git_log_copy
         end
 
         echo -n $res | c
+    end
+    commandline -f repaint
+end
+
+function fzf_git_branches
+    set -l branch (git branch --format='%(refname:short)' | fzf --height 40%)
+    if test -n "$branch"
+        commandline -i $branch
     end
     commandline -f repaint
 end
