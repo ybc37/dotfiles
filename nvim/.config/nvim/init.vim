@@ -1,6 +1,3 @@
-" Allow buffer switching without saving
-set hidden
-
 " Highlight current line
 set cursorline
 
@@ -51,9 +48,6 @@ set expandtab
 
 " Number of spaces that a <Tab> in the file counts for.
 set tabstop=4
-
-" Prevents inserting two spaces after punctuation on a join (J)
-set nojoinspaces
 
 " Puts new split window to the right/bottom of the current
 set splitright
@@ -116,9 +110,6 @@ nnoremap <Leader>cs :so ~/.config/nvim/init.vim<CR>
 
 inoremap jk <Esc>
 inoremap kj <Esc>
-
-" Yank from the cursor to the end of the line, to be consistent with C and D.
-nnoremap Y y$
 
 nnoremap <silent> <Leader>w :w<CR>
 nnoremap <silent> <Leader>x :bd<CR>
@@ -252,7 +243,7 @@ if has("nvim-0.5")
 
     Plug 'neovim/nvim-lspconfig'
     Plug 'norcalli/nvim-colorizer.lua'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': '0.5-compat'}
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'ojroques/nvim-lspfuzzy'
 endif
 
