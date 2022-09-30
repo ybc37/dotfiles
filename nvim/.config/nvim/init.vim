@@ -172,7 +172,7 @@ nnoremap <Leader>R :%s/\v
 " notes
 let s:note_path = "~/documents/notes/"
 command! -bang -nargs=* RgNotes call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . shellescape(<q-args>), 1, {"dir": s:note_path}, <bang>0)
-command! -bang -nargs=0 Notes call fzf#vim#files(<q-args>, {"dir": s:note_path}, <bang>0)
+command! -bang -nargs=0 Notes call fzf#vim#files(s:note_path, <bang>0)
 nnoremap <silent> <Leader>ee :Notes<CR>
 nnoremap <silent> <Leader>eE :Notes!<CR>
 nnoremap <Leader>eg :RgNotes 
