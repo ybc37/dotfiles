@@ -22,13 +22,10 @@ set smartcase
 " Minimum lines to keep above and below cursor
 set scrolloff=3
 
-if has("nvim-0.5") " TODO: check for treesitter or overwrite when treesitter config is executed?
-    " Folds based on tree-sitter
-    set foldmethod=expr
-    set foldexpr=nvim_treesitter#foldexpr()
-else
-    set foldmethod=syntax
-endif
+" TODO: check for treesitter or overwrite when treesitter config is executed?
+" Folds based on tree-sitter
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 " Sets 'foldlevel' when starting to edit another buffer in a window.
 set foldlevelstart=99
@@ -202,12 +199,10 @@ augroup END
 
 
 " highlight yanked text for e.g. 250ms
-if has("nvim-0.5")
-    augroup highlight_yank
-        autocmd!
-        autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank { timeout=250 }
-    augroup END
-endif
+augroup highlight_yank
+  autocmd!
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank { timeout=250 }
+augroup END
 
 
 " Plugins
@@ -234,22 +229,21 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'wellle/targets.vim'
 
-if has("nvim-0.5")
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-calc'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-cmdline'
-    Plug 'hrsh7th/nvim-cmp'
+" Lua plugins
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-calc'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 
-    Plug 'L3MON4D3/LuaSnip'
-    Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'norcalli/nvim-colorizer.lua'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'ojroques/nvim-lspfuzzy'
-endif
+Plug 'neovim/nvim-lspconfig'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'ojroques/nvim-lspfuzzy'
 
 call plug#end()
 
@@ -275,6 +269,4 @@ if has_key(g:plugs, "fzf.vim")
     let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.7 } }
 endif
 
-if has("nvim-0.5")
-    lua require 'plugins'
-endif
+lua require 'plugins'
