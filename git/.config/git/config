@@ -31,6 +31,8 @@
 	autoSquash = true
 [diff]
 	tool = meld
+[rerere]
+	enabled = true
 
 [gui]
 	fontui = -family \"Noto Sans\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
