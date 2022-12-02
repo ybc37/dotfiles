@@ -1,6 +1,6 @@
 [core]
 	editor = nvim
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
 [init]
 	defaultBranch = main # remove once git defaults to `main`
 [user]
@@ -8,18 +8,6 @@
 	email = mail+git@ybc37.dev
 [color]
 	ui = true
-[color "diff"]
-	meta = 11
-	commit = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
 [pull]
 	ff = only
 [push]
@@ -31,9 +19,11 @@
 	autoSquash = true
 [diff]
 	tool = meld
+	colorMoved = default
 [rerere]
 	enabled = true
-
+[interactive]
+	diffFilter = delta --color-only
 [gui]
 	fontui = -family \"Noto Sans\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Noto Sans Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
@@ -41,5 +31,11 @@
 	lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cI) %C(bold blue)<%an>%Creset'
 	lgg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cI) %C(bold blue)<%an>%Creset' --graph
 	mergelogmsg = "!f() { var=$(git symbolic-ref --short HEAD) && printf 'Merge branch %s into %s\n\nCommits:\n' $1 $var >| temp_merge_msg && git log dev --format=format:'* %s' $var..$1 >> temp_merge_msg && printf '\n\nFixes:\n' >> temp_merge_msg && git log dev --format=format:'%s, %b' $var..$1|egrep -o '#[0-9]{15,16}'|sort -u|sed 's;^;* fix ;' >> temp_merge_msg && git merge --no-ff --no-commit $1 && git commit -eF temp_merge_msg; rm -f temp_merge_msg;}; f"
-[diff-so-fancy]
-	stripLeadingSymbols = false
+[delta]
+	navigate = true
+	keep-plus-minus-markers = true
+	file-style = omit
+	hunk-header-decoration-style = brightblack ul ol
+	hunk-header-line-number-style = brightmagenta
+	hunk-header-file-style = brightblue
+	hunk-header-style = file line-number syntax
