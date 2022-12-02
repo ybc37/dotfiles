@@ -65,9 +65,3 @@ require('gitsigns').setup({
     map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { silent = true })
   end
 })
-
-require('nvim-treesitter.configs').setup({
-  context_commentstring = {
-    enable = true
-  }
-})
