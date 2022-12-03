@@ -27,6 +27,7 @@ local custom_attach = function(client)
   map('n', '[d', vim.diagnostic.goto_prev)
   map('n', 'gS', vim.diagnostic.open_float)
   map('n', '<leader>lL', vim.diagnostic.setloclist)
+  map('n', '<leader>lQ', vim.diagnostic.setqflist)
   map('n', '<leader>ld', function() telescope.diagnostics({ bufnr = 0 }) end)
   map('n', '<leader>lD', telescope.diagnostics)
 
