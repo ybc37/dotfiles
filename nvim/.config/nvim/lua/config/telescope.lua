@@ -1,10 +1,17 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
+local config = require('telescope.config')
 
 telescope.load_extension('fzf')
 
-telescope.setup {
+-- `vimgrep_arguments` will be used for `live_grep` and `grep_string` pickers.
+local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
+table.insert(vimgrep_arguments, '--hidden')
+table.insert(vimgrep_arguments, '--glob')
+table.insert(vimgrep_arguments, '!**/.git/*')
+
+telescope.setup({
   defaults = {
     mappings = {
       i = {
@@ -13,9 +20,15 @@ telescope.setup {
           vim.cmd.stopinsert()
         end
       }
+    },
+    vimgrep_arguments = vimgrep_arguments
+  },
+  pickers = {
+    find_files = {
+      find_command = { 'fd', '--type', 'file', '--hidden', '--exclude', '.git/' }
     }
   }
-}
+})
 
 vim.keymap.set('n', '<C-t>', builtin.find_files)
 vim.keymap.set('n', '<Leader>ff', builtin.find_files)
