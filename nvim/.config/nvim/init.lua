@@ -158,6 +158,17 @@ vim.keymap.set('t', '<Leader><Esc>', '<C-\\><C-n>')
 -- Close other windows
 vim.keymap.set('n', '<Leader><Esc>', '<C-w><C-o>')
 
+-- HACK: close floating windows
+-- Should be obsolete, once this feature is implemented:
+-- https://github.com/neovim/neovim/issues/9663
+vim.keymap.set('n', '<Esc>', function()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local config = vim.api.nvim_win_get_config(win)
+    if config.relative ~= '' then  -- `relative` is empty for normal windows.
+      vim.api.nvim_win_close(win, false)
+    end
+  end
+end)
 
 -- Substitute
 vim.keymap.set({'n', 'v'}, '<Leader>r', ':s/\\v')
