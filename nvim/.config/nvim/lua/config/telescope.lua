@@ -1,6 +1,22 @@
-require('telescope').load_extension('fzf')
-
+local telescope = require('telescope')
+local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
+
+telescope.load_extension('fzf')
+
+telescope.setup {
+  defaults = {
+    mappings = {
+      i = {
+        ["<Esc>"] = actions.close,
+        ["<C-c>"] = function()
+          vim.cmd.stopinsert()
+        end
+      }
+    }
+  }
+}
+
 vim.keymap.set('n', '<C-t>', builtin.find_files)
 vim.keymap.set('n', '<Leader>ff', builtin.find_files)
 vim.keymap.set('n', '<Leader><tab>', builtin.buffers)
