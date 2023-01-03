@@ -149,8 +149,8 @@ vim.keymap.set('n', '<Leader>cd', function() copy_buffer_path(':p:h') end)
 vim.keymap.set('n', '<Leader>/', ':noh<CR>', { silent = true })
 
 -- Wrapped lines goes down/up to next row, rather than next line in file.
-vim.keymap.set('n', 'j', 'gj')
-vim.keymap.set('n', 'k', 'gk')
+vim.keymap.set({'n', 'v', 'o'}, 'j', 'gj')
+vim.keymap.set({'n', 'v', 'o'}, 'k', 'gk')
 
 -- Use Leader+ESC to exit insert mode in :term
 vim.keymap.set('t', '<Leader><Esc>', '<C-\\><C-n>')
