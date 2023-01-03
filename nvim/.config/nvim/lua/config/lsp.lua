@@ -52,6 +52,7 @@ lspconfig.rust_analyzer.setup{ on_attach = custom_attach, capabilities = capabil
 lspconfig.cssls.setup{ on_attach = custom_attach, capabilities = capabilities }
 lspconfig.html.setup{ on_attach = custom_attach, capabilities = capabilities }
 lspconfig.jsonls.setup{ on_attach = custom_attach, capabilities = capabilities }
+lspconfig.eslint.setup{ on_attach = custom_attach, capabilities = capabilities }
 
 -- `sudo pacman -S typescript-language-server`
 lspconfig.tsserver.setup{ on_attach = custom_attach, capabilities = capabilities }
