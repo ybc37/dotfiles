@@ -60,10 +60,16 @@ lspconfig.pyright.setup{ on_attach = custom_attach, capabilities = capabilities 
 -- `sudo pacman -S rust-analyzer` + `rustup component add rust-src`
 lspconfig.rust_analyzer.setup{ on_attach = custom_attach, capabilities = capabilities }
 
--- npm install -g vscode-langservers-extracted
+-- sudo pacman -S vscode-css-languageserver
 lspconfig.cssls.setup{ on_attach = custom_attach, capabilities = capabilities }
+
+-- sudo pacman -S vscode-html-languageserver
 lspconfig.html.setup{ on_attach = custom_attach, capabilities = capabilities }
+
+-- sudo pacman -S vscode-json-languageserver
 lspconfig.jsonls.setup{ on_attach = custom_attach, capabilities = capabilities }
+
+-- sudo pacman -S eslint-language-server
 lspconfig.eslint.setup{ on_attach = custom_attach, capabilities = capabilities }
 
 -- `sudo pacman -S typescript-language-server`
