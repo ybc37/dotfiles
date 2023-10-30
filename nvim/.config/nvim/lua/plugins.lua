@@ -1,66 +1,54 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
-end
+return {
+  { 'RRethy/vim-illuminate' },
+  { 'christoomey/vim-tmux-navigator' },
+  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
 
-local packer_bootstrap = ensure_packer()
+  {
+    'junegunn/gv.vim',
+    dependencies = { 'tpope/vim-fugitive' },
+  },
 
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+  { 'mattn/emmet-vim' },
 
-  use { 'neovim/nvim-lspconfig' }
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup({
+        'css';
+        'scss';
+      })
+    end,
+  },
 
-  use {
-      'nvim-treesitter/nvim-treesitter',
-      run = function()
-        local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-        ts_update()
-      end,
-  }
+  {
+    'nvim-lualine/lualine.nvim',
+    config = function()
+      require('lualine').setup {
+        options = {
+          icons_enabled = false,
+          component_separators = '|',
+          section_separators = '',
+        },
+        sections = {
+          lualine_c = {{'filename', path = 1}}
+        }
+      }
+    end,
+  },
 
-  use {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    requires = { { 'nvim-lua/plenary.nvim' } },
-  }
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  { 'tpope/vim-commentary' },
+  { 'tpope/vim-eunuch' },
+  { 'tpope/vim-fugitive' },
+  { 'tpope/vim-repeat' },
+  { 'tpope/vim-surround' },
+  { 'tpope/vim-unimpaired' },
+  { 'wellle/targets.vim' },
 
-  use { 'hrsh7th/nvim-cmp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-calc' }
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-cmdline' }
-
-  use { 'L3MON4D3/LuaSnip' }
-  use { 'saadparwaiz1/cmp_luasnip' }
-
-  use { 'JoosepAlviste/nvim-ts-context-commentstring' }
-  use { 'RRethy/vim-illuminate' }
-  use { 'christoomey/vim-tmux-navigator' }
-  use { 'ellisonleao/gruvbox.nvim' }
-  use { 'junegunn/gv.vim' }
-  use { 'lewis6991/gitsigns.nvim' }
-  use { 'mattn/emmet-vim' }
-  use { 'norcalli/nvim-colorizer.lua' }
-  use { 'nvim-lualine/lualine.nvim' }
-  use { 'tpope/vim-commentary' }
-  use { 'tpope/vim-eunuch' }
-  use { 'tpope/vim-fugitive' }
-  use { 'tpope/vim-repeat' }
-  use { 'tpope/vim-surround' }
-  use { 'tpope/vim-unimpaired' }
-  use { 'wellle/targets.vim' }
-
-  use {
+  {
     'jose-elias-alvarez/null-ls.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } },
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
     config = function()
       local null_ls = require("null-ls")
       null_ls.setup({
@@ -71,8 +59,4 @@ return require('packer').startup(function(use)
       })
     end
   }
-
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+}

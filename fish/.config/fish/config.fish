@@ -53,7 +53,7 @@ alias lt='ls -lT'
 alias wtf='wtf -o'
 alias o=open
 alias n=nvim
-alias nup='nvim +PackerSync'
+alias nup='nvim -c "lua require(\'lazy\').sync({wait = true})"'
 alias nn='nvim +Notes'
 alias nng='nvim +NotesGrep'
 alias c='wl-copy --trim-newline'
