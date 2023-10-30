@@ -1,10 +1,6 @@
 vim.cmd.colorscheme('gruvbox')
 vim.g.lightline = { colorscheme = 'gruvbox' }
 
--- editorconfig/editorconfig-vim
-vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*' }
-vim.g.EditorConfig_disable_rules = { 'trim_trailing_whitespace' }
-
 -- norcalli/nvim-colorizer.lua
 require('colorizer').setup({
   'css';

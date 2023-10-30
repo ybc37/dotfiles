@@ -44,7 +44,6 @@ return require('packer').startup(function(use)
   use { 'JoosepAlviste/nvim-ts-context-commentstring' }
   use { 'RRethy/vim-illuminate' }
   use { 'christoomey/vim-tmux-navigator' }
-  use { 'editorconfig/editorconfig-vim' }
   use { 'ellisonleao/gruvbox.nvim' }
   use { 'itchyny/lightline.vim' }
   use { 'junegunn/gv.vim' }
