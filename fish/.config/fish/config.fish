@@ -149,10 +149,8 @@ function erase_ssh_agent_vars
     # https://github.com/fish-shell/fish-shell/issues/5258#issuecomment-433160282
 
     if test -z (pgrep ssh-agent | string collect)
-        set --erase --global SSH_AUTH_SOCK
-        set --erase --universal SSH_AUTH_SOCK
-        set --erase --global SSH_AGENT_PID
-        set --erase --universal SSH_AGENT_PID
+        set --erase --global --universal SSH_AUTH_SOCK
+        set --erase --global --universal SSH_AGENT_PID
     end
 end
 erase_ssh_agent_vars
