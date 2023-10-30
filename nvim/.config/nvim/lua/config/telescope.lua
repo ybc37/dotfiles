@@ -26,7 +26,10 @@ telescope.setup({
   pickers = {
     find_files = {
       find_command = { 'fd', '--type', 'file', '--hidden', '--exclude', '.git/' }
-    }
+    },
+    buffers = {
+      sort_mru = true
+    },
   }
 })
 
