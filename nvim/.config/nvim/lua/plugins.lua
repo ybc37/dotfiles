@@ -1,7 +1,19 @@
 return {
   { 'RRethy/vim-illuminate' },
   { 'christoomey/vim-tmux-navigator' },
-  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true },
+
+  { "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = true,
+    config = function()
+      require("gruvbox").setup({
+        overrides = {
+          ['@text.todo.checked'] = { fg = '#fe8019', bg = '#3c3836' },
+          ['@text.todo.unchecked'] = { fg = '#fe8019', bg = '#3c3836' },
+        }
+      })
+    end,
+  },
 
   {
     'junegunn/gv.vim',
