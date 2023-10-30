@@ -1,5 +1,19 @@
 local lspconfig = require('lspconfig')
 
+-- https://github.com/neovim/nvim-lspconfig/wiki/User-contributed-tips#peek-definition
+-- https://github.com/neovim/neovim/pull/12368#issue-623656361
+local function preview_location_callback(_, result)
+  if result == nil or vim.tbl_isempty(result) then
+    return nil
+  end
+  vim.lsp.util.preview_location(result[1])
+end
+
+function peek_definition()
+  local params = vim.lsp.util.make_position_params()
+  return vim.lsp.buf_request(0, 'textDocument/definition', params, preview_location_callback)
+end
+
 local custom_attach = function(client)
   local map = function(mode, lhs, rhs)
     -- vim.api.nvim_buf_set_keymap(0, mode, key, result, { noremap = true, silent = true })
@@ -10,6 +24,7 @@ local custom_attach = function(client)
 
   map('n', 'gD', vim.lsp.buf.declaration)
   map('n', 'gd', telescope.lsp_definitions)
+  map('n', 'gpd', peek_definition)
   map('n', 'K', vim.lsp.buf.hover)
   map('n', 'gr', telescope.lsp_references)
   map('n', 'gs', vim.lsp.buf.signature_help)
