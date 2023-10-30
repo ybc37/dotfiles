@@ -48,9 +48,6 @@ local custom_attach = function(client)
 
   illuminate = require('illuminate')
   illuminate.on_attach(client)
-  vim.api.nvim_command [[ hi def link LspReferenceText CursorLine ]]
-  vim.api.nvim_command [[ hi def link LspReferenceWrite CursorLine ]]
-  vim.api.nvim_command [[ hi def link LspReferenceRead CursorLine ]]
   map('n', '<a-n>', '<cmd>lua illuminate.next_reference{ wrap=true }<CR>')
   map('n', '<a-p>', '<cmd>lua illuminate.next_reference{ reverse=true, wrap=true }<CR>')
 end
