@@ -8,8 +8,6 @@ return {
     dependencies = { 'tpope/vim-fugitive' },
   },
 
-  { 'mattn/emmet-vim' },
-
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
