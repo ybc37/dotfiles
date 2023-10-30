@@ -58,6 +58,20 @@ return require('packer').startup(function(use)
   use { 'tpope/vim-unimpaired' }
   use { 'wellle/targets.vim' }
 
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = { { 'nvim-lua/plenary.nvim' } },
+    config = function()
+      local null_ls = require("null-ls")
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.black,
+          null_ls.builtins.formatting.prettier,
+        },
+      })
+    end
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
