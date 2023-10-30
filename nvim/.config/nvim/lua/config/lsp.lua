@@ -76,7 +76,15 @@ lspconfig.eslint.setup{ on_attach = custom_attach, capabilities = capabilities }
 lspconfig.tsserver.setup{ on_attach = custom_attach, capabilities = capabilities }
 
 -- `sudo pacman -S yaml-language-server`
-lspconfig.yamlls.setup{ on_attach = custom_attach, capabilities = capabilities }
+lspconfig.yamlls.setup{
+  on_attach = custom_attach,
+  capabilities = capabilities,
+  settings = {
+    yaml = {
+      keyOrdering = false,
+    }
+  }
+}
 
 -- `sudo pacman -S clang`
 lspconfig.clangd.setup{ on_attach = custom_attach, capabilities = capabilities }
