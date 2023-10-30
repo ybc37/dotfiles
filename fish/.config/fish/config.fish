@@ -27,6 +27,7 @@ end
 
 set -x EDITOR nvim
 set -x VISUAL nvim
+set -x PAGER less
 set -x MANPAGER "nvim +Man!"
 set -x DIFFPROG "nvim -d"
 set -x LESS '--ignore-case'
