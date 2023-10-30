@@ -14,7 +14,7 @@
 	default = simple
 [merge]
 	tool = meld
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 [rebase]
 	autoSquash = true
 [diff]
