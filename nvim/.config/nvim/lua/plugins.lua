@@ -45,11 +45,11 @@ return require('packer').startup(function(use)
   use { 'RRethy/vim-illuminate' }
   use { 'christoomey/vim-tmux-navigator' }
   use { 'ellisonleao/gruvbox.nvim' }
-  use { 'itchyny/lightline.vim' }
   use { 'junegunn/gv.vim' }
   use { 'lewis6991/gitsigns.nvim', tag = 'release' }
   use { 'mattn/emmet-vim' }
   use { 'norcalli/nvim-colorizer.lua' }
+  use { 'nvim-lualine/lualine.nvim' }
   use { 'tpope/vim-commentary' }
   use { 'tpope/vim-eunuch' }
   use { 'tpope/vim-fugitive' }
