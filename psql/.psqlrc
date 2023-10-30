@@ -1,0 +1,2 @@
+\set AUTOCOMMIT off
+\set vd '\\g (format=csv) | vd -f csv'
