@@ -46,7 +46,7 @@ set -x FZF_ALT_C_COMMAND 'fd --type d --hidden --exclude .git/ . $dir'
 # https://github.com/sharkdp/bat
 set -x BAT_THEME 'gruvbox-dark'
 
-alias ls='exa --group-directories-first --time-style=long-iso'
+alias ls='eza --group-directories-first --time-style=long-iso'
 alias ll='ls -l'
 alias la='ls -la'
 alias lt='ls -lT'
