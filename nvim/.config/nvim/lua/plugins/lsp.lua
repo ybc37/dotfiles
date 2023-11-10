@@ -119,6 +119,58 @@ return {
         capabilities = capabilities
       }
 
+      -- `yay -S efm-langserver`
+      -- lua: `sudo pacman -S luacheck stylua`
+      -- python: `sudo pacman -S flake8 python-black`
+      -- css: `sudo pacman -S stylelint`, `sudo pacman -S --asdeps stylelint-config-standard`
+      -- sh: `sudo pacman -S shellcheck shfmt`
+      -- misc: `sudo pacman -S prettier`
+      -- fish: inluded in fish
+
+      local luacheck = require('efmls-configs.linters.luacheck')
+      local stylua = require('efmls-configs.formatters.stylua')
+      local prettier = require('efmls-configs.formatters.prettier')
+      local black = require('efmls-configs.formatters.black')
+      local flake8 = require('efmls-configs.linters.flake8')
+      local stylelint = require('efmls-configs.linters.stylelint')
+      local shellcheck = require('efmls-configs.linters.shellcheck')
+      local shfmt = require('efmls-configs.formatters.shfmt')
+      local fish = require('efmls-configs.linters.fish')
+      local fish_indent = require('efmls-configs.formatters.fish_indent')
+
+      local languages = {
+        lua = { luacheck, stylua },
+        javascript = { prettier },
+        javascriptreact = { prettier },
+        typescript = { prettier },
+        typescriptreact = { prettier },
+        html = { prettier },
+        css = { stylelint, prettier },
+        scss = { stylelint, prettier },
+        python = { flake8, black },
+        sh = { shellcheck, shfmt },
+        fish = { fish, fish_indent },
+        json = { prettier },
+        yaml = { prettier },
+      }
+
+      local efmls_config = {
+        filetypes = vim.tbl_keys(languages),
+        settings = {
+          rootMarkers = { '.git/' },
+          languages = languages,
+        },
+        init_options = {
+          documentFormatting = true,
+          documentRangeFormatting = true,
+        },
+      }
+
+      lspconfig.efm.setup(vim.tbl_extend('force', efmls_config, {
+        on_attach = custom_attach,
+        capabilities = capabilities,
+      }))
+
       vim.diagnostic.config({
         virtual_text = false,
         update_in_insert = true,
