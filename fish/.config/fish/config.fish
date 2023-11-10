@@ -10,20 +10,8 @@ if test -n "$TMUX" && test (tmux display-message -p '#{session_id}#{window_index
     tmux rename-window chaos
 end
 
-# TODO: remove, once fish 3.2 (with `fish_add_path`) is used "everywhere"
-function append_path
-    for path in $argv
-        contains $path $PATH || set -xa PATH $path
-    end
-end
-
 set -x GOPATH $HOME/dev/go
-
-if type -q fish_add_path
-    fish_add_path -g $HOME/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin $HOME/.npm-packages/bin
-else
-    append_path $HOME/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin $HOME/.npm-packages/bin
-end
+fish_add_path -g $HOME/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin $HOME/.npm-packages/bin
 
 set -x EDITOR nvim
 set -x VISUAL nvim
