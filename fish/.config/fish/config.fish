@@ -1,7 +1,7 @@
 # setting fish as default shell: `chsh -s /usr/bin/fish`
 
-# only run tmux in alacritty and if tmux is not yet running
-if status is-interactive && test $TERM = 'alacritty' -o $TERM = 'xterm-kitty' -o $TERM = 'foot' && not tmux info &> /dev/null
+# only run tmux in foot and if tmux is not yet running
+if status is-interactive && test $TERM = 'foot' && not tmux info &> /dev/null
     exec tmux new -As0
 end
 
