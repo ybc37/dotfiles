@@ -13,12 +13,12 @@ return {
         vim.lsp.util.preview_location(result[1])
       end
 
-      function peek_definition()
+      local function peek_definition()
         local params = vim.lsp.util.make_position_params()
         return vim.lsp.buf_request(0, 'textDocument/definition', params, preview_location_callback)
       end
 
-      local custom_attach = function(client)
+      local custom_attach = function(_)
         local map = function(mode, lhs, rhs)
           vim.keymap.set(mode, lhs, rhs, { buffer = true, silent = true })
         end

@@ -57,23 +57,23 @@ return {
 
       local notes_dir = '~/documents/notes/'
 
-      function find_notes()
+      local notes = {}
+      function notes.find()
         builtin.find_files({
           cwd = notes_dir,
         })
       end
-
-      function live_grep_notes()
+      function notes.live_grep()
         builtin.live_grep({
           cwd = notes_dir,
         })
       end
 
-      vim.keymap.set('n', '<Leader>ee', find_notes)
-      vim.api.nvim_create_user_command('Notes', 'lua find_notes()', {})
+      vim.keymap.set('n', '<Leader>ee', notes.find)
+      vim.api.nvim_create_user_command('Notes', notes.find, {})
 
-      vim.keymap.set('n', '<Leader>eg', live_grep_notes)
-      vim.api.nvim_create_user_command('NotesGrep', 'lua live_grep_notes()', {})
+      vim.keymap.set('n', '<Leader>eg', notes.live_grep)
+      vim.api.nvim_create_user_command('NotesGrep', notes.live_grep, {})
 
       vim.keymap.set('n', '<Leader>ef', ':e ' .. notes_dir)
       vim.keymap.set('n', '<Leader>ed', ':!mkdir -p ' .. notes_dir)

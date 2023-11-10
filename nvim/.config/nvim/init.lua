@@ -123,7 +123,7 @@ vim.keymap.set({ 'n', 'v' }, '<Leader>P', '"+P')
 
 --
 
-function copy_buffer_path(modifiers)
+local function copy_buffer_path(modifiers)
   local path = vim.fn.expand('%' .. (modifiers or ''))
   vim.fn.setreg('+', path)
 end
@@ -205,7 +205,7 @@ end
 
 --
 
-function markdown_toggle_checkbox()
+local function markdown_toggle_checkbox()
   local view = vim.fn.winsaveview()
   vim.cmd([[keeppatterns s/^\s*[*-]\s*\[\zs.\ze\]/\=get({" ": "x", "x": " "}, submatch(0), " ")/e]])
   vim.fn.winrestview(view)
