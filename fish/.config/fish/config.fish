@@ -1,7 +1,7 @@
 # setting fish as default shell: `chsh -s /usr/bin/fish`
 
 # only run tmux in foot and if tmux is not yet running
-if status is-interactive && test $TERM = 'foot' && not tmux info &> /dev/null
+if status is-interactive && test $TERM = foot && not tmux info &>/dev/null
     exec tmux new -As0
 end
 
@@ -18,13 +18,13 @@ set -x VISUAL nvim
 set -x PAGER less
 set -x MANPAGER "nvim +Man!"
 set -x DIFFPROG "nvim -d"
-set -x LESS '--ignore-case'
+set -x LESS --ignore-case
 
 set -x MOZ_ENABLE_WAYLAND 1
 set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 
 # https://github.com/0rax/fish-bd
-set -x BD_OPT 'insensitive'
+set -x BD_OPT insensitive
 
 # https://github.com/junegunn/fzf
 set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --exclude .git/'
@@ -32,7 +32,7 @@ set -x FZF_CTRL_T_COMMAND 'fd --type f --type d --hidden --exclude .git/ . $dir'
 set -x FZF_ALT_C_COMMAND 'fd --type d --hidden --exclude .git/ . $dir'
 
 # https://github.com/sharkdp/bat
-set -x BAT_THEME 'gruvbox-dark'
+set -x BAT_THEME gruvbox-dark
 
 set -x LS_COLORS "$(vivid generate gruvbox-dark)"
 set -x EZA_COLORS "uu=90:gu=90:uR=33:gR=33:un=33:gn=33:da=90" # man eza_colors
@@ -154,9 +154,9 @@ function start_ssh_agent
         set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
         set -Ux SSH_AGENT_PID $SSH_AGENT_PID
 
-        grep -slR "PRIVATE" ~/.ssh/ | xargs ssh-add
+        grep -slR PRIVATE ~/.ssh/ | xargs ssh-add
     end
- end
+end
 
 function ip-public
     dig myip.opendns.com @resolver1.opendns.com a +short -4
@@ -179,7 +179,7 @@ function unbak
         set -l f (string trim --right --chars='/' $file)
         set -l file_parts (string split --right --max=1 . $f)
 
-        if test "$file_parts[2]" = "bak"
+        if test "$file_parts[2]" = bak
             mv --interactive --verbose "$file_parts[1]"{.bak,}
         end
     end
@@ -206,7 +206,7 @@ end
 
 function fzf_git_log_copy
     set -l git_dir (git rev-parse --is-inside-work-tree 2>/dev/null)
-    if test "$git_dir" != 'true'
+    if test "$git_dir" != true
         return
     end
 
@@ -216,12 +216,12 @@ function fzf_git_log_copy
         set -l res ''
 
         switch "$sel[1]"
-        case "alt-m"
-            set res (git show -s --format=%s "$hash")
-        case "alt-a"
-            set res "$sel[2]"
-        case '*'
-            set res "$hash"
+            case alt-m
+                set res (git show -s --format=%s "$hash")
+            case alt-a
+                set res "$sel[2]"
+            case '*'
+                set res "$hash"
         end
 
         echo -n $res | c
@@ -239,14 +239,14 @@ end
 
 function fzf_git_review
     set -l branch $argv
-    test -z "$argv" && set -l branch 'develop'
+    test -z "$argv" && set -l branch develop
     git lg "$branch".. | rvw-log
 end
 
 if status is-interactive
     theme_gruvbox
 
-    if command -s starship > /dev/null
+    if command -s starship >/dev/null
         starship init fish | source
     end
 end
