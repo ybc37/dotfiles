@@ -48,11 +48,6 @@ return {
         map('n', '<leader>lQ', vim.diagnostic.setqflist)
         map('n', '<leader>ld', function() telescope.diagnostics({ bufnr = 0 }) end)
         map('n', '<leader>lD', telescope.diagnostics)
-
-        illuminate = require('illuminate')
-        illuminate.on_attach(client)
-        map('n', '<a-n>', '<cmd>lua illuminate.next_reference{ wrap=true }<CR>')
-        map('n', '<a-p>', '<cmd>lua illuminate.next_reference{ reverse=true, wrap=true }<CR>')
       end
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
