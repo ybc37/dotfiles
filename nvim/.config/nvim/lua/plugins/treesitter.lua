@@ -12,7 +12,13 @@ return {
           enable = true,
         },
         incremental_selection = {
-          enable = true -- init: `gnn`, node_inc: `grn`, scope_inc: `grc`, node_dec: `grm`
+          enable = true,
+          keymaps = {
+            init_selection = '<CR>',
+            node_incremental = '<CR>',
+            scope_incremental = '<S-CR>',
+            node_decremental = '<BS>',
+          },
         },
         indent = {
           enable = true
