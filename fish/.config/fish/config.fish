@@ -37,7 +37,7 @@ set -x BAT_THEME 'gruvbox-dark'
 set -x LS_COLORS "$(vivid generate gruvbox-dark)"
 set -x EZA_COLORS "uu=90:gu=90:uR=33:gR=33:un=33:gn=33:da=90" # man eza_colors
 
-alias ls='eza --group-directories-first --time-style=long-iso'
+alias ls='eza --group-directories-first --time-style=long-iso --icons=auto'
 alias ll='ls -l'
 alias la='ls -la'
 alias lt='ls -lT'
