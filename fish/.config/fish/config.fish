@@ -11,7 +11,7 @@ if test -n "$TMUX" && test (tmux display-message -p '#{session_id}#{window_index
 end
 
 set -x GOPATH $HOME/dev/go
-fish_add_path -g $HOME/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin $HOME/.npm-packages/bin
+fish_add_path -g $HOME/bin $HOME/.local/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin $HOME/.npm-packages/bin
 
 set -x EDITOR nvim
 set -x VISUAL nvim
