@@ -5,7 +5,7 @@ vim.opt.cursorline = true
 vim.opt.shortmess = 'filmnrxoOtTIcF'
 
 -- Start diff mode with vertical splits (unless explicitly specified otherwise).
-vim.opt.diffopt:append({ "vertical" })
+vim.opt.diffopt:append({ 'vertical' })
 
 -- Print the line number in front of each line.
 vim.opt.number = true
@@ -53,7 +53,7 @@ vim.opt.splitbelow = true
 vim.opt.textwidth = 80
 
 -- Don't auto-wrap text using textwidth
-vim.opt.formatoptions:remove({'t'})
+vim.opt.formatoptions:remove({ 't' })
 
 -- nosplit: Shows the effects of a command incrementally, as you type.
 -- split: Also shows partial off-screen results in a preview window.
@@ -97,6 +97,7 @@ vim.opt.completeopt = 'menu,menuone,noselect'
 vim.opt.spelllang = 'en_us,de_de'
 vim.opt.spelloptions = 'camel'
 
+--
 
 vim.g.mapleader = ' '
 
@@ -114,33 +115,44 @@ vim.keymap.set('n', '<Tab>', ':b#<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>v', ':vs<CR>')
 
 -- " copy & paste to system clipboard
-vim.keymap.set({'n', 'v'}, '<Leader>y', '"+y')
+vim.keymap.set({ 'n', 'v' }, '<Leader>y', '"+y')
 vim.keymap.set('n', '<Leader>Y', '"+y$')
-vim.keymap.set({'n', 'v'}, '<Leader>d', '"+d')
-vim.keymap.set({'n', 'v'}, '<Leader>p', '"+p')
-vim.keymap.set({'n', 'v'}, '<Leader>P', '"+P')
+vim.keymap.set({ 'n', 'v' }, '<Leader>d', '"+d')
+vim.keymap.set({ 'n', 'v' }, '<Leader>p', '"+p')
+vim.keymap.set({ 'n', 'v' }, '<Leader>P', '"+P')
 
+--
 
 function copy_buffer_path(modifiers)
-    local path = vim.fn.expand('%' .. (modifiers or ''))
-    vim.fn.setreg('+', path)
+  local path = vim.fn.expand('%' .. (modifiers or ''))
+  vim.fn.setreg('+', path)
 end
 
 -- copy relative path (src/foo.txt):
 vim.keymap.set('n', '<Leader>cr', copy_buffer_path)
--- copy absolute path (/something/src/foo.txt):
-vim.keymap.set('n', '<Leader>ca', function() copy_buffer_path(':p') end)
--- copy filename (foo.txt):
-vim.keymap.set('n', '<Leader>cf', function() copy_buffer_path(':t') end)
--- copy directory name (/something/src):
-vim.keymap.set('n', '<Leader>cd', function() copy_buffer_path(':p:h') end)
 
+-- copy absolute path (/something/src/foo.txt):
+vim.keymap.set('n', '<Leader>ca', function()
+  copy_buffer_path(':p')
+end)
+
+-- copy filename (foo.txt):
+vim.keymap.set('n', '<Leader>cf', function()
+  copy_buffer_path(':t')
+end)
+
+-- copy directory name (/something/src):
+vim.keymap.set('n', '<Leader>cd', function()
+  copy_buffer_path(':p:h')
+end)
+
+--
 
 vim.keymap.set('n', '<Leader>/', ':noh<CR>', { silent = true })
 
 -- Wrapped lines goes down/up to next row, rather than next line in file.
-vim.keymap.set({'n', 'v', 'o'}, 'j', 'gj')
-vim.keymap.set({'n', 'v', 'o'}, 'k', 'gk')
+vim.keymap.set({ 'n', 'v', 'o' }, 'j', 'gj')
+vim.keymap.set({ 'n', 'v', 'o' }, 'k', 'gk')
 
 -- Use Leader+ESC to exit insert mode in :term
 vim.keymap.set('t', '<Leader><Esc>', '<C-\\><C-n>')
@@ -154,26 +166,28 @@ vim.keymap.set('n', '<Leader><Esc>', '<C-w><C-o>')
 vim.keymap.set('n', '<Esc>', function()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     local config = vim.api.nvim_win_get_config(win)
-    if config.relative ~= '' then  -- `relative` is empty for normal windows.
+    if config.relative ~= '' then -- `relative` is empty for normal windows.
       vim.api.nvim_win_close(win, false)
     end
   end
 end)
 
 -- Substitute
-vim.keymap.set({'n', 'v'}, '<Leader>r', ':s/\\v')
+vim.keymap.set({ 'n', 'v' }, '<Leader>r', ':s/\\v')
 vim.keymap.set('n', '<Leader>R', ':%s/\\v')
 
+--
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('highlight_yank', {}),
   desc = 'Hightlight yanked text',
   pattern = '*',
   callback = function()
-    vim.highlight.on_yank { timeout = 200 }
-  end
+    vim.highlight.on_yank({ timeout = 200 })
+  end,
 })
 
+--
 
 if vim.fn.executable('trash') then
   -- vim-eunuch provides unix commands (`Delete`, `Move`,...) -> also add `Trash`
@@ -189,6 +203,7 @@ if vim.fn.executable('trash') then
   vim.api.nvim_create_user_command('Trash', trash, {})
 end
 
+--
 
 function markdown_toggle_checkbox()
   local view = vim.fn.winsaveview()
@@ -201,18 +216,19 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown',
   callback = function()
     vim.keymap.set('n', '-', markdown_toggle_checkbox, { buffer = true, silent = true })
-  end
+  end,
 })
 
+--
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
     lazypath,
   })
 end

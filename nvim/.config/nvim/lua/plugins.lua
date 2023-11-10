@@ -2,15 +2,16 @@ return {
   { 'RRethy/vim-illuminate' },
   { 'christoomey/vim-tmux-navigator' },
 
-  { "ellisonleao/gruvbox.nvim",
+  {
+    'ellisonleao/gruvbox.nvim',
     priority = 1000,
     config = true,
     config = function()
-      require("gruvbox").setup({
+      require('gruvbox').setup({
         overrides = {
           ['@text.todo.checked'] = { fg = '#fe8019', bg = '#3c3836' },
           ['@text.todo.unchecked'] = { fg = '#fe8019', bg = '#3c3836' },
-        }
+        },
       })
     end,
   },
@@ -30,16 +31,16 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     config = function()
-      require('lualine').setup {
+      require('lualine').setup({
         options = {
           icons_enabled = false,
           component_separators = '',
           section_separators = { left = '🭀', right = '🭦' }, -- U+1FB40 / U+1FB66
         },
         sections = {
-          lualine_c = {{'filename', path = 1}}
-        }
-      }
+          lualine_c = { { 'filename', path = 1 } },
+        },
+      })
     end,
   },
 
@@ -60,10 +61,10 @@ return {
   {
     'ray-x/lsp_signature.nvim',
     config = function(_, _)
-      require('lsp_signature').setup {
+      require('lsp_signature').setup({
         hint_enable = false, -- hint doesn't disappear when triggered manually (<gs>) -> disable for now
-        hint_prefix = '⮞ '
-      }
-    end
-  }
+        hint_prefix = '⮞ ',
+      })
+    end,
+  },
 }

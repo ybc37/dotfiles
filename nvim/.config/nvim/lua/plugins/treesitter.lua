@@ -7,7 +7,7 @@ return {
     },
     config = function()
       require('nvim-treesitter.configs').setup({
-        ensure_installed = "all",
+        ensure_installed = 'all',
         highlight = {
           enable = true,
         },
@@ -21,13 +21,13 @@ return {
           },
         },
         indent = {
-          enable = true
+          enable = true,
         },
 
         -- JoosepAlviste/nvim-ts-context-commentstring
         context_commentstring = {
-          enable = true
-        }
+          enable = true,
+        },
       })
     end,
   },
