@@ -55,5 +55,15 @@ return {
     'creativenull/efmls-configs-nvim',
     version = 'v1.x.x',
     dependencies = { 'neovim/nvim-lspconfig' },
+  },
+
+  {
+    'ray-x/lsp_signature.nvim',
+    config = function(_, _)
+      require('lsp_signature').setup {
+        hint_enable = false, -- hint doesn't disappear when triggered manually (<gs>) -> disable for now
+        hint_prefix = '⮞ '
+      }
+    end
   }
 }
