@@ -29,15 +29,20 @@ return {
 
   {
     'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require('lualine').setup({
         options = {
-          icons_enabled = false,
           component_separators = '',
           section_separators = { left = '🭀', right = '🭦' }, -- U+1FB40 / U+1FB66
         },
         sections = {
           lualine_c = { { 'filename', path = 1 } },
+          lualine_x = {
+            { 'encoding' },
+            { 'fileformat', icons_enabled = false },
+            { 'filetype', icons_enabled = false },
+          },
         },
       })
     end,
