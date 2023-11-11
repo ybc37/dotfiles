@@ -1,6 +1,14 @@
 return {
-  { 'RRethy/vim-illuminate' },
-  { 'christoomey/vim-tmux-navigator' },
+  'christoomey/vim-tmux-navigator',
+  'onsails/lspkind.nvim',
+  'RRethy/vim-illuminate',
+  'tpope/vim-commentary',
+  'tpope/vim-eunuch',
+  'tpope/vim-fugitive',
+  'tpope/vim-repeat',
+  'tpope/vim-surround',
+  'tpope/vim-unimpaired',
+  'wellle/targets.vim',
 
   {
     'ellisonleao/gruvbox.nvim',
@@ -48,14 +56,6 @@ return {
     end,
   },
 
-  { 'tpope/vim-commentary' },
-  { 'tpope/vim-eunuch' },
-  { 'tpope/vim-fugitive' },
-  { 'tpope/vim-repeat' },
-  { 'tpope/vim-surround' },
-  { 'tpope/vim-unimpaired' },
-  { 'wellle/targets.vim' },
-
   {
     'creativenull/efmls-configs-nvim',
     version = 'v1.x.x',
@@ -64,13 +64,11 @@ return {
 
   {
     'ray-x/lsp_signature.nvim',
-    config = function(_, _)
+    config = function()
       require('lsp_signature').setup({
         hint_enable = false, -- hint doesn't disappear when triggered manually (<gs>) -> disable for now
         hint_prefix = '⮞ ',
       })
     end,
   },
-
-  { 'onsails/lspkind.nvim' },
 }
