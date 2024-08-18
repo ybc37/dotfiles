@@ -10,9 +10,6 @@ vim.opt.diffopt:append({ 'vertical' })
 -- Print the line number in front of each line.
 vim.opt.number = true
 
--- Changes the displayed number to be relative to the cursor.
-vim.opt.relativenumber = true
-
 -- Case insensitive search
 vim.opt.ignorecase = true
 
