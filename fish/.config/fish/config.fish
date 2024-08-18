@@ -44,7 +44,7 @@ alias ll='ls -l'
 alias la='ls -la'
 alias lt='ls -lT'
 alias wtf='wtf -o'
-alias o=open
+alias o='open 2> /dev/null'
 alias n=nvim
 alias nup='nvim -c "lua require(\'lazy\').sync({wait = true})"'
 alias nn='nvim +Notes'
