@@ -90,4 +90,18 @@ return {
       })
     end,
   },
+
+  {
+    'nvim-treesitter/nvim-treesitter-context',
+    config = function()
+      require('treesitter-context').setup({
+        multiline_threshold = 5,
+        separator = '-',
+      })
+
+      vim.keymap.set('n', '<Leader>u', function()
+        require('treesitter-context').go_to_context()
+      end, { silent = true })
+    end,
+  },
 }
