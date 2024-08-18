@@ -8,7 +8,8 @@ $cmd_duration\
 $line_break\
 $jobs\
 $status\
-$character"""
+$character\
+${custom.osc133}"""
 
 [cmd_duration]
 show_milliseconds = true
@@ -19,3 +20,10 @@ fish_style_pwd_dir_length = 1
 
 [jobs]
 symbol = '✦ '
+
+# https://github.com/starship/starship/issues/5463
+# https://gitlab.freedesktop.org/Per_Bothner/specifications/blob/master/proposals/semantic-prompts.md
+[custom.osc133]
+command = 'echo -n \033]133\;A\033\\'
+when = true
+format = '$output'
