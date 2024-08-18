@@ -261,10 +261,14 @@ end
 
 if status is-interactive
     theme_gruvbox
+    set -g hydro_multiline true
 
-    if command -s starship >/dev/null
-        starship init fish | source
-    end
+    set -g hydro_symbol_git_dirty " •"
+    set -g hydro_symbol_git_ahead "↑ "
+    set -g hydro_symbol_git_behind "↓ "
+
+    set -g hydro_color_pwd brblue
+    set -g hydro_color_prompt brpurple
 end
 
 # Start graphical environment at login on vtnr 1
