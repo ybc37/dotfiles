@@ -91,7 +91,7 @@ return {
       -- `sudo pacman -S clang`
       lspconfig.clangd.setup({ on_attach = custom_attach, capabilities = capabilities })
 
-      -- `npm install -g intelephense`
+      -- `yay -S nodejs-intelephense`
       -- https://github.com/bmewburn/intelephense-docs#configuration-options
       -- https://github.com/php-stubs/wordpress-stubs
       -- https://github.com/php-stubs/wordpress-globals
