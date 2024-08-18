@@ -65,6 +65,7 @@ alias mpc_songs='mpc playlist -f \'%position%\t[[%artist% - ][%album% - ]%title%
 #alias stopwatch='command time --format="%E" fish -c \'function fish_mode_prompt ; end ; read --prompt-str="..."\''
 alias stopwatch='command time --format="%E" bash -c \'read -p "..."\'' # faster than fish (see above)
 alias img='chafa --format sixel'
+alias bell="printf '\a'"
 
 # aliases to review git commits
 alias rvw-log='FZF_DEFAULT_COMMAND="git lg" fzf --ansi --no-sort --select-1 --exit-0 --height 40% | awk \'{print $1}\' | read -l x && git show --patch-with-stat "$x"'
