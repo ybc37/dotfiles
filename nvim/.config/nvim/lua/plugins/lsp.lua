@@ -36,7 +36,7 @@ return {
         map('n', 'gt', telescope.lsp_type_definitions)
         map('n', '<leader>ls', telescope.lsp_document_symbols)
         map('n', '<leader>lS', telescope.lsp_dynamic_workspace_symbols)
-        map('n', '<leader>la', vim.lsp.buf.code_action)
+        map({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action)
         map('n', '<leader>lr', vim.lsp.buf.rename)
         map({ 'n', 'v' }, '<leader>=', vim.lsp.buf.format)
         map('n', '<leader>li', telescope.lsp_incoming_calls)
