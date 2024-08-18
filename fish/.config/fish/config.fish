@@ -87,8 +87,8 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     bind -M default \eh "history_copy; commandline -f repaint"
     bind -M insert \eh "history_copy; commandline -f repaint"
 
-    bind -M default \ek fzf_kill
-    bind -M insert \ek fzf_kill
+    bind -M default \eK fzf_kill
+    bind -M insert \eK fzf_kill
 
     bind -M default \eg fzf_git_log_copy
     bind -M insert \eg fzf_git_log_copy
