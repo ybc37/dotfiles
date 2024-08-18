@@ -13,6 +13,7 @@ end
 set -x GOPATH $HOME/dev/go
 fish_add_path -g $HOME/bin $HOME/.local/bin $GOPATH $GOPATH/bin $HOME/.cargo/bin $HOME/.npm-packages/bin
 
+set -g fish_greeting # remove greeting
 set -x EDITOR nvim
 set -x VISUAL nvim
 set -x PAGER less
@@ -98,13 +99,6 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     bind -M insert \em "mpc_songs; commandline -f repaint"
 end
 set -g fish_key_bindings hybrid_bindings
-
-function fish_greeting
-    if test -z "$TMUX" || test (tmux display-message -p '#{session_id}#{window_index}#{pane_index}') = '$000'
-        set -l FILE (dirname (status --current-filename))/greeting.md
-        test -e $FILE && bat -p $FILE
-    end
-end
 
 function rg
     # if it's in a tty (not piped,...), use --pretty and a pager
