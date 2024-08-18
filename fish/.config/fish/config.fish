@@ -243,9 +243,12 @@ function fzf_git_files
 end
 
 function fzf_git_branches
-    set -l branch (git branch --format='%(refname:short)' | fzf --height 40%)
-    if test -n "$branch"
-        commandline -i $branch
+    set -l branches (git branch --format='%(refname:short)' | fzf --multi --height 40%)
+    if test -n "$branches"
+        for branch in $branches
+            commandline -it -- (string escape $branch)
+            commandline -it -- ' '
+        end
     end
     commandline -f repaint
 end
