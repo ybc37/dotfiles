@@ -49,6 +49,9 @@ vim.opt.splitbelow = true
 -- Maximum width of text that is being inserted.
 vim.opt.textwidth = 80
 
+-- Highlight column after 'textwidth'
+vim.opt.colorcolumn = '+1'
+
 -- Don't auto-wrap text using textwidth
 vim.opt.formatoptions:remove({ 't' })
 
