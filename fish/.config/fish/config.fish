@@ -28,6 +28,7 @@ set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 set -x BD_OPT insensitive
 
 # https://github.com/junegunn/fzf
+set -x FZF_DEFAULT_OPTS '--color=bg+:#3c3836,bg:-1,spinner:#fb4934,hl:#928374,fg:-1,header:#928374,info:#8ec07c,pointer:#fb4934,marker:#fb4934,fg+:#ebdbb2,prompt:#fb4934,hl+:#fb4934'
 set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden --exclude .git/'
 set -x FZF_CTRL_T_COMMAND 'fd --type f --type d --hidden --exclude .git/ . $dir'
 set -x FZF_ALT_C_COMMAND 'fd --type d --hidden --exclude .git/ . $dir'
