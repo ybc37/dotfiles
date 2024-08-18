@@ -26,12 +26,6 @@ return {
     event = 'VeryLazy',
   },
 
-
-  {
-    'junegunn/gv.vim',
-    dependencies = { 'tpope/vim-fugitive' },
-  },
-
   {
     'NvChad/nvim-colorizer.lua',
     config = function()
