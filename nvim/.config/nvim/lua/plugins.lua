@@ -24,6 +24,13 @@ return {
   },
 
   {
+    'famiu/bufdelete.nvim',
+    config = function()
+      vim.keymap.set('n', '<Leader>x', require('bufdelete').bufdelete, { silent = true })
+    end,
+  },
+
+  {
     'junegunn/gv.vim',
     dependencies = { 'tpope/vim-fugitive' },
   },
