@@ -269,6 +269,8 @@ if status is-interactive
 
     set -g hydro_color_pwd brblue
     set -g hydro_color_prompt brpurple
+
+    zoxide init fish | source
 end
 
 # Start graphical environment at login on vtnr 1
