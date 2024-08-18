@@ -49,7 +49,19 @@ return {
         map('n', '<leader>ld', vim.diagnostic.setloclist)
         map('n', '<leader>lD', vim.diagnostic.setqflist)
 
-        if package.loaded['telescope'] ~= nil then
+        if package.loaded['fzf-lua'] ~= nil then
+          local fzf_lua = require('fzf-lua')
+          map('n', 'gd', fzf_lua.lsp_definitions)
+          map('n', 'gr', fzf_lua.lsp_references)
+          map('n', 'gi', fzf_lua.lsp_implementations)
+          map('n', 'gt', fzf_lua.lsp_typedefs)
+          map('n', '<leader>ls', fzf_lua.lsp_document_symbols)
+          map('n', '<leader>lS', fzf_lua.lsp_live_workspace_symbols)
+          map('n', '<leader>li', fzf_lua.lsp_incoming_calls)
+          map('n', '<leader>lo', fzf_lua.lsp_outgoing_calls)
+          map('n', '<leader>ld', fzf_lua.diagnostics_document)
+          map('n', '<leader>lD', fzf_lua.diagnostics_workspace)
+        elseif package.loaded['telescope'] ~= nil then
           local telescope = require('telescope.builtin')
           map('n', 'gd', telescope.lsp_definitions)
           map('n', 'gr', telescope.lsp_references)
