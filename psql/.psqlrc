@@ -1,3 +1,5 @@
 \set AUTOCOMMIT off
 \set ON_ERROR_ROLLBACK interactive
 \set vd '\\g (format=csv) | vd -f csv'
+
+\pset null '<null>'
