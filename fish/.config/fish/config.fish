@@ -93,6 +93,9 @@ function hybrid_bindings --description "Vi-style bindings that inherit emacs-sty
     bind -M default \eg fzf_git_log_copy
     bind -M insert \eg fzf_git_log_copy
 
+    bind -M default \ef fzf_git_files
+    bind -M insert \ef fzf_git_files
+
     bind -M default \eb fzf_git_branches
     bind -M insert \eb fzf_git_branches
 
@@ -223,6 +226,18 @@ function fzf_git_log_copy
         end
 
         echo -n $res | c
+    end
+    commandline -f repaint
+end
+
+function fzf_git_files
+    # -> filenames with whitespaces don't work
+    set -l files (git -c color.status=false status --short | awk '{print $2}' | fzf --multi --height 40%)
+    if test -n "$files"
+        for file in $files
+            commandline -it -- (string escape $file)
+            commandline -it -- ' '
+        end
     end
     commandline -f repaint
 end
