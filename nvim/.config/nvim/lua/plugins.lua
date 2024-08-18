@@ -11,14 +11,6 @@ return {
   {
     'ellisonleao/gruvbox.nvim',
     priority = 1000,
-    config = function()
-      require('gruvbox').setup({
-        overrides = {
-          ['@text.todo.checked'] = { fg = '#fe8019', bg = '#3c3836' },
-          ['@text.todo.unchecked'] = { fg = '#fe8019', bg = '#3c3836' },
-        },
-      })
-    end,
   },
 
   {
