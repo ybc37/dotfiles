@@ -3,7 +3,6 @@ return {
   'onsails/lspkind.nvim',
   'RRethy/vim-illuminate',
   'tpope/vim-eunuch',
-  'tpope/vim-fugitive',
   'tpope/vim-repeat',
   'tpope/vim-surround',
   'tpope/vim-unimpaired',
