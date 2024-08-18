@@ -211,7 +211,7 @@ function fzf_git_log_copy
         return
     end
 
-    set -l sel (git log --pretty=format:'%h - %s (%cr) <%an>' | fzf --no-sort --height 40% --expect=alt-m,alt-a)
+    set -l sel (git log --pretty=format:'%h - %s (%cI) <%an>' | fzf --no-sort --height 40% --expect=alt-m,alt-a)
     if test -n "$sel"
         set -l hash (echo "$sel[2]" | awk '{print $1}')
         set -l res ''
