@@ -49,6 +49,14 @@ return {
           section_separators = { left = '🭀', right = '🭦' }, -- U+1FB40 / U+1FB66
         },
         sections = {
+          lualine_b = {
+            'branch',
+            'diff',
+            {
+              'diagnostics',
+              symbols = { error = '● ', warn = '● ', info = '● ', hint = '● ' },
+            },
+          },
           lualine_c = { { 'filename', path = 1 } },
           lualine_x = {
             { 'encoding' },
