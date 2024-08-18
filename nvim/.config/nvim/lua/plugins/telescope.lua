@@ -46,7 +46,11 @@ return {
       vim.keymap.set('n', '<Leader>ff', builtin.find_files)
       vim.keymap.set('n', '<Leader><tab>', builtin.buffers)
       vim.keymap.set('n', '<Leader>fb', builtin.buffers)
-      vim.keymap.set('n', '<Leader>frg', builtin.live_grep)
+      vim.keymap.set('n', '<Leader>gg', builtin.live_grep)
+      vim.keymap.set('n', '<Leader>gs', builtin.grep_string)
+      vim.keymap.set('n', '<Leader>go', function()
+        builtin.live_grep({ grep_open_files = true })
+      end)
       vim.keymap.set('n', '<Leader>f:', builtin.command_history)
       vim.keymap.set('n', '<Leader>f/', builtin.search_history)
       vim.keymap.set('n', '<Leader>fh', builtin.help_tags)
@@ -55,8 +59,9 @@ return {
       vim.keymap.set('n', '<Leader>fqh', builtin.quickfixhistory)
       vim.keymap.set('n', '<Leader>fl', builtin.loclist)
       vim.keymap.set('n', 'z=', builtin.spell_suggest)
-      vim.keymap.set('n', '<Leader>fgs', builtin.git_status)
+      vim.keymap.set('n', '<Leader>fs', builtin.git_status)
       vim.keymap.set('n', '<Leader>ft', builtin.treesitter)
+      vim.keymap.set({ 'n', 'v' }, '<C-p>', builtin.registers)
 
       local notes_dir = '~/documents/notes/'
 
