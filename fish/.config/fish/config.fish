@@ -165,7 +165,7 @@ function ip-public
 end
 
 function weather
-    curl "https://v2.wttr.in/$argv"
+    curl "https://wttr.in/$argv"
 end
 
 function bak
