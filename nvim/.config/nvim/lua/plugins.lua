@@ -2,7 +2,6 @@ return {
   'christoomey/vim-tmux-navigator',
   'onsails/lspkind.nvim',
   'RRethy/vim-illuminate',
-  'tpope/vim-commentary',
   'tpope/vim-eunuch',
   'tpope/vim-fugitive',
   'tpope/vim-repeat',
@@ -29,6 +28,13 @@ return {
       vim.keymap.set('n', '<Leader>x', require('bufdelete').bufdelete, { silent = true })
     end,
   },
+
+  {
+    'folke/ts-comments.nvim',
+    opts = {},
+    event = 'VeryLazy',
+  },
+
 
   {
     'junegunn/gv.vim',
