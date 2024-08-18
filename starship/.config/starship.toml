@@ -16,3 +16,6 @@ format = "[$duration]($style) "
 
 [directory]
 fish_style_pwd_dir_length = 1
+
+[jobs]
+symbol = '✦ '
