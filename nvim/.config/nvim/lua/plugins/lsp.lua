@@ -151,6 +151,7 @@ return {
         sh = { shellcheck, shfmt },
         fish = { fish, fish_indent },
         json = { prettier },
+        jsonc = { prettier },
         yaml = { prettier },
       }
 
