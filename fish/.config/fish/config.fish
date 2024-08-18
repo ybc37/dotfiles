@@ -50,6 +50,7 @@ alias nup='nvim -c "lua require(\'lazy\').sync({wait = true})"'
 alias nn='nvim +Notes'
 alias nng='nvim +NotesGrep'
 alias c='wl-copy --trim-newline'
+alias p='wl-paste --no-newline'
 alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
 alias ip='ip --color=auto'
