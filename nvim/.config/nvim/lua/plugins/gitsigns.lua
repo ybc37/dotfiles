@@ -15,28 +15,21 @@ return {
           end
 
           -- Navigation
-          local function next_hunk()
+          map('n', ']c', function()
             if vim.wo.diff then
-              return ']c'
+              vim.cmd.normal({ ']c', bang = true })
+            else
+              gs.nav_hunk('next')
             end
-            vim.schedule(function()
-              gs.next_hunk()
-            end)
-            return '<Ignore>'
-          end
+          end)
 
-          local function prev_hunk()
+          map('n', '[c', function()
             if vim.wo.diff then
-              return '[c'
+              vim.cmd.normal({ '[c', bang = true })
+            else
+              gs.nav_hunk('prev')
             end
-            vim.schedule(function()
-              gs.prev_hunk()
-            end)
-            return '<Ignore>'
-          end
-
-          map('n', ']c', next_hunk, { expr = true })
-          map('n', '[c', prev_hunk, { expr = true })
+          end)
 
           -- Actions
           map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>')
