@@ -34,9 +34,10 @@ return {
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
-          { name = 'buffer' },
           { name = 'calc' },
           { name = 'path' },
+        }, {
+          { name = 'buffer' },
         }),
       })
 
@@ -51,6 +52,7 @@ return {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
           { name = 'path' },
+        }, {
           { name = 'cmdline' },
         }),
       })
