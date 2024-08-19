@@ -24,6 +24,8 @@ return {
 
     local fzf_lua = require('fzf-lua')
 
+    fzf_lua.register_ui_select()
+
     vim.keymap.set({ 'n', 'v' }, '<Leader><Leader>', fzf_lua.builtin)
     vim.keymap.set('n', '<C-t>', fzf_lua.files)
     vim.keymap.set('n', '<Leader><tab>', fzf_lua.buffers)
