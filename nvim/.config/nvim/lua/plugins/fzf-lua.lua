@@ -5,6 +5,10 @@ return {
     require('fzf-lua').setup({
       'fzf-native',
 
+      fzf_opts = {
+        ['--cycle'] = true,
+      },
+
       winopts = {
         preview = {
           flip_columns = 180,
@@ -33,7 +37,6 @@ return {
     vim.keymap.set('n', '<Leader>gs', fzf_lua.grep_cword)
     vim.keymap.set('n', 'z=', fzf_lua.spell_suggest)
     vim.keymap.set('n', '<Leader>fs', fzf_lua.git_status)
-
 
     -- TODO: Move notes in separate config?
     local notes_dir = '~/documents/notes/'
