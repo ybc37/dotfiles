@@ -31,6 +31,7 @@ return {
     fzf_lua.register_ui_select()
 
     vim.keymap.set({ 'n', 'v' }, '<Leader><Leader>', fzf_lua.builtin)
+    vim.keymap.set({ 'n', 'v' }, '<Leader><BS>', fzf_lua.resume)
     vim.keymap.set('n', '<C-t>', fzf_lua.files)
     vim.keymap.set('n', '<Leader><tab>', fzf_lua.buffers)
     vim.keymap.set('n', '<Leader>gg', fzf_lua.live_grep)
