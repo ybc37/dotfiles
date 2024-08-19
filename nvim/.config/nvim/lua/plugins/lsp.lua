@@ -57,6 +57,7 @@ return {
           map('n', 'gt', fzf_lua.lsp_typedefs)
           map('n', '<leader>ls', fzf_lua.lsp_document_symbols)
           map('n', '<leader>lS', fzf_lua.lsp_live_workspace_symbols)
+          map({ 'n', 'v' }, '<leader>la', fzf_lua.lsp_code_actions)
           map('n', '<leader>li', fzf_lua.lsp_incoming_calls)
           map('n', '<leader>lo', fzf_lua.lsp_outgoing_calls)
           map('n', '<leader>ld', fzf_lua.diagnostics_document)
