@@ -100,7 +100,7 @@ return {
       lspconfig.eslint.setup({ on_attach = custom_attach, capabilities = capabilities })
 
       -- `sudo pacman -S typescript-language-server`
-      lspconfig.tsserver.setup({ on_attach = custom_attach, capabilities = capabilities })
+      lspconfig.ts_ls.setup({ on_attach = custom_attach, capabilities = capabilities })
 
       -- `sudo pacman -S yaml-language-server`
       lspconfig.yamlls.setup({
