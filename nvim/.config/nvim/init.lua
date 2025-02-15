@@ -154,9 +154,6 @@ vim.keymap.set('n', '<Leader>/', ':noh<CR>', { silent = true })
 vim.keymap.set({ 'n', 'v', 'o' }, 'j', 'gj')
 vim.keymap.set({ 'n', 'v', 'o' }, 'k', 'gk')
 
--- Close other windows
-vim.keymap.set('n', '<Leader><Esc>', '<C-w><C-o>')
-
 -- HACK: close floating windows
 -- Should be obsolete, once this feature is implemented:
 -- https://github.com/neovim/neovim/issues/9663
