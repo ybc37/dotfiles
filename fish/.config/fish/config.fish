@@ -245,6 +245,7 @@ end
 if status is-interactive
     theme_gruvbox
     set -g hydro_multiline true
+    set -g hydro_symbol_start "\n"
 
     set -g hydro_symbol_git_dirty " •"
     set -g hydro_symbol_git_ahead "↑ "
