@@ -34,6 +34,7 @@
 	lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cI) %C(bold blue)<%an>%Creset'
 	lgg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cI) %C(bold blue)<%an>%Creset' --graph
 	mergelogmsg = "!f() { var=$(git symbolic-ref --short HEAD) && printf 'Merge branch %s into %s\n\nCommits:\n' $1 $var >| temp_merge_msg && git log dev --format=format:'* %s' $var..$1 >> temp_merge_msg && printf '\n\nFixes:\n' >> temp_merge_msg && git log dev --format=format:'%s, %b' $var..$1|egrep -o '#[0-9]{15,16}'|sort -u|sed 's;^;* fix ;' >> temp_merge_msg && git merge --no-ff --no-commit $1 && git commit -eF temp_merge_msg; rm -f temp_merge_msg;}; f"
+    jump = "!/usr/share/git/git-jump/git-jump"
 [delta]
 	navigate = true
 	keep-plus-minus-markers = true
