@@ -32,6 +32,15 @@ return {
             end
           end)
 
+          -- Set `nowait`, because vim-unimpaired has `[CC`/`]CC` mappings
+          map('n', ']C', function()
+            gs.nav_hunk('next', { target = 'staged' })
+          end, { nowait = true })
+
+          map('n', '[C', function()
+            gs.nav_hunk('prev', { target = 'staged' })
+          end, { nowait = true })
+
           -- Actions
           map('n', '<leader>hs', gs.stage_hunk)
           map('v', '<leader>hs', function()
