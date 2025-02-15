@@ -29,6 +29,10 @@ return {
           ['ctrl-q'] = 'select-all+accept',
         },
       },
+
+      defaults = {
+        formatter = 'path.filename_first',
+      },
     })
 
     local fzf_lua = require('fzf-lua')
