@@ -14,10 +14,10 @@ return {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = '<C-space>',
-            node_incremental = '<C-space>',
-            scope_incremental = '<C-A-space>',
-            node_decremental = '<BS>',
+            init_selection = 'g<BS>',
+            node_incremental = '<BS>',
+            scope_incremental = 'g<BS>',
+            node_decremental = '<Tab>',
           },
         },
         indent = {
