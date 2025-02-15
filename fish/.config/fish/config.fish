@@ -58,8 +58,6 @@ alias gnutime='command time -p'
 alias cal='cal -mw'
 alias ncmpcpp='ncmpcpp --quiet'
 alias qr='qrencode -t ANSIUTF8 -o -'
-alias history_copy='history | fzf --no-sort --height 40% | read -l x && echo "$x" | c'
-alias history_del='history | fzf --no-sort --height 40% | read -l x && history delete --case-sensitive --prefix "$x"'
 alias cd_hist='echo $dirprev | tr \' \' \'\n\' | fzf --tac --no-sort --height 20% | read -l x && cd "$x"'
 alias mpc_songs='mpc playlist -f \'%position%\t[[%artist% - ][%album% - ]%title%|%file%]\' | fzf --height 40% | awk \'{print $1}\' | read -l x && mpc play "$x"'
 #alias stopwatch='command time --format="%E" fish -c \'function fish_mode_prompt ; end ; read --prompt-str="..."\''
@@ -71,6 +69,10 @@ alias bell="printf '\a'"
 alias rvw-log='FZF_DEFAULT_COMMAND="git lg" fzf --ansi --no-sort --select-1 --exit-0 --height 40% | awk \'{print $1}\' | read -l x && git show --patch-with-stat "$x"'
 alias rvw-branch='fzf_git_review'
 
+set FZF_CTRL_R_COPY '--bind=\'ctrl-y:execute-silent(echo -n {} | perl -pe "s/^\d*\t//" | fish_clipboard_copy)+cancel\''
+set FZF_CTRL_R_DELETE '--bind=\'ctrl-x:execute-silent(echo -n {} | perl -pe "s/^\d*\t//" | history delete --exact --case-sensitive)+cancel\''
+set -x FZF_CTRL_R_OPTS "$FZF_CTRL_R_COPY $FZF_CTRL_R_DELETE"
+
 function key_bindings
     # use `fish_key_reader -c` or `showkey -a` to get keys
 
@@ -79,7 +81,6 @@ function key_bindings
 
     bind \e\r accept-autosuggestion execute
     bind \cc "commandline -f cancel && commandline '' && commandline -f repaint"
-    bind \eh "history_copy; commandline -f repaint" # conclicts with binding for `__fish_man_page` (open man page for word at cursor)
     bind \eK fzf_kill
     bind \eg fzf_git_log_copy
     bind \ef fzf_git_files
