@@ -154,9 +154,6 @@ vim.keymap.set('n', '<Leader>/', ':noh<CR>', { silent = true })
 vim.keymap.set({ 'n', 'v', 'o' }, 'j', 'gj')
 vim.keymap.set({ 'n', 'v', 'o' }, 'k', 'gk')
 
--- Use Leader+ESC to exit insert mode in :term
-vim.keymap.set('t', '<Leader><Esc>', '<C-\\><C-n>')
-
 -- Close other windows
 vim.keymap.set('n', '<Leader><Esc>', '<C-w><C-o>')
 
