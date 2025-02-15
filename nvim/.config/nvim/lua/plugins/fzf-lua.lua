@@ -33,6 +33,12 @@ return {
       defaults = {
         formatter = 'path.filename_first',
       },
+
+      grep = {
+        rg_glob = true,
+        glob_flag = '--iglob',
+        glob_separator = '%s%-%-',
+      },
     })
 
     local fzf_lua = require('fzf-lua')
