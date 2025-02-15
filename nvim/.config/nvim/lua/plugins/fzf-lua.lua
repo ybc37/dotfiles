@@ -50,6 +50,7 @@ return {
     vim.keymap.set('n', '<C-t>', fzf_lua.files)
     vim.keymap.set('n', '<Leader><tab>', fzf_lua.buffers)
     vim.keymap.set('n', '<Leader>gg', fzf_lua.live_grep)
+    vim.keymap.set('n', '<Leader>gq', fzf_lua.grep_quickfix)
     vim.keymap.set('n', '<Leader>gs', fzf_lua.grep_cword)
     vim.keymap.set('n', 'z=', fzf_lua.spell_suggest)
     vim.keymap.set('n', '<Leader>fs', fzf_lua.git_status)
