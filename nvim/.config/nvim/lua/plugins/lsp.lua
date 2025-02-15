@@ -68,6 +68,9 @@ return {
       -- `sudo pacman -S pyright`
       lspconfig.pyright.setup({ on_attach = custom_attach, capabilities = capabilities })
 
+      -- `sudo pacman -S ruff`
+      lspconfig.ruff.setup({ on_attach = custom_attach, capabilities = capabilities })
+
       -- `sudo pacman -S rust-analyzer` + `rustup component add rust-src`
       lspconfig.rust_analyzer.setup({ on_attach = custom_attach, capabilities = capabilities })
 
@@ -139,8 +142,6 @@ return {
       local luacheck = require('efmls-configs.linters.luacheck')
       local stylua = require('efmls-configs.formatters.stylua')
       local prettier = require('efmls-configs.formatters.prettier')
-      local black = require('efmls-configs.formatters.black')
-      local flake8 = require('efmls-configs.linters.flake8')
       local stylelint = require('efmls-configs.linters.stylelint')
       local shellcheck = require('efmls-configs.linters.shellcheck')
       local shfmt = require('efmls-configs.formatters.shfmt')
@@ -156,7 +157,6 @@ return {
         html = { prettier },
         css = { stylelint, prettier },
         scss = { stylelint, prettier },
-        python = { flake8, black },
         sh = { shellcheck, shfmt },
         fish = { fish, fish_indent },
         json = { prettier },
