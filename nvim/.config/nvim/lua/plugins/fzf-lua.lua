@@ -21,7 +21,12 @@ return {
 
       keymap = {
         fzf = {
-          ['alt-a'] = 'select-all+accept',
+          true,
+          ['ctrl-d'] = 'preview-page-down',
+          ['ctrl-u'] = 'preview-page-up',
+          ['ctrl-j'] = 'preview-down',
+          ['ctrl-k'] = 'preview-up',
+          ['ctrl-q'] = 'select-all+accept',
         },
       },
     })
