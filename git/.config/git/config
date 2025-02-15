@@ -17,6 +17,9 @@
 	conflictstyle = zdiff3
 [rebase]
 	autoSquash = true
+
+	# https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/
+    updateRefs = true
 [diff]
 	tool = meld
 	colorMoved = default
