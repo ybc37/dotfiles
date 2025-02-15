@@ -71,41 +71,23 @@ alias bell="printf '\a'"
 alias rvw-log='FZF_DEFAULT_COMMAND="git lg" fzf --ansi --no-sort --select-1 --exit-0 --height 40% | awk \'{print $1}\' | read -l x && git show --patch-with-stat "$x"'
 alias rvw-branch='fzf_git_review'
 
-function hybrid_bindings --description "Vi-style bindings that inherit emacs-style bindings in all modes"
+function key_bindings
     # use `fish_key_reader -c` or `showkey -a` to get keys
 
-    fish_hybrid_key_bindings
+    fish_default_key_bindings
     fzf_key_bindings
 
-    # \e\r = alt+enter; ctrl+enter is mapped to \e\r in alacritty.yml
-    bind -M insert \e\r accept-autosuggestion execute
-
-    bind -M insert \cc "commandline -f cancel && commandline '' && commandline -f repaint"
-    bind -M default -m insert \cc "commandline -f cancel && commandline '' && commandline -f repaint"
-
-    # conclicts with binding for `__fish_man_page` (open man page for word at cursor)
-    bind -M default \eh "history_copy; commandline -f repaint"
-    bind -M insert \eh "history_copy; commandline -f repaint"
-
-    bind -M default \eK fzf_kill
-    bind -M insert \eK fzf_kill
-
-    bind -M default \eg fzf_git_log_copy
-    bind -M insert \eg fzf_git_log_copy
-
-    bind -M default \ef fzf_git_files
-    bind -M insert \ef fzf_git_files
-
-    bind -M default \eb fzf_git_branches
-    bind -M insert \eb fzf_git_branches
-
-    bind -M default \ez "cd_hist; commandline -f repaint"
-    bind -M insert \ez "cd_hist; commandline -f repaint"
-
-    bind -M default \em "mpc_songs; commandline -f repaint"
-    bind -M insert \em "mpc_songs; commandline -f repaint"
+    bind \e\r accept-autosuggestion execute
+    bind \cc "commandline -f cancel && commandline '' && commandline -f repaint"
+    bind \eh "history_copy; commandline -f repaint" # conclicts with binding for `__fish_man_page` (open man page for word at cursor)
+    bind \eK fzf_kill
+    bind \eg fzf_git_log_copy
+    bind \ef fzf_git_files
+    bind \eb fzf_git_branches
+    bind \ez "cd_hist; commandline -f repaint"
+    bind \em "mpc_songs; commandline -f repaint"
 end
-set -g fish_key_bindings hybrid_bindings
+set -g fish_key_bindings key_bindings
 
 function rg
     # if it's in a tty (not piped,...), use --pretty and a pager
