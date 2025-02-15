@@ -260,6 +260,6 @@ end
 # Start graphical environment at login on vtnr 1
 if status is-login
     if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec startplasma-wayland
+        exec /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
     end
 end
