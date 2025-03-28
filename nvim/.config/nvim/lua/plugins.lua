@@ -39,6 +39,7 @@ return {
         options = {
           component_separators = '',
           section_separators = { left = '🭀', right = '🭦' }, -- U+1FB40 / U+1FB66
+          always_show_tabline = false,
         },
         sections = {
           lualine_b = {
@@ -54,6 +55,11 @@ return {
             { 'encoding' },
             { 'fileformat', icons_enabled = false },
             { 'filetype', icons_enabled = false },
+          },
+        },
+        tabline = {
+          lualine_a = {
+            { 'tabs', mode = 2 },
           },
         },
       })
