@@ -34,6 +34,10 @@ return {
         formatter = 'path.filename_first',
       },
 
+      lsp = {
+        jump1 = false,
+      },
+
       grep = {
         rg_glob = true,
         glob_flag = '--iglob',
