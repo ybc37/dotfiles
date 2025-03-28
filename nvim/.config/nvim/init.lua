@@ -97,6 +97,8 @@ vim.opt.completeopt = 'menu,menuone,noselect'
 vim.opt.spelllang = 'en_us,de_de'
 vim.opt.spelloptions = 'camel'
 
+vim.opt.winborder = 'none'
+
 --
 
 vim.g.mapleader = ' '
