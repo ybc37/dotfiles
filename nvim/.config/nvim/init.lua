@@ -99,6 +99,9 @@ vim.opt.spelloptions = 'camel'
 
 vim.opt.winborder = 'none'
 
+-- Prevent blinking curser in :terminal
+vim.opt.guicursor:append('t:blinkon0')
+
 --
 
 vim.g.mapleader = ' '
