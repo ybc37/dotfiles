@@ -100,7 +100,7 @@ return {
         delete_to_trash = true,
       })
 
-      vim.keymap.set('n', '<Leader>o', oil.open, { noremap = true })
+      vim.keymap.set('n', '-', oil.open, { noremap = true })
     end,
   },
 }

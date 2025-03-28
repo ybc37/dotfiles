@@ -209,7 +209,7 @@ vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('filetype_markdown', {}),
   pattern = 'markdown',
   callback = function()
-    vim.keymap.set('n', '-', markdown_toggle_checkbox, { buffer = true, silent = true })
+    vim.keymap.set('n', 'X', markdown_toggle_checkbox, { buffer = true, silent = true })
   end,
 })
 
