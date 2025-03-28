@@ -2,28 +2,11 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      local lspconfig = require('lspconfig')
-
-      -- https://github.com/neovim/nvim-lspconfig/wiki/User-contributed-tips#peek-definition
-      -- https://github.com/neovim/neovim/pull/12368#issue-623656361
-      local function preview_location_callback(_, result)
-        if result == nil or vim.tbl_isempty(result) then
-          return nil
-        end
-        vim.lsp.util.preview_location(result[1])
-      end
-
-      local function peek_definition()
-        local params = vim.lsp.util.make_position_params()
-        return vim.lsp.buf_request(0, 'textDocument/definition', params, preview_location_callback)
-      end
-
       local custom_attach = function(_)
         local map = function(mode, lhs, rhs)
           vim.keymap.set(mode, lhs, rhs, { buffer = true, silent = true })
         end
 
-        map('n', '<leader>gd', peek_definition)
         map('n', 'gs', vim.lsp.buf.signature_help)
         map('n', '<leader>gO', vim.lsp.buf.workspace_symbol)
         map({ 'n', 'v' }, '<leader>=', vim.lsp.buf.format)
@@ -44,6 +27,7 @@ return {
         map('n', 'grD', fzf_lua.diagnostics_workspace)
       end
 
+      local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       -- `sudo pacman -S pyright`
