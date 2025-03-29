@@ -80,7 +80,6 @@ function key_bindings
     fzf_key_bindings
 
     bind \e\r accept-autosuggestion execute
-    bind \cc "commandline -f cancel && commandline '' && commandline -f repaint"
     bind \eK fzf_kill
     bind \eg fzf_git_log_copy
     bind \ef fzf_git_files
