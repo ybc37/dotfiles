@@ -11,6 +11,14 @@ return {
         map('n', '<leader>gO', vim.lsp.buf.workspace_symbol)
         map({ 'n', 'v' }, '<leader>=', vim.lsp.buf.format)
 
+        map('n', '<C-w>D', function()
+          if vim.diagnostic.config().virtual_lines then
+            vim.diagnostic.config({ virtual_lines = false })
+          else
+            vim.diagnostic.config({ virtual_lines = { current_line = true } })
+          end
+        end)
+
         local fzf_lua = require('fzf-lua')
         map('n', 'gd', fzf_lua.lsp_definitions)
         map('n', 'gD', fzf_lua.lsp_declarations)
