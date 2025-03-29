@@ -21,7 +21,6 @@ set -x MANPAGER "nvim +Man!"
 set -x DIFFPROG "nvim -d"
 set -x LESS --ignore-case
 
-set -x MOZ_ENABLE_WAYLAND 1
 set -x DOTNET_CLI_TELEMETRY_OPTOUT 1
 
 # https://github.com/0rax/fish-bd
