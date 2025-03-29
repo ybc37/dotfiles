@@ -80,7 +80,7 @@ function key_bindings
     fzf_key_bindings
 
     bind alt-enter accept-autosuggestion execute
-    bind alt-K fzf_kill
+    bind alt-k fzf_kill
     bind alt-g fzf_git_log_copy
     bind alt-f fzf_git_files
     bind alt-b fzf_git_branches
