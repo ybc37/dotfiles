@@ -79,13 +79,13 @@ function key_bindings
     fish_default_key_bindings
     fzf_key_bindings
 
-    bind \e\r accept-autosuggestion execute
-    bind \eK fzf_kill
-    bind \eg fzf_git_log_copy
-    bind \ef fzf_git_files
-    bind \eb fzf_git_branches
-    bind \ez "cd_hist; commandline -f repaint"
-    bind \em "mpc_songs; commandline -f repaint"
+    bind alt-enter accept-autosuggestion execute
+    bind alt-K fzf_kill
+    bind alt-g fzf_git_log_copy
+    bind alt-f fzf_git_files
+    bind alt-b fzf_git_branches
+    bind alt-z "cd_hist; commandline -f repaint"
+    bind alt-m "mpc_songs; commandline -f repaint"
 end
 set -g fish_key_bindings key_bindings
 
