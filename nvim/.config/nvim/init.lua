@@ -91,9 +91,6 @@ vim.opt.undofile = true
 -- Don't show mode (insert, replace, visual) in last line.
 vim.opt.showmode = false
 
--- Options for insert mode completion (needed for hrsh7th/nvim-comp).
-vim.opt.completeopt = 'menu,menuone,noselect'
-
 vim.opt.spelllang = 'en_us,de_de'
 vim.opt.spelloptions = 'camel'
 

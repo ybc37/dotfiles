@@ -73,16 +73,6 @@ return {
   },
 
   {
-    'ray-x/lsp_signature.nvim',
-    config = function()
-      require('lsp_signature').setup({
-        hint_enable = false, -- hint doesn't disappear when triggered manually (<gs>) -> disable for now
-        hint_prefix = '⮞ ',
-      })
-    end,
-  },
-
-  {
     'windwp/nvim-ts-autotag',
     config = function()
       require('nvim-ts-autotag').setup()
