@@ -10,7 +10,6 @@ return {
         map('n', 'gs', vim.lsp.buf.signature_help)
         map('n', '<leader>gO', vim.lsp.buf.workspace_symbol)
         map({ 'n', 'v' }, '<leader>=', vim.lsp.buf.format)
-        map('n', 'gS', vim.diagnostic.open_float)
 
         local fzf_lua = require('fzf-lua')
         map('n', 'gd', fzf_lua.lsp_definitions)
