@@ -94,7 +94,7 @@ vim.opt.showmode = false
 vim.opt.spelllang = 'en_us,de_de'
 vim.opt.spelloptions = 'camel'
 
-vim.opt.winborder = 'none'
+vim.opt.winborder = 'rounded'
 
 -- Prevent blinking curser in :terminal
 vim.opt.guicursor:append('t:blinkon0')
