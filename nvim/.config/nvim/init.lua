@@ -21,7 +21,8 @@ vim.opt.scrolloff = 3
 
 -- Folds based on tree-sitter (see workaround below)
 vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldtext = ''
 
 -- Sets 'foldlevel' when starting to edit another buffer in a window.
 vim.opt.foldlevelstart = 99
