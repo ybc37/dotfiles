@@ -6,11 +6,22 @@ return {
       'fzf-native',
 
       fzf_opts = {
+        ['--border'] = 'none',
         ['--cycle'] = true,
       },
 
       winopts = {
+        border = 'single',
         preview = {
+          border = function(_, metadata)
+            local border_location = {
+              right = 'left',
+              left = 'right',
+              up = 'down',
+              down = 'up',
+            }
+            return 'border-' .. border_location[metadata.layout]
+          end,
           flip_columns = 180,
         },
       },
