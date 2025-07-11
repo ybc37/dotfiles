@@ -1,7 +1,6 @@
 return {
   'christoomey/vim-tmux-navigator',
   'RRethy/vim-illuminate',
-  'tpope/vim-eunuch',
   'tpope/vim-repeat',
   'tpope/vim-surround',
   'tpope/vim-unimpaired',

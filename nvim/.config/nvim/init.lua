@@ -196,22 +196,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 --
 
-if vim.fn.executable('trash') then
-  -- vim-eunuch provides unix commands (`Delete`, `Move`,...) -> also add `Trash`
-  -- via `trash-cli` (https://github.com/andreafrancia/trash-cli/)
-
-  local trash = function()
-    local file_path = vim.api.nvim_buf_get_name(0)
-    local command = 'trash ' .. file_path
-    os.execute(command)
-    vim.cmd.bdelete()
-  end
-
-  vim.api.nvim_create_user_command('Trash', trash, {})
-end
-
---
-
 local function markdown_toggle_checkbox()
   local view = vim.fn.winsaveview()
   vim.cmd([[keeppatterns s/^\s*[*-]\s*\[\zs.\ze\]/\=get({" ": "x", "x": " "}, submatch(0), " ")/e]])
