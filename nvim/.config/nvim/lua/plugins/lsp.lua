@@ -66,6 +66,9 @@ return {
       -- `sudo pacman -S clang`
       vim.lsp.enable('clang')
 
+      -- sudo pacman -S arduino-language-server
+      vim.lsp.enable('arduino_language_server')
+
       -- `yay -S nodejs-intelephense`
       vim.lsp.enable('intelephense')
 
