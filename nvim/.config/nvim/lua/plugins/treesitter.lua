@@ -79,7 +79,6 @@ return {
           },
           lsp_interop = {
             enable = true,
-            floating_preview_opts = {},
             peek_definition_code = {
               ['grp'] = '@function.outer',
               ['grP'] = '@class.outer',
