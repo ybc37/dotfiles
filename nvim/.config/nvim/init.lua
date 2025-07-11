@@ -103,6 +103,7 @@ vim.opt.guicursor:append('t:blinkon0')
 --
 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
 
 vim.keymap.set('n', '<Leader>ce', ':e $MYVIMRC<CR>')
 vim.keymap.set('n', '<Leader>cs', ':so $MYVIMRC<CR>')
