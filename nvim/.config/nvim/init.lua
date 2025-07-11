@@ -108,8 +108,13 @@ vim.g.maplocalleader = '\\'
 vim.keymap.set('n', '<Leader>ce', ':e $MYVIMRC<CR>')
 vim.keymap.set('n', '<Leader>cs', ':so $MYVIMRC<CR>')
 
-vim.keymap.set('i', 'jk', '<Esc>')
-vim.keymap.set('i', 'kj', '<Esc>')
+vim.keymap.set({ 'i', 's' }, '<Esc>', function()
+  vim.snippet.stop()
+  return '<Esc>'
+end, { expr = true })
+
+vim.keymap.set('i', 'jk', '<Esc>', { remap = true })
+vim.keymap.set('i', 'kj', '<Esc>', { remap = true })
 
 vim.keymap.set('n', '<Leader>w', ':w<CR>', { silent = true })
 vim.keymap.set('n', '<Leader>x', ':bd<CR>', { silent = true })
