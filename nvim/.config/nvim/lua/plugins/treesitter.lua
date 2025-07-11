@@ -92,13 +92,13 @@ return {
   {
     'nvim-treesitter/nvim-treesitter-context',
     config = function()
-      require('treesitter-context').setup({
-        separator = '-',
+      local ts_context = require('treesitter-context')
+      ts_context.setup({
+        separator = '─',
+        max_lines = '15%',
       })
 
-      vim.keymap.set('n', '<Leader>u', function()
-        require('treesitter-context').go_to_context()
-      end, { silent = true })
+      vim.keymap.set('n', 'gC', ts_context.go_to_context, { silent = true })
     end,
   },
 }
