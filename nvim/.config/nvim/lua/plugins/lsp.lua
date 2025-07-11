@@ -2,7 +2,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      local custom_attach = function(_)
+      local lsp_attach = function()
         local map = function(mode, lhs, rhs)
           vim.keymap.set(mode, lhs, rhs, { buffer = true, silent = true })
         end
@@ -34,74 +34,40 @@ return {
         map('n', 'grD', fzf_lua.diagnostics_workspace)
       end
 
-      local lspconfig = require('lspconfig')
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      vim.api.nvim_create_autocmd('LspAttach', { callback = lsp_attach })
 
       -- `sudo pacman -S pyright`
-      lspconfig.pyright.setup({ on_attach = custom_attach, capabilities = capabilities })
+      vim.lsp.enable('pyright')
 
       -- `sudo pacman -S ruff`
-      lspconfig.ruff.setup({ on_attach = custom_attach, capabilities = capabilities })
+      vim.lsp.enable('ruff')
 
       -- `sudo pacman -S rust-analyzer` + `rustup component add rust-src`
-      lspconfig.rust_analyzer.setup({ on_attach = custom_attach, capabilities = capabilities })
+      vim.lsp.enable('rust_analyzer')
 
       -- sudo pacman -S vscode-css-languageserver
-      lspconfig.cssls.setup({ on_attach = custom_attach, capabilities = capabilities })
+      vim.lsp.enable('cssls')
 
       -- sudo pacman -S vscode-html-languageserver
-      lspconfig.html.setup({ on_attach = custom_attach, capabilities = capabilities })
+      vim.lsp.enable('html')
 
       -- sudo pacman -S vscode-json-languageserver
-      lspconfig.jsonls.setup({ on_attach = custom_attach, capabilities = capabilities })
+      vim.lsp.enable('jsonls')
 
       -- sudo pacman -S eslint-language-server
-      lspconfig.eslint.setup({ on_attach = custom_attach, capabilities = capabilities })
+      vim.lsp.enable('eslint')
 
       -- `sudo pacman -S typescript-language-server`
-      lspconfig.ts_ls.setup({ on_attach = custom_attach, capabilities = capabilities })
+      vim.lsp.enable('ts_ls')
 
       -- `sudo pacman -S yaml-language-server`
-      lspconfig.yamlls.setup({
-        on_attach = custom_attach,
-        capabilities = capabilities,
-        settings = {
-          yaml = {
-            keyOrdering = false,
-          },
-        },
-      })
+      vim.lsp.enable('yamlls')
 
       -- `sudo pacman -S clang`
-      lspconfig.clangd.setup({ on_attach = custom_attach, capabilities = capabilities })
+      vim.lsp.enable('clang')
 
       -- `yay -S nodejs-intelephense`
-      -- https://github.com/bmewburn/intelephense-docs#configuration-options
-      -- https://github.com/php-stubs/wordpress-stubs
-      -- https://github.com/php-stubs/wordpress-globals
-      lspconfig.intelephense.setup({
-        settings = {
-          intelephense = {
-            -- stylua: ignore
-            stubs = {
-              'apache', 'bcmath', 'bz2', 'calendar', 'com_dotnet', 'Core', 'csprng',
-              'ctype', 'curl', 'date', 'dba', 'dom', 'enchant', 'exif', 'fileinfo',
-              'filter', 'fpm', 'ftp', 'gd', 'hash', 'iconv', 'imap', 'interbase',
-              'intl', 'json', 'ldap', 'libxml', 'mbstring', 'mcrypt', 'mssql',
-              'mysql', 'mysqli', 'oci8', 'odcb', 'openssl', 'password', 'pcntl',
-              'pcre', 'PDO', 'pdo_ibm', 'pdo_mysql', 'pdo_pgsql', 'pdo_sqlite',
-              'pgsql', 'Phar', 'posix', 'pspell', 'readline', 'recode', 'Reflection',
-              'regex', 'session', 'shmop', 'SimpleXML', 'snmp', 'soap', 'sockets',
-              'sodium', 'SPL', 'sqlite3', 'standard', 'superglobals', 'sybase',
-              'sysvmsg', 'sysvsem', 'sysvshm', 'tidy', 'tokenizer', 'wddx', 'xml',
-              'xmlreader', 'xmlrpc', 'xmlwriter', 'Zend OPcache', 'zip', 'zlib',
-              'wordpress',
-            },
-          },
-        },
-        on_attach = custom_attach,
-        capabilities = capabilities,
-      })
+      vim.lsp.enable('intelephense')
 
       -- `yay -S efm-langserver`
       -- lua: `sudo pacman -S luacheck stylua`
@@ -148,10 +114,8 @@ return {
         },
       }
 
-      lspconfig.efm.setup(vim.tbl_extend('force', efmls_config, {
-        on_attach = custom_attach,
-        capabilities = capabilities,
-      }))
+      vim.lsp.config('efm', efmls_config)
+      vim.lsp.enable('efm')
 
       vim.diagnostic.config({
         update_in_insert = true,
