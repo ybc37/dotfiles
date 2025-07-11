@@ -2,7 +2,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      local lsp_attach = function()
+      local lsp_attach = function(args)
         local map = function(mode, lhs, rhs)
           vim.keymap.set(mode, lhs, rhs, { buffer = true, silent = true })
         end
@@ -32,6 +32,12 @@ return {
         map('n', 'grO', fzf_lua.lsp_outgoing_calls)
         map('n', 'grd', fzf_lua.diagnostics_document)
         map('n', 'grD', fzf_lua.diagnostics_workspace)
+
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client:supports_method('textDocument/foldingRange') then
+          local win = vim.api.nvim_get_current_win()
+          vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+        end
       end
 
       vim.api.nvim_create_autocmd('LspAttach', { callback = lsp_attach })
