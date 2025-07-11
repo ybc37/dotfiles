@@ -1,91 +1,93 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
+    branch = 'main',
+    build = function()
+      require('nvim-treesitter').install('unstable')
+      require('nvim-treesitter').update()
+    end,
+    init = function()
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function(args)
+          local filetype = args.match
+          local lang = vim.treesitter.language.get_lang(filetype)
+          if vim.treesitter.language.add(lang) then
+            require('utils').set_win_foldexpr('v:lua.vim.treesitter.foldexpr()')
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            vim.treesitter.start()
+          end
+        end,
+      })
+    end,
+  },
+
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    branch = 'main',
     config = function()
-      require('nvim-treesitter.configs').setup({
-        ensure_installed = 'all',
-        highlight = {
-          enable = true,
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = 'g<BS>',
-            node_incremental = '<BS>',
-            scope_incremental = 'g<BS>',
-            node_decremental = '<Tab>',
+      require('nvim-treesitter-textobjects').setup({
+        select = {
+          lookahead = true,
+          selection_modes = {
+            ['@parameter.outer'] = 'v',
+            ['@function.outer'] = 'V',
+            ['@class.outer'] = 'V',
           },
         },
-        indent = {
-          enable = true,
-        },
-
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-
-            keymaps = {
-              ['af'] = '@function.outer',
-              ['if'] = '@function.inner',
-              ['ac'] = '@class.outer',
-              ['ic'] = '@class.inner',
-            },
-            selection_modes = {
-              ['@parameter.outer'] = 'v',
-              ['@function.outer'] = 'V',
-            },
-          },
-          swap = {
-            enable = true,
-            swap_next = {
-              ['<leader>a'] = '@parameter.inner',
-            },
-            swap_previous = {
-              ['<leader>A'] = '@parameter.inner',
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-              [']m'] = '@function.outer',
-              [']]'] = '@class.outer',
-              [']z'] = { query = '@fold', query_group = 'folds' },
-            },
-            goto_next_end = {
-              [']M'] = '@function.outer',
-              [']['] = '@class.outer',
-            },
-            goto_previous_start = {
-              ['[m'] = '@function.outer',
-              ['[['] = '@class.outer',
-              ['[z'] = { query = '@fold', query_group = 'folds', desc = 'Previous fold' },
-            },
-            goto_previous_end = {
-              ['[M'] = '@function.outer',
-              ['[]'] = '@class.outer',
-            },
-            goto_next = {
-              [']i'] = '@conditional.outer',
-            },
-            goto_previous = {
-              ['[i'] = '@conditional.outer',
-            },
-          },
-          lsp_interop = {
-            enable = true,
-            peek_definition_code = {
-              ['grp'] = '@function.outer',
-              ['grP'] = '@class.outer',
-            },
-          },
+        move = {
+          set_jumps = true,
         },
       })
+
+      local ts_exec = function(module, func_name, query_string)
+        return function()
+          require('nvim-treesitter-textobjects.' .. module)[func_name](query_string, 'textobjects')
+        end
+      end
+
+      local ts_select = function(query_string)
+        return ts_exec('select', 'select_textobject', query_string)
+      end
+
+      local ts_swap = function(func_name, query_string)
+        return ts_exec('swap', func_name, query_string)
+      end
+
+      local ts_move = function(func_name, query_string)
+        return ts_exec('move', func_name, query_string)
+      end
+
+      vim.keymap.set({ 'x', 'o' }, 'af', ts_select('@function.outer'))
+      vim.keymap.set({ 'x', 'o' }, 'if', ts_select('@function.inner'))
+      vim.keymap.set({ 'x', 'o' }, 'ac', ts_select('@class.outer'))
+      vim.keymap.set({ 'x', 'o' }, 'ic', ts_select('@class.inner'))
+      vim.keymap.set({ 'x', 'o' }, 'aa', ts_select('@parameter.outer'))
+      vim.keymap.set({ 'x', 'o' }, 'ia', ts_select('@parameter.inner'))
+
+      vim.keymap.set('n', '<leader>a', ts_swap('swap_next', '@parameter.inner'))
+      vim.keymap.set('n', '<leader>A', ts_swap('swap_previous', '@parameter.outer'))
+
+      vim.keymap.set({ 'n', 'x', 'o' }, ']m', ts_move('goto_next_start', '@function.outer'))
+      vim.keymap.set({ 'n', 'x', 'o' }, ']]', ts_move('goto_next_start', '@class.outer'))
+      vim.keymap.set({ 'n', 'x', 'o' }, ']a', ts_move('goto_next_start', '@parameter.outer'))
+
+      vim.keymap.set({ 'n', 'x', 'o' }, ']M', ts_move('goto_next_end', '@function.outer'))
+      vim.keymap.set({ 'n', 'x', 'o' }, '][', ts_move('goto_next_end', '@class.outer'))
+      vim.keymap.set({ 'n', 'x', 'o' }, ']A', ts_move('goto_next_end', '@parameter.outer'))
+
+      vim.keymap.set({ 'n', 'x', 'o' }, '[m', ts_move('goto_previous_start', '@function.outer'))
+      vim.keymap.set({ 'n', 'x', 'o' }, '[[', ts_move('goto_previous_start', '@class.outer'))
+      vim.keymap.set({ 'n', 'x', 'o' }, '[a', ts_move('goto_previous_start', '@parameter.outer'))
+
+      vim.keymap.set({ 'n', 'x', 'o' }, '[M', ts_move('goto_previous_end', '@function.outer'))
+      vim.keymap.set({ 'n', 'x', 'o' }, '[]', ts_move('goto_previous_end', '@class.outer'))
+      vim.keymap.set({ 'n', 'x', 'o' }, '[A', ts_move('goto_previous_end', '@parameter.outer'))
+
+      vim.keymap.set({ 'n', 'x', 'o' }, ']i', ts_move('goto_next', '@conditional.outer'))
+      vim.keymap.set({ 'n', 'x', 'o' }, '[i', ts_move('goto_previous', '@conditional.outer'))
+
+      -- Disable mappings of Python ftplugin (/usr/share/nvim/runtime/ftplugin/python.vim)
+      vim.g.no_python_maps = true
     end,
   },
 

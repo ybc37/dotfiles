@@ -19,9 +19,9 @@ vim.opt.smartcase = true
 -- Minimum lines to keep above and below cursor
 vim.opt.scrolloff = 3
 
--- Folds based on tree-sitter (see workaround below)
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+-- Folds based on indentation
+-- If available, Tree-sitter or LSP folding is used (see corresponding config)
+vim.opt.foldmethod = 'indent'
 vim.opt.foldtext = ''
 
 -- Sets 'foldlevel' when starting to edit another buffer in a window.
