@@ -130,6 +130,8 @@ vim.keymap.set({ 'n', 'v' }, '<Leader>d', '"+d')
 vim.keymap.set({ 'n', 'v' }, '<Leader>p', '"+p')
 vim.keymap.set({ 'n', 'v' }, '<Leader>P', '"+P')
 
+vim.keymap.set('n', 'gd', '<C-]>')
+
 --
 
 local function copy_buffer_path(modifiers)
