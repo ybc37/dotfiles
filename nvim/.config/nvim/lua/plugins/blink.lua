@@ -35,7 +35,7 @@ return {
 
     keymap = {
       ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-      ['<C-e>'] = { 'hide', 'fallback' },
+      ['<C-e>'] = { 'cancel', 'fallback' },
 
       ['<C-n>'] = { 'show', 'select_next', 'fallback_to_mappings' },
       ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
@@ -57,6 +57,12 @@ return {
       ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
 
       ['<C-s>'] = { 'show_signature', 'hide_signature', 'fallback' },
+
+      ['<A-s>'] = {
+        function(cmp)
+          cmp.show({ providers = { 'snippets' } })
+        end,
+      },
     },
   },
 }
