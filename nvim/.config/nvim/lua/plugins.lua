@@ -1,6 +1,5 @@
 return {
   'christoomey/vim-tmux-navigator',
-  'onsails/lspkind.nvim',
   'RRethy/vim-illuminate',
   'tpope/vim-eunuch',
   'tpope/vim-repeat',
