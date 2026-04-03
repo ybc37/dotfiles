@@ -70,33 +70,34 @@ return {
       vim.lsp.enable('eslint')
 
       -- `sudo pacman -S typescript-language-server`
-      vim.lsp.config('ts_ls', {
+      -- (not yet released -> `npm --global install @typescript/native-preview`)
+      vim.lsp.config('tsgo', {
         settings = {
-          javascript = {
-            inlayHints = {
-              includeInlayEnumMemberValueHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayParameterNameHints = 'all',
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayVariableTypeHints = false,
-            },
-          },
           typescript = {
             inlayHints = {
-              includeInlayEnumMemberValueHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayParameterNameHints = 'all',
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayVariableTypeHints = false,
+              parameterNames = {
+                enabled = 'all',
+              },
+              parameterTypes = {
+                enabled = true,
+              },
+              variableTypes = {
+                enabled = true,
+              },
+              propertyDeclarationTypes = {
+                enabled = true,
+              },
+              functionLikeReturnTypes = {
+                enabled = true,
+              },
+              enumMemberValues = {
+                enabled = true,
+              },
             },
           },
         },
       })
-      vim.lsp.enable('ts_ls')
+      vim.lsp.enable('tsgo')
 
       -- `sudo pacman -S yaml-language-server`
       vim.lsp.enable('yamlls')
