@@ -21,6 +21,7 @@
 	# https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/
     updateRefs = true
 [diff]
+	algorithm = histogram
 	tool = meld
 	colorMoved = default
 [rerere]
