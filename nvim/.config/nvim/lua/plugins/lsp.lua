@@ -7,7 +7,7 @@ return {
           vim.keymap.set(mode, lhs, rhs, { buffer = true, silent = true })
         end
 
-        map('n', 'gs', vim.lsp.buf.signature_help)
+        map('n', '<C-s>', vim.lsp.buf.signature_help)
         map('n', '<leader>gO', vim.lsp.buf.workspace_symbol)
         map({ 'n', 'v' }, '<leader>=', vim.lsp.buf.format)
 

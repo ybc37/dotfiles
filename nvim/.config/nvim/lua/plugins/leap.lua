@@ -14,7 +14,7 @@ return {
       })
     end)
 
-    vim.keymap.set({ 'n', 'o' }, '<leader>s', function()
+    vim.keymap.set({ 'n', 'o' }, 'gs', function()
       require('leap.remote').action()
     end)
   end,
