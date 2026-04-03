@@ -42,7 +42,7 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', { callback = lsp_attach })
 
       -- `sudo pacman -S pyright`
-      vim.lsp.enable('pyright')
+      vim.lsp.enable('ty')
 
       -- `sudo pacman -S ruff`
       vim.lsp.enable('ruff')
