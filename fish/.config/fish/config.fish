@@ -82,6 +82,7 @@ function key_bindings
     bind ctrl-a,g,b fzf_git_branches
     bind ctrl-a,h "cd_hist; commandline -f repaint"
     bind ctrl-a,m "mpc_songs; commandline -f repaint"
+    bind ctrl-a,z "zi; commandline -f repaint"
 end
 set -g fish_key_bindings key_bindings
 
