@@ -34,6 +34,8 @@
 [alias]
 	lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cI) %C(bold blue)<%an>%Creset'
 	lgg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cI) %C(bold blue)<%an>%Creset' --graph
+	in = "lg ..@{u}"
+	out = "lg @{u}.."
     jump = "!/usr/share/git/git-jump/git-jump"
 [delta]
 	navigate = true
