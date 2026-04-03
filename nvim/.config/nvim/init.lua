@@ -184,6 +184,15 @@ end)
 vim.keymap.set({ 'n', 'v' }, '<Leader>r', ':s/\\v')
 vim.keymap.set('n', '<Leader>R', ':%s/\\v')
 
+-- Set `s` mark before searching
+-- https://www.reddit.com/r/neovim/comments/1k27y0t/go_back_to_the_start_of_a_search_for_the_current/
+for _, key in ipairs({ '/', '?', '*', '#', 'g*', 'g#' }) do
+  vim.keymap.set({ 'n', 'x' }, key, 'ms' .. key)
+end
+
+-- Search within visual selection (also set `s` mark)
+vim.keymap.set('x', '/', '<Esc>ms/\\%V')
+
 --
 
 vim.api.nvim_create_autocmd('TextYankPost', {
