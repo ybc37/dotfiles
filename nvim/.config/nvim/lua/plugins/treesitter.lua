@@ -57,8 +57,8 @@ return {
         return ts_exec('move', func_name, query_string)
       end
 
-      vim.keymap.set({ 'x', 'o' }, 'af', ts_select('@function.outer'))
-      vim.keymap.set({ 'x', 'o' }, 'if', ts_select('@function.inner'))
+      vim.keymap.set({ 'x', 'o' }, 'am', ts_select('@function.outer'))
+      vim.keymap.set({ 'x', 'o' }, 'im', ts_select('@function.inner'))
       vim.keymap.set({ 'x', 'o' }, 'ac', ts_select('@class.outer'))
       vim.keymap.set({ 'x', 'o' }, 'ic', ts_select('@class.inner'))
       vim.keymap.set({ 'x', 'o' }, 'aa', ts_select('@parameter.outer'))
