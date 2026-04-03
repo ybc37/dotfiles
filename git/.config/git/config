@@ -29,8 +29,8 @@
 [interactive]
 	diffFilter = delta --color-only
 [gui]
-	fontui = -family \"Noto Sans\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family \"Noto Sans Mono\" -size 9 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family \"Noto Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Iosevka\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 [alias]
 	lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cI) %C(bold blue)<%an>%Creset'
 	lgg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cI) %C(bold blue)<%an>%Creset' --graph
