@@ -80,7 +80,13 @@ return {
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
-    config = true,
+    config = function()
+      local npairs = require('nvim-autopairs')
+      -- https://github.com/windwp/nvim-autopairs?tab=readme-ov-file#fastwrap
+      npairs.setup({
+        fast_wrap = {},
+      })
+    end,
   },
 
   {
