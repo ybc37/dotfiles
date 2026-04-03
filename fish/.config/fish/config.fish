@@ -76,12 +76,12 @@ function key_bindings
     fzf_key_bindings
 
     bind alt-enter accept-autosuggestion execute
-    bind alt-k fzf_kill
-    bind alt-g fzf_git_log_copy
-    bind alt-f fzf_git_files
-    bind alt-b fzf_git_branches
-    bind alt-z "cd_hist; commandline -f repaint"
-    bind alt-m "mpc_songs; commandline -f repaint"
+    bind ctrl-a,k fzf_kill
+    bind ctrl-a,g,l fzf_git_log_copy
+    bind ctrl-a,g,f fzf_git_files
+    bind ctrl-a,g,b fzf_git_branches
+    bind ctrl-a,h "cd_hist; commandline -f repaint"
+    bind ctrl-a,m "mpc_songs; commandline -f repaint"
 end
 set -g fish_key_bindings key_bindings
 
