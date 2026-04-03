@@ -65,8 +65,8 @@ alias bell="printf '\a'"
 alias rvw-log='FZF_DEFAULT_COMMAND="git lg" fzf --ansi --no-sort --select-1 --exit-0 --height 40% | awk \'{print $1}\' | read -l x && git show --patch-with-stat "$x"'
 alias rvw-branch='fzf_git_review'
 
-set FZF_CTRL_R_COPY '--bind=\'ctrl-y:execute-silent(echo -n {} | perl -pe "s/^\d*\t//" | fish_clipboard_copy)+cancel\''
-set FZF_CTRL_R_DELETE '--bind=\'ctrl-x:execute-silent(echo -n {} | perl -pe "s/^\d*\t//" | history delete --exact --case-sensitive)+cancel\''
+set FZF_CTRL_R_COPY '--bind=\'ctrl-y:execute-silent(echo -n {} | perl -pe "s/^\d*\t//" | fish_clipboard_copy)+abort\''
+set FZF_CTRL_R_DELETE '--bind=\'ctrl-x:execute-silent(echo -n {} | perl -pe "s/^\d*\t//" | history delete --exact --case-sensitive)+abort\''
 set -x FZF_CTRL_R_OPTS "$FZF_CTRL_R_COPY $FZF_CTRL_R_DELETE"
 
 function key_bindings
