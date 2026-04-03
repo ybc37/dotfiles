@@ -19,6 +19,13 @@ return {
           end
         end)
 
+        map('n', 'grh', function()
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if client:supports_method('textDocument/inlayHints') then
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          end
+        end)
+
         local fzf_lua = require('fzf-lua')
         map('n', 'gd', fzf_lua.lsp_definitions)
         map('n', 'gD', fzf_lua.lsp_declarations)
