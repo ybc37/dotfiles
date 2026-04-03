@@ -7,11 +7,12 @@ return {
 
     require('leap').opts.equivalence_classes = { ' \t\r\n', '([{', ')]}', '\'"`' }
 
-    vim.keymap.set({ 'n', 'x', 'o' }, 'ga', function()
-      require('leap.treesitter').select()
+    vim.keymap.set({ 'x', 'o' }, 'R', function()
+      require('leap.treesitter').select({
+        -- increase/decrease selection with traversal keys, e.g.: vRRRRrr
+        opts = require('leap.user').with_traversal_keys('R', 'r'),
+      })
     end)
-
-    vim.keymap.set({ 'n', 'x', 'o' }, 'gA', 'V<cmd>lua require("leap.treesitter").select()<cr>')
 
     vim.keymap.set({ 'n', 'o' }, '<leader>s', function()
       require('leap.remote').action()
