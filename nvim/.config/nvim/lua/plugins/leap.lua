@@ -17,5 +17,13 @@ return {
     vim.keymap.set({ 'n', 'o' }, 'gs', function()
       require('leap.remote').action()
     end)
+
+    vim.keymap.set({ 'n', 'o' }, 'g/', function()
+      require('leap.remote').action({ jumper = '/' })
+    end)
+
+    vim.keymap.set({ 'n', 'o' }, 'g?', function()
+      require('leap.remote').action({ jumper = '?' })
+    end)
   end,
 }
