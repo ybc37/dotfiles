@@ -71,32 +71,6 @@ return {
 
       -- `sudo pacman -S typescript-language-server`
       -- (not yet released -> `npm --global install @typescript/native-preview`)
-      vim.lsp.config('tsgo', {
-        settings = {
-          typescript = {
-            inlayHints = {
-              parameterNames = {
-                enabled = 'all',
-              },
-              parameterTypes = {
-                enabled = true,
-              },
-              variableTypes = {
-                enabled = true,
-              },
-              propertyDeclarationTypes = {
-                enabled = true,
-              },
-              functionLikeReturnTypes = {
-                enabled = true,
-              },
-              enumMemberValues = {
-                enabled = true,
-              },
-            },
-          },
-        },
-      })
       vim.lsp.enable('tsgo')
 
       -- `sudo pacman -S yaml-language-server`
