@@ -42,7 +42,6 @@ alias ls='eza --group-directories-first --time-style=long-iso --icons=auto'
 alias ll='ls -l'
 alias la='ls -la'
 alias lt='ls -lT'
-alias wtf='wtf -o'
 alias o='open 2> /dev/null'
 alias n=nvim
 alias nup='nvim -c "lua require(\'lazy\').sync({wait = true})"'
@@ -52,15 +51,13 @@ alias c='wl-copy --trim-newline'
 alias p='wl-paste --no-newline'
 alias pwdc='pwd | head -c -1 | c'
 alias se=sudoedit
-alias ip='ip --color=auto'
 alias gnutime='command time -p'
 alias cal='cal -mw'
 alias ncmpcpp='ncmpcpp --quiet'
 alias qr='qrencode -t ANSIUTF8 -o -'
 alias cd_hist='echo $dirprev | tr \' \' \'\n\' | fzf --tac --no-sort --height 20% | read -l x && cd "$x"'
 alias mpc_songs='mpc playlist -f \'%position%\t[[%artist% - ][%album% - ]%title%|%file%]\' | fzf --height 40% | awk \'{print $1}\' | read -l x && mpc play "$x"'
-#alias stopwatch='command time --format="%E" fish -c \'function fish_mode_prompt ; end ; read --prompt-str="..."\''
-alias stopwatch='command time --format="%E" bash -c \'read -p "..."\'' # faster than fish (see above)
+alias stopwatch='command time --format="%E" bash -c \'read -p "..."\''
 alias img='chafa --format sixel'
 alias bell="printf '\a'"
 
