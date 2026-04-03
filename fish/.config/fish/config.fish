@@ -73,7 +73,6 @@ function key_bindings
     # use `fish_key_reader -c` or `showkey -a` to get keys
 
     fish_default_key_bindings
-    fzf_key_bindings
 
     bind alt-enter accept-autosuggestion execute
     bind ctrl-a,k fzf_kill
@@ -250,6 +249,7 @@ if status is-interactive
     set -g hydro_color_pwd brblue
     set -g hydro_color_prompt brpurple
 
+    fzf --fish | source
     zoxide init fish | source
 end
 
