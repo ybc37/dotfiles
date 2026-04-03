@@ -77,7 +77,7 @@ return {
       vim.lsp.enable('yamlls')
 
       -- `sudo pacman -S clang`
-      vim.lsp.enable('clang')
+      vim.lsp.enable('clangd')
 
       -- sudo pacman -S arduino-language-server
       vim.lsp.enable('arduino_language_server')
