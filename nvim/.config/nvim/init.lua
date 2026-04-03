@@ -127,6 +127,7 @@ vim.keymap.set('n', '<Leader>v', ':vs<CR>')
 vim.keymap.set({ 'n', 'v' }, '<Leader>y', '"+y')
 vim.keymap.set('n', '<Leader>Y', '"+y$')
 vim.keymap.set({ 'n', 'v' }, '<Leader>d', '"+d')
+vim.keymap.set('n', '<Leader>D', '"+D')
 vim.keymap.set({ 'n', 'v' }, '<Leader>p', '"+p')
 vim.keymap.set({ 'n', 'v' }, '<Leader>P', '"+P')
 
