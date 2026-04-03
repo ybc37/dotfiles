@@ -88,6 +88,17 @@ return {
 
       -- Disable mappings of Python ftplugin (/usr/share/nvim/runtime/ftplugin/python.vim)
       vim.g.no_python_maps = true
+
+      local repeatable_move = require('nvim-treesitter-textobjects.repeatable_move')
+
+      vim.keymap.set({ 'n', 'x', 'o' }, ';', repeatable_move.repeat_last_move, { buffer = true })
+      -- stylua: ignore
+      vim.keymap.set({ 'n', 'x', 'o' }, ',', repeatable_move.repeat_last_move_opposite, { buffer = true })
+
+      vim.keymap.set({ 'n', 'x', 'o' }, 'f', repeatable_move.builtin_f_expr, { expr = true })
+      vim.keymap.set({ 'n', 'x', 'o' }, 'F', repeatable_move.builtin_F_expr, { expr = true })
+      vim.keymap.set({ 'n', 'x', 'o' }, 't', repeatable_move.builtin_t_expr, { expr = true })
+      vim.keymap.set({ 'n', 'x', 'o' }, 'T', repeatable_move.builtin_T_expr, { expr = true })
     end,
   },
 
