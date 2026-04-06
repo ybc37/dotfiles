@@ -62,9 +62,10 @@ alias bell="printf '\a'"
 alias rvw-log='FZF_DEFAULT_COMMAND="git lg" fzf --ansi --no-sort --select-1 --exit-0 --height 40% | awk \'{print $1}\' | read -l x && git show --patch-with-stat "$x"'
 alias rvw-branch='fzf_git_review'
 
+set FZF_CTRL_R_PREFIX "--with-nth 3.. --bind 'alt-t:change-with-nth(1,3..|3..)'"
 set FZF_CTRL_R_COPY "--bind 'ctrl-y:execute-silent(echo -n {3..} | fish_clipboard_copy)+abort'"
 set FZF_CTRL_R_DELETE "--bind 'ctrl-x:execute-silent(echo -n {3..} | history delete --exact --case-sensitive)+abort'"
-set -x FZF_CTRL_R_OPTS "$FZF_CTRL_R_COPY $FZF_CTRL_R_DELETE"
+set -x FZF_CTRL_R_OPTS "$FZF_CTRL_R_PREFIX $FZF_CTRL_R_COPY $FZF_CTRL_R_DELETE"
 
 function key_bindings
     # use `fish_key_reader -c` or `showkey -a` to get keys
