@@ -223,3 +223,4 @@ vim.api.nvim_create_autocmd('FileType', {
 --
 
 vim.cmd.packadd('nvim.undotree')
+vim.cmd.packadd('nvim.difftool')
