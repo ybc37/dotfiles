@@ -1,101 +1,101 @@
 -- Highlight current line
-vim.opt.cursorline = true
+vim.o.cursorline = true
 
 -- Abbrev. of messages (avoids 'hit enter')
-vim.opt.shortmess = 'filmnrxoOtTIcF'
+vim.o.shortmess = 'filmnrxoOtTIcF'
 
 -- Start diff mode with vertical splits (unless explicitly specified otherwise).
 vim.opt.diffopt:append({ 'vertical' })
 
 -- Print the line number in front of each line.
-vim.opt.number = true
+vim.o.number = true
 
 -- Case insensitive search
-vim.opt.ignorecase = true
+vim.o.ignorecase = true
 
 -- Case sensitive when uc present
-vim.opt.smartcase = true
+vim.o.smartcase = true
 
 -- Minimum lines to keep above and below cursor
-vim.opt.scrolloff = 3
+vim.o.scrolloff = 3
 
 -- Folds based on indentation
 -- If available, Tree-sitter or LSP folding is used (see corresponding config)
-vim.opt.foldmethod = 'indent'
-vim.opt.foldtext = ''
+vim.o.foldmethod = 'indent'
+vim.o.foldtext = ''
 
 -- Sets 'foldlevel' when starting to edit another buffer in a window.
-vim.opt.foldlevelstart = 99
+vim.o.foldlevelstart = 99
 
 -- Highlight problematic whitespace
-vim.opt.list = true
-vim.opt.listchars = 'tab:› ,trail:•,extends:#,nbsp:.'
+vim.o.list = true
+vim.o.listchars = 'tab:› ,trail:•,extends:#,nbsp:.'
 
 -- do not wrap long lines
-vim.opt.wrap = false
+vim.o.wrap = false
 
 -- Number of spaces to use for each step of (auto)indent.
-vim.opt.shiftwidth = 4
+vim.o.shiftwidth = 4
 
 -- Tabs are spaces, not tabs
-vim.opt.expandtab = true
+vim.o.expandtab = true
 
 -- Number of spaces that a <Tab> in the file counts for.
-vim.opt.tabstop = 4
+vim.o.tabstop = 4
 
 -- Puts new split window to the right/bottom of the current
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+vim.o.splitright = true
+vim.o.splitbelow = true
 
 -- Maximum width of text that is being inserted.
-vim.opt.textwidth = 80
+vim.o.textwidth = 80
 
 -- Highlight column after 'textwidth'
-vim.opt.colorcolumn = '+1'
+vim.o.colorcolumn = '+1'
 
 -- Don't auto-wrap text using textwidth
 vim.opt.formatoptions:remove({ 't' })
 
 -- nosplit: Shows the effects of a command incrementally, as you type.
 -- split: Also shows partial off-screen results in a preview window.
-vim.opt.inccommand = 'split'
+vim.o.inccommand = 'split'
 
 -- Enables mouse support.
-vim.opt.mouse = 'a'
+vim.o.mouse = 'a'
 
 -- Always draw the signcolumn.
-vim.opt.signcolumn = 'yes'
+vim.o.signcolumn = 'yes'
 
 -- use true color (24-bit) in the terminal
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 
 -- disable modeline
-vim.opt.modeline = false
+vim.o.modeline = false
 
 -- the following settings are used when `wrap` is on (e.g. by using
 -- vim-unimpaired `yow`).
 -- If on, Vim will wrap long lines at a character in 'breakat' rather than at
 -- the last character that fits on the screen.
-vim.opt.linebreak = true
+vim.o.linebreak = true
 
 -- Every wrapped line will continue visually indented (same amount of space as
 -- the beginning of that line), thus preserving horizontal blocks of text.
-vim.opt.breakindent = true
+vim.o.breakindent = true
 
 -- String to put at the start of lines that have been wrapped.
-vim.opt.showbreak = '↳ '
+vim.o.showbreak = '↳ '
 
 -- Automatically save/restore undo history using an undo file.
 -- undodir: default `$XDG_DATA_HOME/nvim/undo`
-vim.opt.undofile = true
+vim.o.undofile = true
 
 -- Don't show mode (insert, replace, visual) in last line.
-vim.opt.showmode = false
+vim.o.showmode = false
 
-vim.opt.spelllang = 'en_us,de_de'
-vim.opt.spelloptions = 'camel'
+vim.o.spelllang = 'en_us,de_de'
+vim.o.spelloptions = 'camel'
 
-vim.opt.winborder = 'single'
+vim.o.winborder = 'single'
 
 -- Prevent blinking curser in :terminal
 vim.opt.guicursor:append('t:blinkon0')
