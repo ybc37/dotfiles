@@ -137,7 +137,13 @@ return {
         update_in_insert = true,
         severity_sort = true,
         jump = {
-          float = true,
+          on_jump = function(_, bufnr)
+            vim.diagnostic.open_float({
+              bufnr = bufnr,
+              scope = 'cursor',
+              focus = false,
+            })
+          end,
         },
         signs = {
           text = {
