@@ -219,3 +219,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('n', 'X', markdown_toggle_checkbox, { buffer = true, silent = true })
   end,
 })
+
+--
+
+vim.cmd.packadd('nvim.undotree')
