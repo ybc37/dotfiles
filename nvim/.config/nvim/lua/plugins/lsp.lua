@@ -133,17 +133,23 @@ return {
       vim.lsp.config('efm', efmls_config)
       vim.lsp.enable('efm')
 
+      on_diagnostic_jump = function(_, bufnr)
+        if vim.diagnostic.config().virtual_lines then
+          return
+        end
+
+        vim.diagnostic.open_float({
+          bufnr = bufnr,
+          scope = 'cursor',
+          focus = false,
+        })
+      end
+
       vim.diagnostic.config({
         update_in_insert = true,
         severity_sort = true,
         jump = {
-          on_jump = function(_, bufnr)
-            vim.diagnostic.open_float({
-              bufnr = bufnr,
-              scope = 'cursor',
-              focus = false,
-            })
-          end,
+          on_jump = on_diagnostic_jump
         },
         signs = {
           text = {
